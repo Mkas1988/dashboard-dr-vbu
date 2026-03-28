@@ -104,6 +104,89 @@
       box-sizing: border-box;
     }
 
+    @media (max-width: 700px) {
+      #unitBody {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .module-title-sheet {
+        padding: 22px 16px;
+        border-radius: 16px;
+      }
+
+      .module-title-sheet::before {
+        font-size: 280px;
+        left: -6px;
+        top: -20px;
+      }
+
+      .module-title-sheet-kicker {
+        font-size: 1.4rem;
+      }
+
+      .module-title-sheet-quote {
+        padding: 0 8px 0 20px;
+        font-size: clamp(1.3rem, 5vw, 2rem);
+      }
+
+      .module-title-sheet-person-row {
+        padding-left: 20px;
+        padding-right: 8px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .module-title-sheet-person-row::before {
+        left: 20px;
+        right: 8px;
+      }
+
+      .module-title-sheet-portrait {
+        width: 90px;
+        height: 110px;
+        flex: 0 0 90px;
+      }
+
+      .module-title-sheet-personline {
+        font-size: 1.05rem;
+      }
+
+      .unit-body .fom-collapse summary {
+        padding: 12px 56px 12px 14px;
+        font-size: 0.95rem;
+      }
+
+      .unit-body .fom-collapse-content {
+        padding: 14px 14px 16px 14px;
+      }
+
+      .person-popup {
+        position: fixed !important;
+        left: 8px !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        top: auto !important;
+        width: auto !important;
+        max-width: none !important;
+        transform: none !important;
+        z-index: 1400 !important;
+      }
+
+      .module-title-sheet .person-popup {
+        left: 8px !important;
+        right: 8px !important;
+        width: auto !important;
+        transform: translateY(0) !important;
+      }
+
+      .module-title-sheet .person-popup-wrap:hover .person-popup,
+      .module-title-sheet .person-popup-wrap:focus-within .person-popup {
+        transform: translateY(0) !important;
+      }
+    }
+
     .unit-body .fom-collapse[open] .fom-collapse-content {
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
     }
