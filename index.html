@@ -5,85 +5,243 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Smart Campus Dashboard</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @font-face {
+      font-family: 'Neue-Haas-Grotesk-Text-Pro';
+      src: url('fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-55-Regular.woff2') format('woff2'),
+           url('fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-55-Regular.woff') format('woff');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue-Haas-Grotesk-Text-Pro';
+      src: url('fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-75-Bold.woff2') format('woff2'),
+           url('fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-75-Bold.woff') format('woff');
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue-Haas-Grotesk-Display-Pro';
+      src: url('fonts/Neue-Haas-Grotesk-Display-Pro/Neue-Haas-Grotesk-Display-Pro-75-Bold.woff2') format('woff2'),
+           url('fonts/Neue-Haas-Grotesk-Display-Pro/Neue-Haas-Grotesk-Display-Pro-75-Bold.woff') format('woff');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      --fom-teal: #00C6B2;
+      --fom-teal-dark: #009F8F;
+      --fom-teal-darker: #00776B;
+      --fom-teal-light: #E5F9F7;
+      --fom-black: #121212;
+      --fom-white: #FFFFFF;
+      --fom-bg-alt: #F2F0F0;
+      --fom-gray: #6D6D6D;
+      --fom-gray-light: #E6E6E6;
+      --fom-error: #E81818;
+      --fom-footer-bg: #0B2623;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { height: 100%; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #e0f7f5 0%, #f4f8f7 100%);
-      min-height: 100vh;
+      font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--fom-black);
+      background: var(--fom-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--fom-teal);
+      padding: 14px 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header img {
+      height: 44px;
+    }
+    .header-title {
+      font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--fom-white);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 48px 20px;
+      background: var(--fom-bg-alt);
     }
-    .login-box {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+
+    /* Login Card */
+    .login-card {
+      background: var(--fom-white);
+      border: 1px solid var(--fom-gray-light);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .06);
       padding: 48px 40px;
-      max-width: 400px;
-      width: 90%;
+      max-width: 420px;
+      width: 100%;
       text-align: center;
     }
-    .login-box img {
-      max-width: 160px;
-      margin-bottom: 24px;
-    }
-    .login-box h1 {
-      font-size: 1.4em;
-      color: #2d3a3a;
+    .login-card h1 {
+      font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--fom-black);
+      line-height: 1.1;
+      letter-spacing: -0.4px;
       margin-bottom: 8px;
     }
-    .login-box p {
-      color: #6b7b7b;
-      margin-bottom: 28px;
-      font-size: 0.95em;
+    .login-card .subtitle {
+      font-size: 15px;
+      color: var(--fom-gray);
+      margin-bottom: 32px;
     }
-    .login-box input[type="password"] {
+
+    /* Form */
+    .login-card label {
+      display: block;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--fom-black);
+      margin-bottom: 6px;
+    }
+    .login-card input[type="password"] {
       width: 100%;
-      padding: 14px 20px;
-      border: 1.5px solid #d0ddd8;
-      border-radius: 10px;
-      font-size: 1.05em;
+      padding: 14px 16px;
+      border: 2px solid var(--fom-gray-light);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--fom-black);
+      background: var(--fom-white);
       outline: none;
-      transition: border 0.2s;
-      margin-bottom: 16px;
+      transition: all 0.2s;
+      margin-bottom: 20px;
     }
-    .login-box input[type="password"]:focus {
-      border-color: #00bfae;
+    .login-card input[type="password"]::placeholder {
+      color: #b0b0b0;
     }
-    .login-box button {
+    .login-card input[type="password"]:focus {
+      border-color: var(--fom-teal);
+      box-shadow: 0 0 0 3px rgba(0, 198, 178, .08);
+    }
+
+    /* Button */
+    .login-card button {
       width: 100%;
-      padding: 14px;
-      background: #00bfae;
-      color: #fff;
+      padding: 16px 36px;
+      background: var(--fom-teal);
+      color: var(--fom-white);
       border: none;
-      border-radius: 10px;
-      font-size: 1.05em;
-      font-weight: 600;
+      border-radius: 60px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
-    .login-box button:hover {
-      background: #00a89a;
+    .login-card button:hover {
+      background: var(--fom-teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 198, 178, .3);
     }
+    .login-card button:active {
+      transform: translateY(0);
+    }
+
+    /* Error */
     .error-msg {
-      color: #e74c3c;
-      font-size: 0.9em;
-      margin-top: 12px;
+      color: var(--fom-error);
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 16px;
       display: none;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--fom-footer-bg);
+      padding: 32px 48px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .5);
+    }
+    .footer a {
+      color: var(--fom-teal);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      .header img {
+        height: 32px;
+      }
+      .header-title {
+        font-size: 18px;
+      }
+      .login-card {
+        padding: 36px 24px;
+      }
+      .login-card h1 {
+        font-size: 24px;
+      }
+      .footer {
+        padding: 24px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <img src="assets/FOM_Logo.png" alt="FOM Logo">
-    <h1>Smart Campus Dashboard</h1>
-    <p>Bitte Passwort eingeben, um fortzufahren.</p>
-    <form id="loginForm" onsubmit="return checkPassword()">
-      <input type="password" id="pwd" placeholder="Passwort" autofocus>
-      <button type="submit">Anmelden</button>
-    </form>
-    <div class="error-msg" id="errMsg">Falsches Passwort. Bitte erneut versuchen.</div>
-  </div>
+
+  <header class="header">
+    <img src="assets/FOM_Logo.png" alt="FOM Hochschule Logo">
+    <span class="header-title">Smart Campus</span>
+  </header>
+
+  <main class="main">
+    <div class="login-card">
+      <h1>Willkommen</h1>
+      <p class="subtitle">Bitte Passwort eingeben, um fortzufahren.</p>
+      <form id="loginForm" onsubmit="return checkPassword()">
+        <label for="pwd">Passwort</label>
+        <input type="password" id="pwd" placeholder="Passwort eingeben" autofocus>
+        <button type="submit">Anmelden</button>
+      </form>
+      <div class="error-msg" id="errMsg">Falsches Passwort. Bitte erneut versuchen.</div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; FOM Hochschule</p>
+  </footer>
+
   <script>
     const H = 'de9980e86ba07bfff68dcf82032d565cb5cedce738e1f2aa47657b910844d3f4';
     async function sha256(str) {
@@ -97,6 +255,8 @@
         window.location.href = 'modules/management-basics/special-01-modulinfo.html';
       } else {
         document.getElementById('errMsg').style.display = 'block';
+        document.getElementById('pwd').style.borderColor = 'var(--fom-error)';
+        document.getElementById('pwd').style.boxShadow = '0 0 0 3px rgba(232,24,24,.08)';
       }
       return false;
     }
