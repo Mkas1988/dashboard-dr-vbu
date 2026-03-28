@@ -1,0 +1,1730 @@
+﻿<!DOCTYPE html>
+<html lang='de'>
+<head>
+  <script>
+    if (sessionStorage.getItem('dashboard_auth') !== 'de9980e86ba07bfff68dcf82032d565cb5cedce738e1f2aa47657b910844d3f4') {
+      window.location.href = '../../index.html';
+    }
+  </script>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Management Basics</title>
+  <link rel='stylesheet' href='../../assets/style.css' />
+  <style>
+    .unit-body .fom-collapse {
+      border: 2px solid rgba(44, 181, 177, 0.75);
+      border-radius: 14px;
+      background: #2cb5b1;
+      box-shadow: 0 8px 22px rgba(44, 181, 177, 0.22);
+      margin-bottom: 22px;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .unit-body .fom-collapse:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(44, 181, 177, 0.28);
+    }
+
+    .unit-body .fom-collapse summary {
+      position: relative;
+      display: block;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      padding: 16px 72px 16px 18px;
+    }
+
+    .unit-body .fom-collapse summary strong {
+      font-weight: 700;
+    }
+
+    .unit-body .fom-collapse .summary-desc {
+      margin-left: auto;
+      padding-right: 4px;
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .unit-body .fom-collapse summary::after,
+    .unit-body .fom-collapse summary::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%);
+    }
+
+    .unit-body .fom-collapse summary::after {
+      z-index: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(10, 64, 73, 0.22);
+      opacity: 1;
+    }
+
+    .unit-body .fom-collapse summary::before {
+      right: 30px;
+      z-index: 1;
+      opacity: 1;
+      width: 9px;
+      height: 9px;
+      border-right: 2.5px solid #14bdb2;
+      border-bottom: 2.5px solid #14bdb2;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+
+    .unit-body .fom-collapse[open] summary::before {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .unit-body .fom-collapse-content {
+      border-top: 2px solid rgba(44, 181, 177, 0.75);
+      background: linear-gradient(180deg, #f8fffd 0%, #eefaf6 100%);
+      padding: 18px 20px 20px 20px;
+      color: #1f2f45;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .unit-body .fom-collapse-content li {
+      margin-bottom: 10px;
+    }
+
+    .unit-body .fom-collapse-content li:last-child {
+      margin-bottom: 0;
+    }
+
+    #unitBody {
+      padding-left: 34px;
+      padding-right: 34px;
+      box-sizing: border-box;
+    }
+
+    .unit-body .fom-collapse[open] .fom-collapse-content {
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .literature-feature {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      align-items: start;
+      margin: 8px 0 12px 0;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .literature-cover {
+      width: 140px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(20, 52, 80, 0.14);
+      display: block;
+    }
+
+    .literature-meta {
+      color: #2a3f56;
+      line-height: 1.35;
+    }
+
+    .literature-title {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2a3f56;
+    }
+
+    .literature-meta p {
+      margin: 0 0 4px 0;
+    }
+
+    @media (max-width: 760px) {
+      .literature-feature {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .literature-cover {
+        width: min(180px, 100%);
+      }
+    }
+
+    .person-popup-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .person-popup-trigger {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      line-height: inherit;
+      font-weight: 700;
+      text-decoration: underline dotted;
+      cursor: help;
+    }
+
+    .person-popup {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: min(560px, 85vw);
+      padding: 12px 14px;
+      border: 1px solid #cfd8dc;
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(20, 36, 50, 0.2);
+      color: #1a2533;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+      z-index: 40;
+    }
+
+    .person-popup-wrap:hover .person-popup,
+    .person-popup-wrap:focus-within .person-popup {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .person-popup-title {
+      display: block;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+
+    .person-popup-list {
+      display: block;
+      margin: 0;
+    }
+
+    .person-popup-item {
+      display: block;
+      margin: 0 0 6px 0;
+    }
+
+    .module-title-sheet {
+      position: relative;
+      z-index: 50;
+      width: 100%;
+      max-width: 916px;
+      margin: 0 auto 24px auto;
+      box-sizing: border-box;
+      padding: 44px 38px 44px 38px;
+      border-radius: 26px;
+      border: 1px solid rgba(10, 132, 124, 0.45);
+      background: #14bdb2;
+      color: #ffffff;
+      overflow: visible;
+      box-shadow: 0 10px 26px rgba(8, 88, 94, 0.2);
+    }
+
+    .module-title-sheet::before {
+      content: "“";
+      position: absolute;
+      left: -8px;
+      top: -34px;
+      font-size: 520px;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.28);
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .module-title-sheet-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 18px;
+    }
+
+    .module-title-sheet-kicker {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.2;
+      opacity: 0.98;
+    }
+
+    .module-title-sheet-banner {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #0aaea5;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .module-title-sheet-title {
+      margin: 0;
+      font-size: clamp(1.1rem, 1.9vw, 1.45rem);
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      opacity: 0.92;
+    }
+
+    .module-title-sheet-quote {
+      margin: 10px 0 14px 0;
+      padding: 0 32px 0 66px;
+      color: #ffffff;
+      font-size: clamp(1.55rem, 3.9vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+      text-align: left;
+    }
+
+    .module-title-sheet-personline {
+      margin: 0;
+      color: #ffffff;
+      font-weight: 400;
+      text-align: left;
+      font-size: 1.18rem;
+      line-height: 1.35;
+    }
+
+    .module-title-sheet-personline-primary {
+      font-weight: 700;
+    }
+
+    .module-title-sheet-personline-secondary {
+      font-size: 1.06rem;
+    }
+
+    .module-title-sheet-personcopy {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .module-title-sheet-portrait {
+      width: 128px;
+      height: 158px;
+      object-fit: cover;
+      flex: 0 0 128px;
+      border-radius: 12px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .module-title-sheet-person-row {
+      position: relative;
+      margin-top: 34px;
+      padding-top: 34px;
+      padding-left: 66px;
+      padding-right: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .module-title-sheet-person-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 66px;
+      right: 32px;
+      border-top: 2px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .module-title-sheet .person-popup-trigger {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .module-title-sheet .person-popup-wrap {
+      position: relative;
+      z-index: 1300;
+    }
+
+    .module-title-sheet .person-popup {
+      left: 50%;
+      right: auto;
+      top: calc(100% + 10px);
+      width: min(760px, calc(100vw - 28px));
+      padding: 14px 16px;
+      border: 1px solid #cfd8dc;
+      border-radius: 10px;
+      background: #f3f5f7;
+      box-shadow: 0 12px 30px rgba(20, 36, 50, 0.28);
+      color: #2a3442;
+      z-index: 1200;
+      text-align: left;
+      transform: translate(-50%, 4px);
+    }
+
+    .module-title-sheet .person-popup-title {
+      font-weight: 400;
+    }
+
+    .module-title-sheet .person-popup-list,
+    .module-title-sheet .person-popup-item {
+      font-weight: 400;
+    }
+
+    .module-title-sheet .person-popup-wrap:hover .person-popup,
+    .module-title-sheet .person-popup-wrap:focus-within .person-popup {
+      transform: translate(-50%, 0);
+    }
+
+    .module-title-sheet--closing::before {
+      content: none;
+    }
+
+    /* EXPERIMENT START: Quote Intro Overlay */
+    .quote-intro-overlay[hidden] {
+      display: none;
+    }
+
+    .quote-intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 6100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .quote-intro-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 29, 43, 0.62);
+    }
+
+    .quote-intro-dialog {
+      position: relative;
+      z-index: 1;
+      width: min(980px, calc(100vw - 26px));
+      max-height: calc(100vh - 34px);
+      overflow: auto;
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 24px 56px rgba(12, 33, 50, 0.34);
+      padding: 16px 16px 18px 16px;
+    }
+
+    .quote-intro-top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .quote-intro-title {
+      margin: 0;
+      color: #17334a;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 800;
+    }
+
+    .quote-intro-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #b8c9d6;
+      border-radius: 50%;
+      background: #f4f8fb;
+      color: #17334a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .quote-intro-close svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .quote-intro-stage .module-title-sheet {
+      margin: 0 auto;
+    }
+
+    .quote-intro-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .quote-intro-btn {
+      border: 0;
+      border-radius: 999px;
+      height: 38px;
+      padding: 0 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .quote-intro-btn-primary {
+      background: #10bdb1;
+      color: #ffffff;
+    }
+
+    .quote-intro-btn-secondary {
+      background: #edf4f8;
+      color: #17334a;
+    }
+    /* EXPERIMENT END: Quote Intro Overlay */
+
+    .unit-nav-next-wrap {
+      grid-column: 2;
+      justify-self: end;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .unit-nav-next-text {
+      color: #11b8aa;
+      font-weight: 700;
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .guided-tour-overlay[hidden] {
+      display: none;
+    }
+
+    .guided-tour-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .guided-tour-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 29, 43, 0.58);
+      z-index: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .guided-tour-overlay.has-spotlight .guided-tour-backdrop {
+      opacity: 0;
+    }
+
+    .guided-tour-spotlight {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-radius: 24px;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow:
+        0 0 0 9999px rgba(15, 29, 43, 0.58),
+        0 0 0 4px rgba(255, 255, 255, 0.92),
+        0 20px 48px rgba(15, 29, 43, 0.28);
+      transition:
+        top 180ms ease,
+        left 180ms ease,
+        width 180ms ease,
+        height 180ms ease,
+        border-radius 180ms ease,
+        opacity 180ms ease;
+      z-index: 1;
+    }
+
+    .guided-tour-overlay.has-spotlight .guided-tour-spotlight {
+      opacity: 1;
+    }
+
+    .guided-tour-dialog {
+      position: relative;
+      width: min(680px, calc(100vw - 40px));
+      max-height: calc(100vh - 40px);
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 24px 60px rgba(15, 29, 43, 0.28);
+      padding: 22px 24px 18px;
+      color: #1f3346;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
+
+    .guided-tour-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .guided-tour-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0b8f84;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .guided-tour-title-main {
+      display: inline-block;
+    }
+
+    .guided-tour-title-icon {
+      width: 23px;
+      height: 23px;
+      border-radius: 999px;
+      border: 1px solid rgba(17, 184, 170, 0.28);
+      background: #f3fbfb;
+      color: #2c536b;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 23px;
+    }
+
+    .guided-tour-title-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .guided-tour-title-icon img,
+    .guided-tour-title-icon .right-tool-brand-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .guided-tour-close {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(17, 184, 170, 0.22);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #24374a;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 120ms ease, border-color 120ms ease, transform 140ms ease;
+    }
+
+    .guided-tour-close:hover,
+    .guided-tour-close:focus-visible {
+      background: #e6f7f6;
+      border-color: #bde7e4;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .guided-tour-close svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+    }
+
+    .guided-tour-text {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      color: #30485f;
+      white-space: pre-line;
+    }
+
+    .guided-tour-tools-list {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .guided-tour-tools-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 7px 0;
+      color: #2f4860;
+      font-weight: 600;
+    }
+
+    .guided-tour-tools-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(17, 184, 170, 0.28);
+      background: #f3fbfb;
+      color: #2c536b;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 24px;
+    }
+
+    .guided-tour-tools-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .guided-tour-tools-icon img {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .guided-tour-after-image {
+      margin: 12px 0 0 0;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      color: #30485f;
+      white-space: pre-line;
+    }
+
+    .guided-tour-body {
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .guided-tour-body.has-image {
+      display: grid;
+      grid-template-columns: minmax(260px, 48%) 1fr;
+      align-items: start;
+      gap: 18px;
+    }
+
+    .guided-tour-inline-image {
+      display: none;
+      margin: 0;
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      max-height: none;
+      border-radius: 0;
+      border: 0;
+      box-shadow: 0 10px 24px rgba(22, 52, 74, 0.18);
+      background: transparent;
+      object-fit: contain;
+    }
+
+    .guided-tour-body.has-image .guided-tour-inline-image {
+      display: block;
+    }
+
+    .guided-tour-body.has-image.image-right .guided-tour-inline-image {
+      grid-column: 2;
+    }
+
+    .guided-tour-body.has-image.image-right .guided-tour-text {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .guided-tour-body.step-one {
+      gap: 10px;
+    }
+
+    .guided-tour-body.step-one .guided-tour-text {
+      font-size: 1.02rem;
+      line-height: 1.36;
+    }
+
+    .guided-tour-body.step-one .guided-tour-inline-image {
+      max-width: 300px !important;
+    }
+
+    .guided-tour-body.has-image.image-below {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .guided-tour-body.has-image.image-below .guided-tour-text {
+      order: 1;
+    }
+
+    .guided-tour-body.has-image.image-below .guided-tour-inline-image {
+      order: 2;
+      margin-top: 10px;
+    }
+
+    .guided-tour-body.has-image.image-below .guided-tour-after-image {
+      order: 3;
+    }
+
+    .guided-tour-inline-image-secondary {
+      margin-top: 10px;
+    }
+
+    .guided-tour-body.has-image.image-below .guided-tour-inline-image-secondary {
+      order: 4;
+    }
+
+    .guided-tour-body.has-image.image-below.step-notes {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 16px;
+      row-gap: 0;
+      align-items: start;
+    }
+
+    .guided-tour-body.has-image.image-below.step-notes .guided-tour-text {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      order: unset;
+      margin-bottom: 0;
+    }
+
+    .guided-tour-body.has-image.image-below.step-notes .guided-tour-inline-image {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      order: unset;
+      margin-top: 10px;
+    }
+
+    .guided-tour-body.has-image.image-below.step-notes .guided-tour-after-image {
+      grid-column: 1;
+      grid-row: 3;
+      order: unset;
+      margin-top: 12px;
+      margin-bottom: 0;
+      align-self: center;
+      display: block;
+    }
+
+    .guided-tour-body.has-image.image-below.step-notes .guided-tour-inline-image-secondary {
+      grid-column: 2;
+      grid-row: 3;
+      order: unset;
+      margin-top: 12px;
+      justify-self: end;
+      align-self: center;
+    }
+
+    .guided-tour-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .guided-tour-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .guided-tour-arrow {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(17, 184, 170, 0.22);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #0b8f84;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 120ms ease, border-color 120ms ease, transform 140ms ease;
+    }
+
+    .guided-tour-arrow:hover,
+    .guided-tour-arrow:focus-visible {
+      background: #e6f7f6;
+      border-color: #bde7e4;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .guided-tour-arrow:disabled {
+      opacity: 0.4;
+      cursor: default;
+      transform: none;
+      background: #ffffff;
+      border-color: rgba(17, 184, 170, 0.18);
+    }
+
+    .guided-tour-arrow svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .guided-tour-progress {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #6a7b8b;
+    }
+
+    .guided-tour-finish {
+      display: none;
+      margin-top: 4px;
+      margin-bottom: 14px;
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1px solid #11b8aa;
+      border-radius: 999px;
+      background: #11b8aa;
+      color: #ffffff;
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: background 120ms ease, border-color 120ms ease, transform 140ms ease;
+    }
+
+    .guided-tour-finish:hover,
+    .guided-tour-finish:focus-visible {
+      background: #0ea79a;
+      border-color: #0ea79a;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .guided-tour-finish.is-visible {
+      display: inline-flex;
+    }
+
+    @media (max-width: 900px) {
+      .guided-tour-dialog {
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 24px);
+        padding: 18px 18px 16px;
+      }
+
+      .guided-tour-text {
+        font-size: 0.96rem;
+      }
+
+      .guided-tour-body.has-image {
+        display: block;
+      }
+
+      .guided-tour-body.has-image .guided-tour-inline-image {
+        margin-top: 10px;
+      }
+
+      .guided-tour-body.has-image.image-below.step-notes {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body class='with-campus-bar layout-bba' data-no-notes data-static-right-tools>
+
+      <header id='main-header' class='campus-topbar' aria-label='Online-Campus Leiste'>
+    <div class='main-header-inner'>
+      <div id='header-left' class='header-left'>
+        <button id='homeLogoBtn' type='button' class='home-logo-btn' aria-label='Zur Startseite'>
+          <img src='../../assets/FOM_Logo.png' alt='FOM Hochschule Logo' class='home-logo-img' />
+          <span class='home-logo-text'>Online-Campus</span>
+        </button>
+      </div>
+
+      <div id='header-right' class='header-right'>
+        <div id='primaryPageNav'>
+          <a href='../../dashboard-eu-local/index.html' aria-label='Dashboard' title='Dashboard' class='page-nav-btn page-nav-active'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M3 10.5 12 3l9 7.5'></path>
+              <path d='M5.25 9.75V21h13.5V9.75'></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class='header-menu-wrap'>
+          <button id='burgerMenuBtn' type='button' aria-label='Men&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M4 7h16M4 12h16M4 17h16'></path>
+            </svg>
+          </button>
+          <div id='burgerMenu' class='header-popover hidden'>
+            <button id='burgerInfoBtn' type='button' class='header-popover-item'>Informationen</button>
+            <button id='burgerSocialBtn' type='button' class='header-popover-item'>Sozialer Bereich</button>
+            <button id='burgerModulesBtn' type='button' class='header-popover-item'>Modulwahl &amp; Studienverlauf</button>
+            <button id='burgerExamsBtn' type='button' class='header-popover-item'>Pr&uuml;fungen &amp; Noten</button>
+            <button id='burgerEventsOfferBtn' type='button' class='header-popover-item'>Veranstaltungsangebot</button>
+            <button id='burgerHelpBtn' type='button' class='header-popover-item'>Hilfe &amp; Kontakt</button>
+          </div>
+        </div>
+
+        <button id='messagesNavBtn' type='button' aria-label='Pers&ouml;nliche Nachrichten' class='page-nav-btn'>
+          <span id='messagesUnreadBadge' class='messages-unread-badge'>1</span>
+          <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+            <path d='M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75z'></path>
+            <path d='M5.25 8.25 11.14 12.4a1.5 1.5 0 0 0 1.72 0l5.89-4.15'></path>
+          </svg>
+        </button>
+
+        <div class='header-menu-wrap'>
+          <button id='profileBtn' type='button' aria-label='Profilmen&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z'></path>
+              <path d='M4.5 19.5a7.5 7.5 0 0 1 15 0'></path>
+            </svg>
+          </button>
+
+          <div id='profileMenu' class='header-popover hidden'>
+            <div id='profileMenuMain'>
+              <a href='#' class='header-popover-link'>Mein Profil</a>
+              <a href='#' class='header-popover-link'>Einstellungen</a>
+              <button id='openA11yMenuBtn' type='button' class='header-popover-item header-popover-item-split'>
+                <span>Barrierefreiheitsoptionen</span>
+                <span class='header-popover-arrow' aria-hidden='true'>&rsaquo;</span>
+              </button>
+              <a href='#' class='header-popover-link'>Bescheinigungen</a>
+              <a href='#' class='header-popover-link'>Antr&auml;ge</a>
+            </div>
+
+            <div id='profileMenuA11y' class='hidden'>
+              <button id='closeA11yMenuBtn' type='button' class='header-popover-item header-popover-back'>
+                <span aria-hidden='true'>&larr;</span>
+                <span>Barrierefreiheitsoptionen</span>
+              </button>
+              <div class='header-popover-divider'>
+                <button id='a11yContrastToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Hoher Kontrast</span>
+                  <span id='a11yContrastCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+                <button id='a11yMonochromeToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Monochrom</span>
+                  <span id='a11yMonochromeCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+                <button id='a11yLargeTextToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Gro&szlig;e Schrift</span>
+                  <span id='a11yLargeTextCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class='right-tools-rail' id='guidedTourRail' aria-label='Schnellfunktionen'>
+    <div class='right-tools-rail-inner'>
+      <button type='button' class='right-tool-btn is-disabled' id='guidedTourToolNotes' data-tool-id='notes' aria-label='Notizen' aria-disabled='true' tabindex='-1'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='5' y='4.8' width='14' height='14.4' rx='2.4'></rect>
+          <path d='M8.5 10h7'></path>
+          <path d='M8.5 13.5h5'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn is-disabled' id='guidedTourToolAudio' data-tool-id='audio' aria-label='Audio' aria-disabled='true' tabindex='-1'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M3 18v-6a9 9 0 0 1 18 0v6'></path>
+          <path d='M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z'></path>
+          <path d='M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn is-disabled' id='guidedTourToolPdf' data-tool-id='pdf-export' aria-label='PDF Export' aria-disabled='true' tabindex='-1'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M6 4.8h9l3 3v11.4a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z'></path>
+          <path d='M15 4.8v3h3'></path>
+          <path d='M8.5 13h7'></path>
+          <path d='M8.5 16h4.6'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn is-disabled' id='guidedTourToolAiAssistant' data-tool-id='ai-assistant' aria-label='KI-Funktion' aria-disabled='true' tabindex='-1'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M4.8 19.2l7.2-7.2'></path>
+          <path d='M8.2 7.4l1.7 1.7'></path>
+          <path d='M5.4 10.2l1.7 1.7'></path>
+          <path d='M11.7 4.5l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5z'></path>
+          <path d='M16.5 10.7l.4 1.2 1.2.4-1.2.4-.4 1.2-.4-1.2-1.2-.4 1.2-.4z'></path>
+          <path d='M18.8 4.2l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6z'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn is-disabled' id='guidedTourToolNotebooklm' data-tool-id='notebooklm' aria-label='NotebookLM' aria-disabled='true' tabindex='-1'>
+        <img src='../../assets/google-notebooklm-logo-icon.png.svg' alt='' class='right-tool-brand-icon' loading='lazy' decoding='async'>
+      </button>
+    </div>
+  </aside>
+
+  <div class='course-layout'>
+    <aside class='toc' id='guidedTourToc' aria-label='Inhaltsverzeichnis'>
+      <div class='toc-header'>
+        <div class='toc-title'>Meine Lerneinheiten</div>
+      </div>
+      <nav class='toc-list' id='tocList'>
+        <a class='toc-item is-active' href='special-01-modulinfo.html'><span class='toc-nr'></span><span class='toc-text'>Informationen zum Modul<br>Management Basics</span></a>
+    <a class='toc-item' href='le01.html'><span class='toc-nr'>01</span><span class='toc-text'>Unternehmerisch denken und handeln</span></a>
+    <a class='toc-item' href='le02.html'><span class='toc-nr'>02</span><span class='toc-text'>Produkt- und Unternehmenslebenszyklen verstehen</span></a>
+    <a class='toc-item' href='le03.html'><span class='toc-nr'>03</span><span class='toc-text'>Businessplan entwickeln und Gründung planen</span></a>
+    <a class='toc-item' href='le04.html'><span class='toc-nr'>04</span><span class='toc-text'>Geschäftsideen schärfen und Mehrwert schaffen</span></a>
+    <a class='toc-item' href='le05.html'><span class='toc-nr'>05</span><span class='toc-text'>Märkte und Wettbewerb analysieren</span></a>
+    <a class='toc-item' href='le06.html'><span class='toc-nr'>06</span><span class='toc-text'>Strategien entwickeln und Marketing steuern</span></a>
+    <a class='toc-item' href='le07.html'><span class='toc-nr'>07</span><span class='toc-text'>Marketinginstrumente gezielt einsetzen</span></a>
+    <a class='toc-item' href='le08.html'><span class='toc-nr'>08</span><span class='toc-text'>Finanzielle Grundlagen unternehmerischer Entscheidungen</span></a>
+    <a class='toc-item' href='le09.html'><span class='toc-nr'>09</span><span class='toc-text'>Wachstum finanzieren und Gewinnschwelle erreichen</span></a>
+    <a class='toc-item' href='le10.html'><span class='toc-nr'>10</span><span class='toc-text'>Krisen bewältigen und Unternehmen stabilisieren</span></a>
+      </nav>
+    </aside>
+
+    <main class='course-main'>
+      <section class='module-title-sheet' aria-label='Titelblatt Management Basics'>
+        <div class='module-title-sheet-content'>
+          <div>
+            <h2 class='module-title-sheet-title'>Modul Management Basics</h2>
+            <blockquote class='module-title-sheet-quote' data-typewriter data-typewriter-delay='34' data-typewriter-break-after='Egal, ob du später ein eigenes Unternehmen gründest,'>
+              Egal, ob du später ein eigenes Unternehmen gründest, in einer Kanzlei arbeitest oder als Führungskraft in einem Konzern tätig bist – das Verständnis für unternehmerisches Denken und Handeln ist eine Schlüsselkompetenz im 21. Jahrhundert.
+            </blockquote>
+            <div class='module-title-sheet-person-row'>
+              <img class='module-title-sheet-portrait' src='../../assets/Bild_Dahlke.png' alt='Profilbild von Prof. Dr. Beate Dahlke' />
+              <div class='module-title-sheet-personcopy'>
+                <p class='module-title-sheet-personline module-title-sheet-personline-primary'>Prof. Dr. Beate Dahlke – wissenschaftliche Verantwortung und Betreuung</p>
+                <p class='module-title-sheet-personline module-title-sheet-personline-secondary'>Professorin für Allgemeine Betriebswirtschaftslehre, insbesondere strategisches Management und Marketing</p>
+              </div>
+            </div>
+            </div>
+        </div>
+      </section>
+
+      <section class='course-card' aria-label='Kursinhalt'>
+        <div class='unit-kicker' id='unitKicker' style="display:none"></div>
+        <div class='unit-body' id='unitBody'>
+          <p style="font-size: 1.2rem;"><strong>Informationen zum Modul "Management Basics"</strong></p>
+          <p>Herzlich willkommen, Vanessa!</p>
+
+
+
+          <p>Das Modul "Management Basics" vermittelt dir die zentralen Grundlagen des Managements. Du erfährst, wie Unternehmen funktionieren, welche Zusammenhänge zwischen den Bereichen bestehen und welche wirtschaftlichen Prinzipien Entscheidungen beeinflussen.</p>
+          <p>Damit du direkt ein Gefühl für diesen Kerngedanken und die Inhalte des Moduls bekommst, findest du zum Einstieg ein kurzes Video. Es greift die grundlegende Idee des Moduls auf und gibt dir einen ersten Überblick. Schau es dir am besten gleich an – so startest du gut vorbereitet.</p>
+          <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-top: 40px; margin-bottom: 36px;">
+            <iframe src="https://fom.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=d2dcdfbf-b028-4ba1-8ae0-b41200ca40ef&autoplay=false&offerviewer=true&showtitle=false&showbrand=true&captions=false&start=0.44573&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="In Panopto integrierter Videoplayer" aria-description="Modulvorstellung: Management Basics"></iframe>
+          </div>
+
+          <details class='fom-collapse'>
+            <summary><strong>Modulziele: Das lernst du in diesem Modul.</strong></summary>
+            <div class='fom-collapse-content'>
+              <ul>
+                <li>Du lernst, die <strong>grundlegenden Begriffe</strong> der Betriebs-, Volkswirtschaftslehre zu verstehen und die entsprechenden Begrifflichkeiten anzuwenden.</li>
+                <li>Du lernst, die gängigen <strong>Funktionsbereiche</strong> einer Unternehmung, deren interne <strong>Zusammenhänge</strong> und die wesentlichen externen volks- und rechtswissenschaftlichen <strong>Interdependenzen</strong> zu erklären.</li>
+                <li>Du lernst relevante Aspekte des Themengebiets <strong>Entrepreneurship</strong> darzustellen (einschließlich der Unternehmensgründung sowie das unternehmerische Handeln in den weiteren typischen Phasen einer Unternehmensentwicklung).</li>
+                <li>Du lernst, die <strong>Erstellung von Businessplänen</strong> zu beschreiben, grundlegende <strong>ethische Dimensionen</strong> des Managements zu skizzieren und die <strong>Perspektive eines Unternehmers</strong> einzunehmen und zu untersuchen.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class='fom-collapse'>
+            <summary><strong>Modulstruktur: So ist dein Lernmaterial aufgebaut.</strong></summary>
+            <div class='fom-collapse-content'>
+              <p>Das Modul ist in <strong>10 aufeinander aufbauende Lerneinheiten</strong> gegliedert. Schritt für Schritt erarbeitest du dir so die zentralen Grundlagen des Managements.</p>
+              <p>Die Themen der Lerneinheiten sind die folgenden:</p>
+              <ul>
+                <li>Lerneinheit 01: Unternehmerisch denken und handeln</li>
+                <li>Lerneinheit 02: Produkt- und Unternehmenslebenszyklus verstehen</li>
+                <li>Lerneinheit 03: Businessplan entwickeln und Gründung planen</li>
+                <li>Lerneinheit 04: Geschäftsideen schärfen und Mehrwert schaffen</li>
+                <li>Lerneinheit 05: Märkte und Wettbewerb analysieren</li>
+                <li>Lerneinheit 06: Strategien entwickeln und Marketing steuern</li>
+                <li>Lerneinheit 07: Marketinginstrumente gezielt einsetzen</li>
+                <li>Lerneinheit 08: Finanzielle Grundlagen unternehmerischer Entscheidungen</li>
+                <li>Lerneinheit 09: Wachstum finanzieren und Gewinnschwelle erreichen</li>
+                <li>Lerneinheit 10: Krisen bewältigen und Unternehmen stabilisieren</li>
+              </ul>
+              <p>Jede Lerneinheit bietet dir <strong>Lerntexte, Praxisbeispiele, interaktive Übungen, Quizfragen zur Selbstkontrolle</strong> und vieles mehr. Damit festigst du dein Wissen aktiv, überprüfst deinen Lernstand und vertiefst die Inhalte nachhaltig. Bitte bearbeite die Lerneinheiten in der <strong>vorgesehenen Reihenfolge</strong>, da sie inhaltlich aufeinander aufbauen.</p>
+              <p>Mit dem <strong>KI-Tool <a href='https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1' target='_blank' rel='noopener noreferrer'>NotebookLM</a></strong> von Google kannst du zusätzlich eigenes Lernmaterial erstellen (z. B. Zusammenfassungen, Podcasts oder Übungsfragen) und deinen Lernprozess individuell unterstützen.</p>
+              <p>Wenn du die Inhalte sicher beherrschst, beginne mit der <strong>Prüfungsvorbereitung</strong> und melde dich anschließend zur Modulprüfung an.</p>
+              <p>Wir wünschen dir einen <strong>erfolgreichen Start</strong> und viel Motivation für das Modul!</p>
+            </div>
+          </details>
+
+          <details class='fom-collapse'>
+            <summary><strong>Geführte Tour: So findest du alle Funktionen.</strong></summary>
+            <div class='fom-collapse-content'>
+              <p>In dieser geführten Tour lernst du Schritt für Schritt den <strong>Aufbau der Seite</strong> kennen. Wir zeigen dir, wie die <strong>Navigation</strong> funktioniert, wie die <strong>Inhalte strukturiert</strong> sind und wo du die <strong>wichtigsten Funktionen</strong> findest – damit du dich schnell und sicher orientieren kannst.</p>
+              <p><strong>Wichtig</strong>: Während der geführten Tour kannst du die Funktionen <strong>noch nicht direkt anklicken oder ausprobieren</strong>. So kannst du dich ganz <strong>auf die Orientierung konzentrieren</strong>, bevor du die Seite anschließend selbstständig erkundest.</p>
+              <p>Starte jetzt die Tour und entdecke, wie du dich optimal auf der Seite zurechtfindest!</p>
+              <button type='button' class='fom-notes-clear pdf-export-panel-action' id='guidedTourTriggerAccordion'>Geführte Tour starten</button>
+            </div>
+          </details>
+          <details class='fom-collapse'>
+            <summary><strong>Modulprüfung: So läuft deine Klausur ab.</strong></summary>
+            <div class='fom-collapse-content'>
+              <p>Du schließt dieses Modul mit einer Online-Klausur ab. Nachfolgend bekommst du einen Überblick und erfährst, wo du dich zur Prüfung anmeldest und wie diese abläuft. Alle weiteren relevanten Informationen zur Durchführung von Online-Klausuren findest du <span style='color: #11b8aa; font-weight: 700; text-decoration: underline;'>hier</span>.</p>              <p><strong>Die Klausur ...</strong></p>
+              <ul>
+                <li>umfasst die Inhalte aller 10 Lerneinheiten.</li>
+                <li>findet online statt.</li>
+                <li>dauert 90 Min.</li>
+              </ul>
+              <p><strong>Anmeldung zur Klausur</strong></p>
+              <p>Die nächsten Termine für die Klausur findest du <a href='../../dashboard-eu-local/pruefungen-noten/' target='_blank' rel='noopener noreferrer' style='color: #11b8aa; font-weight: 700; text-decoration: underline;'>hier</a>. Such dir einen Klausurtermin aus und klicke auf den Button "Anmelden".</p>
+              <p><strong>Ablauf der Klausur</strong></p>
+              <ul>
+                <li>Informationen zur Durchführung von Online-Klausuren an der FOM findest du <span style='color: #11b8aa; font-weight: 700; text-decoration: underline;'>hier</span>.</li>
+                <li>Wie eine Online-Klausur konkret abläuft und was du dabei beachten muss, erfährst du <span style='color: #11b8aa; font-weight: 700; text-decoration: underline;'>hier</span>.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class='fom-collapse'>
+            <summary><strong>Literaturempfehlung zum Modul: Das hilft dir beim Lernen.</strong></summary>
+            <div class='fom-collapse-content'>
+              <p>Für ein erfolgreiches Lernen im Modul greif bitte auf die folgende <strong>Grundlagenliteratur</strong> zurück:</p>
+              <div class='literature-feature' aria-label='Pflichtliteratur Management Basics'>
+                <a href='https://link.springer.com/book/10.1007/978-3-658-11229-5' target='_blank' rel='noopener noreferrer' aria-label='Pflichtliteratur bei Springer öffnen'>
+                  <img
+                    class='literature-cover'
+                    src='../../assets/Pflichtliteratur_Management Basics.png'
+                    alt='Buchcover Management Basics'
+                  />
+                </a>
+                <div class='literature-meta'>
+                  <p class='literature-title'>Lehrbuch 1: Management Basics: Grundlagen der Betriebswirtschaftslehre - dargestellt im Unternehmenslebenszyklus</p>
+                  <p>Ausgabe: 2020</p>
+                  <p>Autor:innen: Clemens Jäger, Thomas Heupel</p>
+                  <p>Verlag: Springer Gabler</p>
+                  <p>ISBN: 978-3-658-11228-8</p>
+                </div>
+              </div>
+              <p><strong>Gut zu wissen</strong>: Als Student der FOM Hochschule kannst du das Lehrbuch kostenfrei als PDF herunterladen. Weitere Informationen findest du  hier.</p>
+              <p><strong>Zusätzlich:</strong> Über die digitale Bibliothek der FOM hast du Zugriff auf zahlreiche weitere Fachbücher und wissenschaftliche Quellen – jederzeit online verfügbar. <a href='https://login.ebsco.com/?custId=ns072003&profId=eds&requestIdentifier=b2c6bb57-792f-4da6-a867-81e82fc553da&acrValues=uid&ui_locales&redirect_uri=https://logon.ebsco.zone/api/dispatcher/continue/prompted?state=MTgyZTkyY2ViMTZmNDFjYjljYTViM2QzNWUwMjIwNjg=&authRequest=eyJraWQiOiIxNzY5MTEwMjQ0MDQ3IiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczpcL1wvYXV0aC5lYnNjby56b25lXC9hcGlcL2Rpc3BhdGNoZXIiLCJhdXRoUmVxdWVzdCI6eyJsb2dpbl9oaW50IjoiY3VzdElkOm5zMDcyMDAzLHByb2ZpZDplZHMscHJvZklkOmVkcyIsImdyYW50X3R5cGUiOiJhdXRob3JpemF0aW9uX2NvZGUiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBhZmZpbGlhdGlvbiIsImFjcl92YWx1ZXMiOiJ1aWQiLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOlwvXC9zZWFyY2guZWJzY29ob3N0LmNvbVwvd2ViYXV0aFwvUHJvbXB0ZWRDYWxsYmFjay5hc3B4Iiwic3RhdGUiOiJBeEczMzVjcHE0WjE1eG1VWGxSWUdDN1JoT1dQRmhSU3hTaG1HSklOMHVvbUlwZzVrbjUydjI0MlhXN2xwQjI2WThNLVF2eFVSc3NRSHhSdS1kQTF4OXlUZDRrc2xnUUFUNTNXeGhBTGVPdHQzUDUxUl9pelJJZVl0RklRdGQ3bFF3a3hqM0VNOTd4WFp0dE1MVDRnNnZ6WXRydUY5MUhNcXZzTm1OMFRJZkRHZlZ3WnUyNUxyZElZa1FPMklhUlR1VWtKYzhmdUpyb2JvZm0tRUJlSk85WGRBUk5mUHc1M01XeTBPNVZkQ0U5cVZPT1NnXzZ5b2NXLVlMTEdjX2xMdVhBT2hMTGNHV1JmQjYxOHhvVkQ0ZzBpVEJoRzlCUk9EVFBsYTVtNVlkQzQ3d25ZV1lvYnBWWG9YSjV2Rjk2enlyNWNTSXg5bkhOVjJWajVMb1AxcWdudXRfSE4tS0N1Smhuel82Nm80dy1EZjRPaEVuYWNROGhxT0RoYnFCOE51OUNOQWciLCJjbGllbnRfaWQiOiJhd2d5Y0l4NTdNcnduRFE1aDRVZTZ5Q1ZFUDByNU10OSIsInJlc3BvbnNlX21vZGUiOiJxdWVyeSIsInJlcUlkIjoiYjJjNmJiNTctNzkyZi00ZGE2LWE4NjctODFlODJmYzU1M2RhIn0sImlhdCI6MTc3Mzg0MzY2NSwianRpIjoiMjU3N2E2MTItYTM0OS00ZWFmLTg0MDYtNzgzOGU5Nzk3ZGQ5IiwicmVxSWQiOiJiMmM2YmI1Ny03OTJmLTRkYTYtYTg2Ny04MWU4MmZjNTUzZGEifQ.xCXtIb3aJK-s1SN76eUnLOb8Y1e6IgcCY-S6pJLLYW3xIlKpjxsOFxXx9HlzKZMwyJxTElFblNT21CFyTDNGFRJ432nMXsgTJ6RLToK0qCIRfl6nOjERYe6JpZtuLmJ8AeI5BHRRqpVjCdrDDDJHiqnNtW4UfTedyQeMBnXmdjHQSvbR2y0dOv7YoJVEt3o8AqRfhV7g-WTYLM0rwAB_d4viu0XVP6u_whonV8WqAHY6UVCy1DgqA4HYwWOzBcTzPuPCyVI5efKda0p4OZWuu7UAuPBQ9L0T_K8oB7E3umGK5JJBDTInMvk43cg2CHSg8717FeqWY00YepQJU3tfgw' target='_blank' rel='noopener noreferrer' style='color: #11b8aa; font-weight: 700; text-decoration: underline;'> Hier</a> geht es zu den Online-Bibliotheken.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+      <section class='module-title-sheet module-title-sheet--closing' aria-label='Abschlusskarte Management Basics' style="margin-top: 32px; min-height: unset; padding: 40px 38px; background: linear-gradient(135deg, #8e44ec 0%, #7a2cff 100%); box-shadow: 0 16px 34px rgba(74, 31, 143, 0.32);">
+        <div class='module-title-sheet-content'>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+            <blockquote class='module-title-sheet-quote' style="margin: 0; flex: 1; font-size: clamp(1.395rem, 3.51vw, 2.34rem);">
+              Bereit? Dann starte jetzt!<br><span style="font-size: clamp(0.9rem, 1.98vw, 1.35rem); font-weight: 400; opacity: 0.9;">Lerneinheit 1 "Unternehmerisch denken und handeln" wartet auf dich – viel Erfolg!</span>
+            </blockquote>
+            <a href='le01.html' aria-label='Weiter zur ersten Lerneinheit' style="flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: #ffffff; color: #7a2cff; border-radius: 50%; text-decoration: none; box-shadow: none; transition: transform 0.18s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round;"><path d="M9 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <aside class='notebooklm-panel' aria-label='NotebookLM'>
+        <a class='notebooklm-cta' href='https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1' target='_blank' rel='noopener noreferrer' aria-label='NotebookLM öffnen'>
+          <span class='notebooklm-row'>
+            <span class='notebooklm-icon' aria-hidden='true'>N+</span>
+            <span class='notebooklm-title'>NotebookLM</span>
+            <span class='notebooklm-ext' aria-hidden='true'>&#8599;</span>
+          </span>
+        </a>
+      </aside>
+    </main>
+  </div>
+  <div class='guided-tour-overlay' id='guidedTourOverlay' hidden aria-hidden='true'>
+    <div class='guided-tour-backdrop'></div>
+    <div class='guided-tour-spotlight' id='guidedTourSpotlight' aria-hidden='true'></div>
+    <div class='guided-tour-dialog' role='dialog' aria-modal='true' aria-label='Geführte Tour'>
+      <div class='guided-tour-top'>
+        <h2 class='guided-tour-title'>Geführte Tour</h2>
+        <button type='button' class='guided-tour-close' id='guidedTourClose' aria-label='Tour schließen'>
+          <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+            <path d='M18 6 6 18M6 6l12 12'></path>
+          </svg>
+        </button>
+      </div>
+      <div class='guided-tour-body' id='guidedTourBody'>
+        <img class='guided-tour-inline-image' id='guidedTourImage' alt='' hidden />
+        <p class='guided-tour-text' id='guidedTourText'></p>
+        <p class='guided-tour-after-image' id='guidedTourAfterImage' hidden></p>
+        <img class='guided-tour-inline-image guided-tour-inline-image-secondary' id='guidedTourAfterImageImage' alt='' hidden />
+      </div>
+      <button type='button' class='guided-tour-finish' id='guidedTourFinish'>Tour beenden</button>
+      <div class='guided-tour-controls'>
+        <div class='guided-tour-nav'>
+          <button type='button' class='guided-tour-arrow' id='guidedTourPrev' aria-label='Vorheriger Schritt'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M15 6l-6 6 6 6'></path>
+            </svg>
+          </button>
+          <button type='button' class='guided-tour-arrow' id='guidedTourNext' aria-label='Nächster Schritt'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M9 6l6 6-6 6'></path>
+            </svg>
+          </button>
+        </div>
+        <div class='guided-tour-progress' id='guidedTourProgress'></div>
+      </div>
+    </div>
+  </div>
+  <script src='../../assets/app.js?v=20260324-finalquiz2'></script>
+  <script>
+    document.addEventListener('click', function (event) {
+      var inlineTocToggle = event.target.closest('.fom-inline-toc-toggle');
+      if (inlineTocToggle) {
+        var tocEl = inlineTocToggle.closest('.fom-inline-toc-collapsible');
+        if (tocEl) {
+          tocEl.classList.toggle('is-collapsed');
+          var toggle = tocEl.querySelector('.fom-inline-toc-toggle');
+          var icon = tocEl.querySelector('.fom-inline-toc-toggle-icon');
+          var collapsed = tocEl.classList.contains('is-collapsed');
+          if (toggle) {
+            toggle.setAttribute('aria-expanded', String(!collapsed));
+            toggle.setAttribute('aria-label', collapsed ? 'Inhaltsverzeichnis ausklappen' : 'Inhaltsverzeichnis einklappen');
+          }
+          if (icon) icon.classList.toggle('is-collapsed', collapsed);
+        }
+        return;
+      }
+
+      var flipCard = event.target.closest('.flip-card');
+      if (flipCard) {
+        flipCard.classList.toggle('flipped');
+        return;
+      }
+    });
+
+    (function initGuidedTour() {
+      var trigger = document.getElementById('guidedTourTrigger') || document.getElementById('guidedTourTriggerAccordion');
+      var overlay = document.getElementById('guidedTourOverlay');
+      var spotlight = document.getElementById('guidedTourSpotlight');
+      var closeBtn = document.getElementById('guidedTourClose');
+      var finishBtn = document.getElementById('guidedTourFinish');
+      var prevBtn = document.getElementById('guidedTourPrev');
+      var nextBtn = document.getElementById('guidedTourNext');
+      var textEl = document.getElementById('guidedTourText');
+      var imageEl = document.getElementById('guidedTourImage');
+      var afterImageEl = document.getElementById('guidedTourAfterImage');
+      var afterImageImageEl = document.getElementById('guidedTourAfterImageImage');
+      var bodyEl = document.getElementById('guidedTourBody');
+      var progressEl = document.getElementById('guidedTourProgress');
+      var dialogEl = overlay.querySelector('.guided-tour-dialog');
+      var titleEl = overlay.querySelector('.guided-tour-title');
+
+      if (!trigger || !overlay || !spotlight || !closeBtn || !finishBtn || !prevBtn || !nextBtn || !textEl || !imageEl || !afterImageEl || !afterImageImageEl || !bodyEl || !progressEl || !dialogEl) return;
+
+      function svgDataUri(svg) {
+        return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+      }
+
+      var progressPreviewImage = svgDataUri(
+        "<svg xmlns='http://www.w3.org/2000/svg' width='352' height='366' viewBox='0 0 352 366'>" +
+          "<rect width='352' height='366' rx='0' fill='#14bdb2'/>" +
+          "<text x='16' y='42' fill='#ffffff' font-family='Segoe UI, Arial, sans-serif' font-size='14.6' font-weight='800' letter-spacing='2.2'>MEINE LERNEINHEITEN</text>" +
+          "<circle cx='274' cy='35' r='17' fill='rgba(255,255,255,0.18)'/>" +
+          "<circle cx='274' cy='35' r='18' fill='none' stroke='rgba(255,255,255,0.24)' stroke-width='5.5' pathLength='100' stroke-dasharray='100 0' transform='rotate(-90 274 35)'/>" +
+          "<circle cx='274' cy='35' r='18' fill='none' stroke='#ffffff' stroke-width='5.5' pathLength='100' stroke-dasharray='7 93' stroke-linecap='round' transform='rotate(-90 274 35)'/>" +
+          "<text x='274' y='39.5' text-anchor='middle' fill='#ffffff' font-family='Segoe UI, Arial, sans-serif' font-size='10.5' font-weight='800'>7%</text>" +
+          "<circle cx='320' cy='35' r='16' fill='#7a2cff'/>" +
+          "<path d='M322.5 29l-5.5 6 5.5 6' fill='none' stroke='#ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/>" +
+          "<rect x='16' y='78' width='320' height='60' rx='18' fill='#7a2cff'/>" +
+          "<text x='63' y='102' fill='#ffffff' font-family='Segoe UI, Arial, sans-serif' font-size='11.2' font-weight='500'>Informationen zum Modul</text>" +
+          "<text x='63' y='124' fill='#ffffff' font-family='Segoe UI, Arial, sans-serif' font-size='11.2' font-weight='500'>Management Basics</text>" +
+          "<rect x='16' y='149' width='320' height='95' rx='18' fill='#ffffff'/>" +
+          "<text x='30' y='181' fill='#24374a' font-family='Segoe UI, Arial, sans-serif' font-size='13' font-weight='500'>01</text>" +
+          "<text x='64' y='181' fill='#24374a' font-family='Segoe UI, Arial, sans-serif' font-size='10.9' font-weight='500'>Unternehmerisch denken und</text>" +
+          "<text x='64' y='203' fill='#24374a' font-family='Segoe UI, Arial, sans-serif' font-size='10.9' font-weight='500'>handeln</text>" +
+          "<text x='64' y='226' fill='#32485d' font-family='Segoe UI, Arial, sans-serif' font-size='8.9' font-weight='700'>67% abgeschlossen</text>" +
+          "<rect x='64' y='232' width='228' height='5' rx='2.5' fill='rgba(50, 72, 93, 0.22)'/>" +
+          "<rect x='64' y='232' width='153' height='5' rx='2.5' fill='#59d9cb'/>" +
+          "<rect x='16' y='255' width='320' height='95' rx='18' fill='#ffffff'/>" +
+          "<text x='30' y='287' fill='#24374a' font-family='Segoe UI, Arial, sans-serif' font-size='13' font-weight='500'>02</text>" +
+          "<text x='64' y='287' fill='#24374a' font-family='Segoe UI, Arial, sans-serif' font-size='10.9' font-weight='500'>Produkt- und Unternehmensle-</text>" +
+          "<text x='64' y='309' fill='#24374a' font-family='Segoe UI, Arial, sans-serif' font-size='10.9' font-weight='500'>benszyklen verstehen</text>" +
+          "<text x='64' y='332' fill='#32485d' font-family='Segoe UI, Arial, sans-serif' font-size='8.9' font-weight='700'>0% abgeschlossen</text>" +
+          "<rect x='64' y='338' width='228' height='5' rx='2.5' fill='rgba(50, 72, 93, 0.22)'/>" +
+        "</svg>"
+      );
+
+      var notesPreviewImage = svgDataUri(
+        "<svg xmlns='http://www.w3.org/2000/svg' width='1148' height='272' viewBox='0 0 1148 272'>" +
+          "<rect width='1148' height='272' rx='0' fill='#ffffff'/>" +
+          "<rect x='0' y='10' width='1148' height='145' fill='#cfe3ff'/>" +
+          "<text x='10' y='43' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25'>Ein </text>" +
+          "<text x='83' y='43' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25' font-weight='700'>Entrepreneur</text>" +
+          "<text x='321' y='43' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25'> erkennt die Chancen und setzt sie aktiv um, indem er etwas</text>" +
+          "<text x='10' y='88' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25'>Neues in den Markt bringt und dafür Verantwortung sowie Risiko übernimmt.</text>" +
+          "<text x='10' y='133' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25'>Entrepreneurship zielt damit auf Innovation, Veränderung und langfristiges</text>" +
+          "<text x='10' y='178' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25'>Wachstum. </text>" +
+          "<text x='177' y='178' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25' font-weight='700'>Unternehmerisches Denken</text>" +
+          "<text x='613' y='178' fill='#2e415a' font-family='Segoe UI, Arial, sans-serif' font-size='25'> bedeutet nicht nur</text>" +
+          "<rect x='588' y='114' width='550' height='98' rx='49' fill='#f6f8fc' stroke='#cdd6df' stroke-width='3'/>" +
+          "<circle cx='616' cy='163' r='26' fill='#244a74' opacity='0.96'/>" +
+          "<circle cx='616' cy='163' r='19' fill='#f6e28a'/>" +
+          "<circle cx='661' cy='163' r='19' fill='#e57676' stroke='#ca6666' stroke-width='2'/>" +
+          "<circle cx='711' cy='163' r='19' fill='#efb061' stroke='#d19550' stroke-width='2'/>" +
+          "<circle cx='761' cy='163' r='19' fill='#b18de5' stroke='#9978d2' stroke-width='2'/>" +
+          "<rect x='811' y='134' width='171' height='58' rx='29' fill='#14c8bd'/>" +
+          "<text x='835' y='171' fill='#ffffff' font-family='Segoe UI, Arial, sans-serif' font-size='25' font-weight='700'>Markieren</text>" +
+          "<circle cx='1032' cy='163' r='29' fill='#e5eef7'/>" +
+          "<path d='M1019 153h23v15h-11l-5 5v-5h-7z' fill='none' stroke='#33557b' stroke-width='3' stroke-linejoin='round'/>" +
+          "<path d='M1025 159h12M1025 165h8' fill='none' stroke='#33557b' stroke-width='3' stroke-linecap='round'/>" +
+          "<circle cx='1083' cy='163' r='29' fill='#e5eef7'/>" +
+          "<path d='M1076 151l3 6 6 3-6 3-3 6-3-6-6-3 6-3zm11 15 2 4 4 2-4 2-2 4-2-4-4-2 4-2z' fill='#4f7ab0'/>" +
+        "</svg>"
+      );
+
+      var slides = [
+        {
+          title: 'Linke Navigation',
+          selector: '#guidedTourToc',
+          text: 'In der linken Navigationsleiste findest du <strong>alle Lerneinheiten deines Moduls</strong>. Mit einem Klick auf die verschiedenen Lerneinheiten kannst du zwischen ihnen wechseln.\n\nAußerdem kannst du deinen <strong>Fortschritt</strong> in dem <strong>Modul</strong> und den <strong>Lerneinheiten</strong> hier jederzeit einsehen: Über den Titeln findest du eine Anzeige mit deinem <strong>Gesamtfortschritt</strong> und unter den einzelnen Lerneinheiten einen zugehörigen <strong>Fortschrittsbalken</strong>.',
+          image: {
+            src: progressPreviewImage,
+            alt: 'Beispiel fuer die Fortschrittsanzeige in der Navigationsleiste.',
+            maxWidth: '282px'
+          },
+          spotlightRect: function () {
+            var toc = document.getElementById('guidedTourToc');
+            var tocRect = toc ? toc.getBoundingClientRect() : { width: 352 };
+            return {
+              left: 0,
+              top: 92,
+              width: tocRect.width,
+              height: Math.max(0, window.innerHeight - 92),
+              borderRadius: 0
+            };
+          }
+        },
+        {
+          title: 'Rechte Navigation',
+          selector: '#guidedTourRail',
+          text: 'In der rechten Leiste findest du <strong>hilfreiche Tools fürs Lernen</strong>:<span class="guided-tour-tools-list"><span class="guided-tour-tools-item"><span class="guided-tour-tools-icon"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><rect x="5" y="4.8" width="14" height="14.4" rx="2.4"></rect><path d="M8.5 10h7"></path><path d="M8.5 13.5h5"></path></svg></span><span>Notiz-Tool</span></span><span class="guided-tour-tools-item"><span class="guided-tour-tools-icon"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg></span><span>Audio-Lerneinheit</span></span><span class="guided-tour-tools-item"><span class="guided-tour-tools-icon"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M6 4.8h9l3 3v11.4a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z"></path><path d="M15 4.8v3h3"></path><path d="M8.5 13h7"></path><path d="M8.5 16h4.6"></path></svg></span><span>PDF-Export</span></span><span class="guided-tour-tools-item"><span class="guided-tour-tools-icon"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M4.8 19.2l7.2-7.2"></path><path d="M8.2 7.4l1.7 1.7"></path><path d="M5.4 10.2l1.7 1.7"></path><path d="M11.7 4.5l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5z"></path><path d="M16.5 10.7l.4 1.2 1.2.4-1.2.4-.4 1.2-.4-1.2-1.2-.4 1.2-.4z"></path><path d="M18.8 4.2l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6z"></path></svg></span><span>KI-Funktion</span></span><span class="guided-tour-tools-item"><span class="guided-tour-tools-icon"><img src="../../assets/google-notebooklm-logo-icon.png.svg" alt="" loading="lazy" decoding="async"></span><span>NotebookLM</span></span></span>',
+          spotlightRect: function () {
+            return {
+              left: Math.max(0, window.innerWidth - 93),
+              top: 92,
+              width: 93,
+              height: Math.max(0, window.innerHeight - 92),
+              borderRadius: 0
+            };
+          }
+        },
+        {
+          title: 'Notizen-Tool',
+          titleUsesToolIcon: true,
+          selector: '#guidedTourToolNotes',
+          text: 'Wenn du gerne <strong>direkt im Text</strong> der Lerneinheit <strong>arbeiten</strong> möchtest, kannst du hier unser <strong>Notiz-Tool</strong> öffnen. Du kannst direkt im Text einzelne Stellen <strong>farbig markieren</strong> oder dir <strong>Notizen zu bestimmten Textstellen</strong> machen.',
+          afterImageText: 'Deine Markierungen und Notizen werden <strong>im Notiz-Tool gespeichert</strong> und können jederzeit von dir angeschaut werden.',
+          image: {
+            src: notesPreviewImage,
+            alt: 'Beispiel fuer markierten Text mit geoeffnetem Notiz-Werkzeug.',
+            maxWidth: '480px'
+          },
+          afterImage: {
+            src: '../../assets/Tour Notiz-Tool.png',
+            alt: 'Screenshot des Notiz-Tools.',
+            maxWidth: '278px'
+          }
+        },
+        {
+          title: 'Audio-Lerneinheit',
+          titleUsesToolIcon: true,
+          selector: '#guidedTourToolAudio',
+          text: 'Wenn du dir deine Lerneinheit gerne <strong>anhören</strong> möchtest, kannst du hier den <strong>Audio-Player</strong> öffnen.\n\nDu hast die Möglichkeit, jederzeit <strong>vor- und zurückzuspulen</strong> und die <strong>Lautstärke</strong> nach Belieben <strong>anzupassen</strong>.',
+          image: {
+            src: '../../assets/Tour Audio-Player.png',
+            alt: 'Screenshot des Audio-Players.',
+            maxWidth: '367px'
+          }
+        },
+        {
+          title: 'PDF-Export',
+          titleUsesToolIcon: true,
+          selector: '#guidedTourToolPdf',
+          text: 'Wenn du dir den Text deiner Lerneinheit <strong>herunterladen</strong> möchtest, nutze unseren <strong>PDF-Export</strong>.\n\nDu kannst dir auf diese Weise ein PDF-Dokument erstellen lassen, das du dir <strong>abspeichern</strong> und auch <strong>ausdrucken</strong> kannst.'
+        },
+        {
+          title: 'KI-Funktion',
+          titleUsesToolIcon: true,
+          selector: '#guidedTourToolAiAssistant',
+          text: 'Mit diesem Zauberstab kannst du in deiner Lerneinheit <strong>Textstellen markieren</strong> und dir die markierte Textstelle <strong>in einfachen Worten erklären</strong>, dir passende <strong>Kernbegriffe</strong> ausgeben oder dir ein zum Inhalt passendes <strong>Praxisbeispiel</strong> generieren lassen.',
+          image: {
+            src: '../../assets/Tour KI.png?v=20260319-ki2',
+            alt: 'Screenshot der KI-Funktion.',
+            maxWidth: '250px'
+          }
+        },
+        {
+          title: 'Google NotebookLM',
+          titleUsesToolIcon: true,
+          selector: '#guidedTourToolNotebooklm',
+          text: 'Wenn du dir <strong>weitere Lerninhalte generieren lassen</strong> möchtest, kannst du dazu <strong>NotebookLM</strong> nutzen. Du kannst dir beispielsweise auf Basis unserer Lernmaterialien <strong>Podcasts</strong> oder weitere <strong>Lernvideos</strong> erstellen lassen. Oder du lässt dir weitere <strong>Quizfragen</strong> generieren, mit denen du die Inhalte <strong>üben</strong> kannst.',
+          image: {
+            src: '../../assets/Tour NotebookLM.png',
+            alt: 'Screenshot von NotebookLM.',
+            maxWidth: '367px'
+          }
+        },
+        {
+          title: 'Fortschritt',
+          selector: '',
+          text: 'Innerhalb der Lerneinheiten findest du <strong>verschiedene Interaktionen</strong>. Es gibt immer eine <strong>kurze Beschreibung</strong>, sodass du jederzeit weißt, wie du die Aufgabe erledigen kannst.\n\nNach jedem Kapitel kannst du einen <strong>Haken setzen</strong> und somit deinen <strong>Fortschritt verfolgen</strong>.\n\n<img src="../../assets/Tour Fortschritt.png" alt="Screenshot zum Lernfortschritt" style="display:block;width:min(360px,100%);height:auto;margin:8px 0 2px 0;box-shadow:0 10px 24px rgba(22,52,74,0.18);" />\n<strong>Viel Erfolg beim Lernen!</strong>'
+        }
+      ];
+
+      var currentIndex = 0;
+      var activeTarget = null;
+
+      function resetGuidedTourToc() {
+        var toc = document.getElementById('guidedTourToc');
+        var tocList = document.getElementById('tocList');
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        if (toc) {
+          toc.scrollTop = 0;
+          if (typeof toc.scrollTo === 'function') {
+            toc.scrollTo({ top: 0, behavior: 'auto' });
+          }
+        }
+        if (tocList) {
+          tocList.scrollTop = 0;
+          if (typeof tocList.scrollTo === 'function') {
+            tocList.scrollTo({ top: 0, behavior: 'auto' });
+          }
+        }
+      }
+
+      function setSpotlight(target, rectOverride) {
+        if (!target && !rectOverride) {
+          activeTarget = null;
+          overlay.classList.remove('has-spotlight');
+          spotlight.style.width = '0px';
+          spotlight.style.height = '0px';
+          spotlight.style.opacity = '0';
+          return;
+        }
+
+        var left;
+        var top;
+        var width;
+        var height;
+        var borderRadius;
+
+        if (rectOverride) {
+          left = rectOverride.left;
+          top = rectOverride.top;
+          width = rectOverride.width;
+          height = rectOverride.height;
+          borderRadius = rectOverride.borderRadius;
+        } else {
+          var rect = target.getBoundingClientRect();
+          var padding = target.classList.contains('right-tool-btn') ? 8 : 12;
+          borderRadius = target.classList.contains('right-tool-btn') ? 22 : 28;
+          left = Math.max(8, rect.left - padding);
+          top = Math.max(8, rect.top - padding);
+          width = Math.min(window.innerWidth - left - 8, rect.width + padding * 2);
+          height = Math.min(window.innerHeight - top - 8, rect.height + padding * 2);
+        }
+
+        activeTarget = target || null;
+        overlay.classList.add('has-spotlight');
+        spotlight.style.left = left + 'px';
+        spotlight.style.top = top + 'px';
+        spotlight.style.width = width + 'px';
+        spotlight.style.height = height + 'px';
+        spotlight.style.borderRadius = borderRadius + 'px';
+        spotlight.style.opacity = '1';
+      }
+
+      function applyHighlight(slide) {
+        if (!slide.selector && !slide.spotlightRect) {
+          setSpotlight(null);
+          return;
+        }
+        var target = slide.selector ? document.querySelector(slide.selector) : null;
+        if (slide.selector && !target) {
+          setSpotlight(null, null);
+          return;
+        }
+        if (typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+        window.requestAnimationFrame(function () {
+          setSpotlight(target, typeof slide.spotlightRect === 'function' ? slide.spotlightRect() : null);
+        });
+      }
+
+      function setSlideContent(slide) {
+        if (titleEl) {
+          var titleText = 'Geführte Tour: ' + (slide.title || 'Schritt');
+          if (slide.titleUsesToolIcon && slide.selector) {
+            var titleToolBtn = document.querySelector(slide.selector);
+            var titleIconHtml = titleToolBtn ? titleToolBtn.innerHTML : '';
+            titleEl.innerHTML = '<span class="guided-tour-title-main">' + titleText + '</span>' +
+              (titleIconHtml ? '<span class="guided-tour-title-icon" aria-hidden="true">' + titleIconHtml + '</span>' : '');
+          } else {
+            titleEl.textContent = titleText;
+          }
+        }
+        textEl.innerHTML = slide.text;
+        bodyEl.classList.toggle('step-notes', slide.selector === '#guidedTourToolNotes');
+        if (slide.afterImageText) {
+          afterImageEl.innerHTML = slide.afterImageText;
+          afterImageEl.hidden = false;
+        } else {
+          afterImageEl.hidden = true;
+          afterImageEl.innerHTML = '';
+        }
+        if (slide.afterImage && slide.afterImage.src) {
+          afterImageImageEl.src = slide.afterImage.src;
+          afterImageImageEl.alt = slide.afterImage.alt || '';
+          afterImageImageEl.style.maxWidth = slide.afterImage.maxWidth || '480px';
+          afterImageImageEl.hidden = false;
+        } else {
+          afterImageImageEl.hidden = true;
+          afterImageImageEl.removeAttribute('src');
+          afterImageImageEl.alt = '';
+          afterImageImageEl.style.maxWidth = '480px';
+        }
+        if (slide.image && slide.image.src) {
+          bodyEl.classList.add('has-image');
+          bodyEl.classList.toggle('step-one', currentIndex === 0);
+          bodyEl.classList.toggle('image-below', currentIndex === 2);
+          bodyEl.classList.toggle('image-right', currentIndex !== 0 && currentIndex !== 2);
+          imageEl.src = slide.image.src;
+          imageEl.alt = slide.image.alt || '';
+          imageEl.style.maxWidth = slide.image.maxWidth || '480px';
+          imageEl.hidden = false;
+        } else {
+          bodyEl.classList.remove('has-image');
+          bodyEl.classList.remove('step-one');
+          bodyEl.classList.remove('image-below');
+          bodyEl.classList.remove('image-right');
+          imageEl.hidden = true;
+          imageEl.removeAttribute('src');
+          imageEl.alt = '';
+          imageEl.style.maxWidth = '480px';
+        }
+        progressEl.textContent = (currentIndex + 1) + ' / ' + slides.length;
+        prevBtn.disabled = currentIndex === 0;
+        var isLastSlide = currentIndex === slides.length - 1;
+        nextBtn.disabled = isLastSlide;
+        nextBtn.hidden = isLastSlide;
+        finishBtn.classList.toggle('is-visible', isLastSlide);
+      }
+
+      function applyDialogHeight() {
+        var viewportOffset = window.matchMedia && window.matchMedia('(max-width: 900px)').matches ? 24 : 40;
+        var maxAvailable = Math.max(0, window.innerHeight - viewportOffset);
+        dialogEl.style.height = 'auto';
+        var contentHeight = Math.ceil(dialogEl.scrollHeight);
+        var targetHeight = Math.min(maxAvailable, contentHeight);
+        dialogEl.style.height = Math.max(0, targetHeight) + 'px';
+      }
+
+      function renderSlide() {
+        var slide = slides[currentIndex];
+        setSlideContent(slide);
+        applyDialogHeight();
+        if (currentIndex === 0) {
+          resetGuidedTourToc();
+        }
+        applyHighlight(slide);
+      }
+
+      function openTour() {
+        currentIndex = 0;
+        resetGuidedTourToc();
+        window.requestAnimationFrame(function () {
+          window.requestAnimationFrame(function () {
+          resetGuidedTourToc();
+          overlay.hidden = false;
+          overlay.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          renderSlide();
+          });
+        });
+        window.setTimeout(resetGuidedTourToc, 40);
+        window.setTimeout(resetGuidedTourToc, 120);
+        window.setTimeout(resetGuidedTourToc, 220);
+      }
+
+      function closeTour() {
+        setSpotlight(null);
+        overlay.hidden = true;
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      trigger.addEventListener('click', openTour);
+      closeBtn.addEventListener('click', closeTour);
+      finishBtn.addEventListener('click', closeTour);
+      overlay.querySelector('.guided-tour-backdrop').addEventListener('click', closeTour);
+
+      prevBtn.addEventListener('click', function () {
+        if (currentIndex <= 0) return;
+        currentIndex -= 1;
+        renderSlide();
+      });
+
+      nextBtn.addEventListener('click', function () {
+        if (currentIndex >= slides.length - 1) return;
+        currentIndex += 1;
+        renderSlide();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (overlay.hidden) return;
+        if (event.key === 'Escape') {
+          closeTour();
+          return;
+        }
+        if (event.key === 'ArrowRight' && currentIndex < slides.length - 1) {
+          currentIndex += 1;
+          renderSlide();
+          return;
+        }
+        if (event.key === 'ArrowLeft' && currentIndex > 0) {
+          currentIndex -= 1;
+          renderSlide();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (overlay.hidden) return;
+        applyDialogHeight();
+        if (!activeTarget) return;
+        setSpotlight(activeTarget);
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+

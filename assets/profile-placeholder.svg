@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" role="img" aria-label="Profil Platzhalter">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9fd5cf"/>
+      <stop offset="100%" stop-color="#3a8f88"/>
+    </linearGradient>
+  </defs>
+  <rect x="1.5" y="1.5" width="85" height="85" rx="43" fill="url(#g)" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="44" cy="33" r="13" fill="#e9f4f2"/>
+  <path d="M19 70c3-12 13-19 25-19s22 7 25 19" fill="#e9f4f2"/>
+</svg>

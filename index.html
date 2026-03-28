@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Smart Campus Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #e0f7f5 0%, #f4f8f7 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      padding: 48px 40px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+    .login-box img {
+      max-width: 160px;
+      margin-bottom: 24px;
+    }
+    .login-box h1 {
+      font-size: 1.4em;
+      color: #2d3a3a;
+      margin-bottom: 8px;
+    }
+    .login-box p {
+      color: #6b7b7b;
+      margin-bottom: 28px;
+      font-size: 0.95em;
+    }
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1.5px solid #d0ddd8;
+      border-radius: 10px;
+      font-size: 1.05em;
+      outline: none;
+      transition: border 0.2s;
+      margin-bottom: 16px;
+    }
+    .login-box input[type="password"]:focus {
+      border-color: #00bfae;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 14px;
+      background: #00bfae;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-box button:hover {
+      background: #00a89a;
+    }
+    .error-msg {
+      color: #e74c3c;
+      font-size: 0.9em;
+      margin-top: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="assets/FOM_Logo.png" alt="FOM Logo">
+    <h1>Smart Campus Dashboard</h1>
+    <p>Bitte Passwort eingeben, um fortzufahren.</p>
+    <form id="loginForm" onsubmit="return checkPassword()">
+      <input type="password" id="pwd" placeholder="Passwort" autofocus>
+      <button type="submit">Anmelden</button>
+    </form>
+    <div class="error-msg" id="errMsg">Falsches Passwort. Bitte erneut versuchen.</div>
+  </div>
+  <script>
+    const H = 'de9980e86ba07bfff68dcf82032d565cb5cedce738e1f2aa47657b910844d3f4';
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+    async function checkPassword() {
+      const hash = await sha256(document.getElementById('pwd').value);
+      if (hash === H) {
+        sessionStorage.setItem('dashboard_auth', H);
+        window.location.href = 'modules/management-basics/special-01-modulinfo.html';
+      } else {
+        document.getElementById('errMsg').style.display = 'block';
+      }
+      return false;
+    }
+    if (sessionStorage.getItem('dashboard_auth') === H) {
+      window.location.href = 'modules/management-basics/special-01-modulinfo.html';
+    }
+  </script>
+</body>
+</html>
