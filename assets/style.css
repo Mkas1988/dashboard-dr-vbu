@@ -384,21 +384,169 @@ h1 {
   color: var(--fom-text-light) !important;
 }
 
-/* ── Header topbar: Teal accent, not overwhelming ── */
+/* ── Header topbar: Clean white Newsroom-style ── */
 .campus-topbar {
   background: var(--fom-white) !important;
   border-bottom: 1px solid var(--fom-gray-light) !important;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .04) !important;
+  height: 64px !important;
 }
 
 .campus-topbar .campus-logo-img {
   filter: none !important;
 }
 
+.campus-logo {
+  background: transparent !important;
+  border: none !important;
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.campus-title {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  font-size: 1.1rem !important;
+}
+
+/* Nav buttons: Neutral, not teal circles */
+body.layout-bba #main-header .page-nav-btn {
+  background: var(--fom-bg-alt) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  color: var(--fom-text) !important;
+  border-radius: 10px !important;
+  width: 38px !important;
+  height: 38px !important;
+}
+
+body.layout-bba #main-header .page-nav-btn:hover,
+body.layout-bba #main-header .page-nav-btn:focus {
+  background: var(--fom-white) !important;
+  border-color: var(--fom-teal) !important;
+  color: var(--fom-teal-dark) !important;
+}
+
+body.layout-bba #main-header .page-nav-btn.page-nav-active {
+  background: var(--fom-black) !important;
+  border-color: var(--fom-black) !important;
+  color: var(--fom-white) !important;
+}
+
+/* Badge: Teal accent (only place) */
+body.layout-bba #main-header .page-nav-btn .unread-badge {
+  background: var(--fom-teal) !important;
+}
+
+/* ── Module title sheet: Modern, less teal ── */
+.module-title-sheet {
+  background: var(--fom-black) !important;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  padding: 48px 44px !important;
+}
+
+.module-title-sheet::before {
+  color: rgba(255, 255, 255, 0.06) !important;
+  font-size: 400px !important;
+}
+
+.module-title-sheet-title {
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  color: var(--fom-teal) !important;
+  font-size: 13px !important;
+  letter-spacing: 1.5px !important;
+}
+
+.module-title-sheet-quote {
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.module-title-sheet-person-row {
+  border-top: 1px solid rgba(255, 255, 255, .1) !important;
+  padding-top: 20px !important;
+}
+
+.module-title-sheet-portrait {
+  border-radius: 12px !important;
+  border: 2px solid rgba(255, 255, 255, .1) !important;
+}
+
+.module-title-sheet-personline-primary {
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+}
+
+/* Closing card: Keep purple gradient */
+.module-title-sheet--closing {
+  background: linear-gradient(135deg, #121212 0%, #1a1a2e 100%) !important;
+}
+
+/* ── Accordions: Neutral, not teal ── */
+.unit-body .fom-collapse {
+  background: var(--fom-black) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.unit-body .fom-collapse summary {
+  color: var(--fom-white) !important;
+}
+
+.unit-body .fom-collapse summary::after {
+  background: rgba(255, 255, 255, .15) !important;
+  box-shadow: none !important;
+}
+
+.unit-body .fom-collapse summary::before {
+  border-color: var(--fom-white) !important;
+}
+
+.unit-body .fom-collapse-content {
+  background: var(--fom-white) !important;
+  border-top: 1px solid var(--fom-gray-light) !important;
+  color: var(--fom-text) !important;
+}
+
 /* ── Right tools rail: Clean neutral ── */
 .right-tools-rail {
-  background: var(--fom-bg-alt) !important;
+  background: var(--fom-white) !important;
   border-left: 1px solid var(--fom-gray-light) !important;
+}
+
+.right-tools-rail button,
+.right-tools-rail a {
+  border-radius: 10px !important;
+}
+
+/* ── Course hero: Clean ── */
+.course-hero {
+  margin-bottom: 24px !important;
+}
+
+.course-hero .course-hero-badge {
+  background: var(--fom-bg-alt) !important;
+  color: var(--fom-text) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+}
+
+/* ── Unit card: Clean white ── */
+.course-card {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.unit-meta-row .reading-time-pill {
+  background: var(--fom-bg-alt) !important;
+  color: var(--fom-text-light) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+}
+
+/* ── NotebookLM widget: Subtle ── */
+.notebooklm-cta {
+  border-radius: 12px !important;
 }
 
 /* ── Responsive: Sidebar ── */
