@@ -1,0 +1,2268 @@
+﻿<!DOCTYPE html>
+<html lang='de'>
+<head>
+  <script>
+    if (sessionStorage.getItem('dashboard_auth') !== 'de9980e86ba07bfff68dcf82032d565cb5cedce738e1f2aa47657b910844d3f4') {
+      window.location.href = '../../index.html';
+    }
+  </script>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Management Basics</title>
+  <link rel='stylesheet' href='../../assets/style.css' />
+</head>
+<body class='with-campus-bar layout-bba'>
+
+      <header id='main-header' class='campus-topbar' aria-label='Online-Campus Leiste'>
+    <div class='main-header-inner'>
+      <div id='header-left' class='header-left'>
+        <button id='homeLogoBtn' type='button' class='home-logo-btn' aria-label='Zur Startseite'>
+          <img src='../../assets/FOM_Logo.png' alt='FOM Hochschule Logo' class='home-logo-img' />
+          <span class='home-logo-text'>Online-Campus</span>
+        </button>
+      </div>
+
+      <div id='header-right' class='header-right'>
+        <div id='primaryPageNav'>
+          <a href='../../dashboard-eu-local/index.html' aria-label='Dashboard' title='Dashboard' class='page-nav-btn page-nav-active'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M3 10.5 12 3l9 7.5'></path>
+              <path d='M5.25 9.75V21h13.5V9.75'></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class='header-menu-wrap'>
+          <button id='burgerMenuBtn' type='button' aria-label='Men&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M4 7h16M4 12h16M4 17h16'></path>
+            </svg>
+          </button>
+          <div id='burgerMenu' class='header-popover hidden'>
+            <button id='burgerInfoBtn' type='button' class='header-popover-item'>Informationen</button>
+            <button id='burgerSocialBtn' type='button' class='header-popover-item'>Social Campus</button>
+            <button id='burgerModulesBtn' type='button' class='header-popover-item'>Modulwahl &amp; Studienverlauf</button>
+            <button id='burgerExamsBtn' type='button' class='header-popover-item'>Pr&uuml;fungen &amp; Noten</button>
+            <button id='burgerEventsOfferBtn' type='button' class='header-popover-item'>Sonderkurse &amp; Veranstaltungen</button>
+            <button id='burgerHelpBtn' type='button' class='header-popover-item'>Hilfe &amp; Kontakt</button>
+          </div>
+        </div>
+
+        <button id='messagesNavBtn' type='button' aria-label='Pers&ouml;nliche Nachrichten' class='page-nav-btn'>
+          <span id='messagesUnreadBadge' class='messages-unread-badge'>1</span>
+          <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+            <path d='M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75z'></path>
+            <path d='M5.25 8.25 11.14 12.4a1.5 1.5 0 0 0 1.72 0l5.89-4.15'></path>
+          </svg>
+        </button>
+
+        <div class='header-menu-wrap'>
+          <button id='profileBtn' type='button' aria-label='Profilmen&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z'></path>
+              <path d='M4.5 19.5a7.5 7.5 0 0 1 15 0'></path>
+            </svg>
+          </button>
+
+          <div id='profileMenu' class='header-popover profile-fake-menu hidden'>
+            <div id='profileMenuMain'>
+              <button type='button' class='header-popover-item'>Mein Profil</button>
+              <button type='button' class='header-popover-item'>Meine Einstellungen</button>
+              <button type='button' class='header-popover-item'>Meine Bescheinigungen</button>
+              <button type='button' class='header-popover-item'>Meine Antr&auml;ge</button>
+              <button type='button' class='header-popover-item'>Meine Rechnungen</button>
+              <button type='button' class='header-popover-item'>Mein Aktivit&auml;tsprotokoll</button>
+              <div class='header-popover-divider'>
+                <button type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Barrierefreiheitsoptionen</span>
+                  <span class='header-popover-arrow' aria-hidden='true'>&rarr;</span>
+                </button>
+              </div>
+              <div class='header-popover-divider'>
+                <button type='button' class='header-popover-item header-popover-logout'>
+                  <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+                    <path d='M14.5 6.25h1.8A1.45 1.45 0 0 1 17.75 7.7v8.6a1.45 1.45 0 0 1-1.45 1.45h-1.8'></path>
+                    <path d='M10.8 8.8 7.6 12l3.2 3.2'></path>
+                    <path d='M7.9 12H18'></path>
+                  </svg>
+                  <span>Logout</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class='right-tools-rail' aria-label='Schnellfunktionen'>
+    <div class='right-tools-rail-inner'>
+      <button type='button' class='right-tool-btn is-active' data-tool-id='assistant' aria-label='Assistent'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='4.5' y='4.5' width='15' height='15' rx='4'></rect>
+          <circle cx='9.2' cy='10.3' r='1'></circle>
+          <circle cx='14.8' cy='10.3' r='1'></circle>
+          <path d='M8.4 14.2c.9.9 2 1.3 3.6 1.3s2.7-.4 3.6-1.3'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='bookmark' aria-label='Lesezeichen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M8 4.8h8a1 1 0 0 1 1 1v13.4l-5-2.8-5 2.8V5.8a1 1 0 0 1 1-1z'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='copy' aria-label='Kopieren'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='8' y='8' width='10' height='12' rx='1.6'></rect>
+          <path d='M6 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='audio' id='audioToolBtn' aria-label='Audiospur abspielen' data-tooltip='Audio'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M3 18v-6a9 9 0 0 1 18 0v6'></path>
+          <path d='M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z'></path>
+          <path d='M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'></path>
+        </svg>
+      </button>
+    </div>
+  </aside>
+<div class='course-layout'>
+    <aside class='toc' aria-label='Inhaltsverzeichnis'>
+      <div class='toc-header'>
+        <div class='toc-title'>Meine Lerneinheiten</div>
+      </div>
+      <nav class='toc-list' id='tocList'>
+        <a class='toc-item' href='special-01-modulinfo.html'><span class='toc-nr'></span><span class='toc-text'>Informationen zum Modul<br>Management Basics</span></a>
+        <a class='toc-item is-active' href='le01.html'><span class='toc-nr'>01</span><span class='toc-text'>Unternehmerisch denken und handeln</span></a>
+        <a class='toc-item' href='le02.html'><span class='toc-nr'>02</span><span class='toc-text'>Produkt- und Unternehmenslebenszyklen verstehen</span></a>
+        <a class='toc-item' href='le03.html'><span class='toc-nr'>03</span><span class='toc-text'>Businessplan entwickeln und Gründung planen</span></a>
+        <a class='toc-item' href='le04.html'><span class='toc-nr'>04</span><span class='toc-text'>Geschäftsideen schärfen und Mehrwert schaffen</span></a>
+        <a class='toc-item' href='le05.html'><span class='toc-nr'>05</span><span class='toc-text'>Märkte und Wettbewerb analysieren</span></a>
+        <a class='toc-item' href='le06.html'><span class='toc-nr'>06</span><span class='toc-text'>Strategien entwickeln und Marketing steuern</span></a>
+        <a class='toc-item' href='le07.html'><span class='toc-nr'>07</span><span class='toc-text'>Marketinginstrumente gezielt einsetzen</span></a>
+        <a class='toc-item' href='le08.html'><span class='toc-nr'>08</span><span class='toc-text'>Finanzielle Grundlagen unternehmerischer Entscheidungen</span></a>
+        <a class='toc-item' href='le09.html'><span class='toc-nr'>09</span><span class='toc-text'>Wachstum finanzieren und Gewinnschwelle erreichen</span></a>
+        <a class='toc-item' href='le10.html'><span class='toc-nr'>10</span><span class='toc-text'>Krisen bewältigen und Unternehmen stabilisieren</span></a>
+      </nav>
+    </aside>
+
+    <main class='course-main'>
+      <section class='course-hero'>
+        <h1 class='course-hero-title'>Modul Management Basics</h1>
+      </section>
+
+      <section class='course-card' aria-label='Kursinhalt'>
+        <div class="unit-meta-row">
+          <div class='unit-kicker' id='unitKicker'>Lerneinheit 01</div>
+          <div class="fom-reading-pill unit-reading-pill" aria-label="Lesezeit Lerneinheit 1: 1 Stunde">
+            <span class="fom-reading-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="7.25"></circle>
+                <path d="M12 8.3v4.1l2.8 1.7"></path>
+              </svg>
+            </span>
+            <span>Lesezeit: 1 Stunde</span>
+          </div>
+        </div>
+        <div class="unit-title-block">
+          <h2 class='unit-title unit-title-line-reveal' id='unitTitle' data-title-animate='line-reveal'>Unternehmerisch denken und handeln</h2>
+        </div>
+
+        <div class='unit-body' id='unitBody'>
+<section class="fom-inline-toc fom-inline-toc-collapsible" aria-label="Inhaltsverzeichnis innerhalb der Seite">
+            <div class="fom-inline-toc-head">
+              <h2 class="fom-inline-toc-title">Inhaltsverzeichnis</h2>
+              <button
+                type="button"
+                class="fom-inline-toc-toggle"
+                aria-label="Inhaltsverzeichnis einklappen"
+                aria-expanded="true"
+              >
+                <span class="fom-inline-toc-toggle-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M6 14l6-6 6 6"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div class="fom-inline-toc-content">
+              <ul class="fom-inline-toc-list">
+                <li><span class="toc-page">1</span><a href="#sec-kap1">Entrepreneurship verstehen: Merkmale und Rollen im Überblick</a></li>
+                <li><span class="toc-page">1.1</span><a href="#sec-31">Denken und handeln wie ein Entrepreneur</a></li>
+                <li><span class="toc-page">1.2</span><a href="#sec-12">Unternehmerische Rollen verstehen: Entrepreneur, Unternehmer, Gründer und Intrapreneur</a></li>
+                <li><span class="toc-page">2</span><a href="#sec-kap2">Erfolgreiche Unternehmensgründung: Von der Idee zum Markterfolg</a></li>
+                <li><span class="toc-page">2.1</span><a href="#sec-41">Geschäftsidee: Starten mit einer guten Idee</a></li>
+                <li><span class="toc-page">2.2</span><a href="#sec-42">Geschäftsmöglichkeit (Opportunity): Chancen erkennen und bewerten</a></li>
+                <li><span class="toc-page">2.3</span><a href="#sec-43">Geschäftsmodell: Von der Idee zum tragfähigen Plan</a></li>
+                <li><span class="toc-page"></span><a href="#sec-abschluss">Zusammenfassung</a></li>
+                <li><span class="toc-page"></span><a href="#sec-abschlusstest">Abschlusstest</a></li>
+                <li><span class="toc-page"></span><a href="#sec-literatur">Quellenverzeichnis</a></li>
+              </ul>
+            </div>
+          </section>
+
+<section class="fom-learning-goals-block" aria-label="Lernziele">
+  <div class="fom-learning-goals-head">
+    <span class="fom-learning-goals-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img" focusable="false">
+        <circle cx="12" cy="12" r="9"></circle>
+        <circle cx="12" cy="12" r="5"></circle>
+        <circle cx="12" cy="12" r="1.8"></circle>
+        <path d="M13.5 10.5L21 3"></path>
+        <path d="M16 3h5v5"></path>
+      </svg>
+    </span>
+  </div>
+
+  <p class="fom-learning-goals-intro">
+    Wenn du Lerneinheit 1 erfolgreich bearbeitest, dann kannst du...
+  </p>
+
+  <ul class="fom-learning-goals-list">
+    <li>die Rolle des Entrepreneurs erläutern und diesen von anderen Marktakteuren abgrenzen.</li>
+    <li>typische Merkmale erfolgreicher Entrepreneure identifizieren.</li>
+    <li>Methoden zur (kreativen) Ideenfindung anwenden.</li>
+    <li>Ansätze zur Bewertung von Geschäftsideen beschreiben und auf Praxisfälle anwenden.</li>
+    <li>den Entrepreneurship-Prozess von der ersten Geschäftsidee über die Geschäftsmöglichkeit (Opportunity) bis zum tragfähigen Geschäftsmodell beschreiben.</li>
+  </ul>
+</section>
+
+    <div class="fom-video-embed" style="margin:10px 0 16px 0; border:1px solid rgba(0,40,37,0.18); border-radius:10px; overflow:hidden; background:#e9ecef;" tabindex="-1">
+      <iframe
+        src="https://fom.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=720d9f87-def2-4098-8abf-b418008dbe87&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=false&amp;showbrand=true&amp;captions=false&amp;interactivity=all"
+        title="Lernvideo Einführung"
+        style="display:block; width:100%; aspect-ratio:16/9; border:0;"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        tabindex="-1">
+      </iframe>
+    </div>
+
+
+<div class="fom-chapter-heading">
+<h2 id="sec-kap1">1 Entrepreneurship verstehen: Merkmale und Rollen im Überblick</h2>
+<div class="fom-reading-pill" aria-label="Lesezeit Kapitel 1: 30 Minuten">
+<span class="fom-reading-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" focusable="false">
+<circle cx="12" cy="12" r="7.25"></circle>
+<path d="M12 8.3v4.1l2.8 1.7"></path>
+</svg>
+</span>
+<span>Lesezeit: 30 Minuten</span>
+</div>
+</div>
+<h3 id="sec-31">1.1 Denken und handeln wie ein Entrepreneur</h3>
+
+<p>Möglicherweise hast du bereits beobachtet, dass manche Menschen mit einer Idee richtig durchstarten, während andere trotz guter Ansätze wieder aufgeben oder scheitern. Woran liegt das? Ein entscheidender Faktor ist nicht nur die Idee selbst, sondern die Person dahinter: der <strong>Entrepreneur</strong> und seine Art zu denken und zu handeln.</p>
+<p>Ein <strong>Entrepreneur</strong> erkennt die Chancen und setzt sie aktiv um, indem er etwas Neues in den Markt bringt und dafür Verantwortung sowie Risiko übernimmt. Entrepreneurship zielt damit auf Innovation, Veränderung und häufig auch Wachstum. <strong>Unternehmerisches Denken und Handeln</strong> in diesem Sinn bedeutet nicht nur „eine Firma besitzen“, sondern Märkte zu gestalten: neue Produkte, neue Dienstleistungen oder neue Abläufe zu realisieren. Zahlreiche Innovationen, von digitalen Plattformen bis zu neuen Angeboten im Gesundheits- oder Bildungsbereich, gehen auf Entrepreneure zurück.</p>
+<div class="fom-info-block">
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+  <div class="fom-info-body">
+    <p>Joseph A. Schumpeter, einer der bedeutendsten Ökonomen des 20. Jahrhunderts, prägte das moderne Verständnis des Entrepreneurs als Innovator. Er beschreibt Unternehmer als Personen, die „neue Kombinationen“ durchsetzen - etwa neue Produkte, neue Produktionsmethoden, neue Märkte, neue Bezugsquellen oder neue Organisationsformen. Durch solche Innovationen entsteht „schöpferische Zerstörung“: Alte Lösungen verschwinden, neue setzen sich durch. Damit treiben Entrepreneure Wirtschaftswachstum und Wettbewerb an.</p>
+  </div>
+</div>
+
+<div class="fom-example-block">
+  <div class="fom-example-header">
+    <span class="fom-example-title">Praxisbeispiel</span>
+    <span class="fom-example-icon">&#9881;</span>
+  </div>
+
+    <div class="fom-example-body">
+        <h4>Sch&ouml;pferische Zerst&ouml;rung nach Schumpeter</h4>
+<div class="fom-video-embed" style="margin:10px 0 16px 0; border:1px solid rgba(0,40,37,0.18); border-radius:10px; overflow:hidden; background:#e9ecef;">
+      <iframe
+        src="https://app.heygen.com/embeds/b0cf90efb5d74b48a8739a964c9d913e"
+        title="Schoepferische Zerstoerung"
+        style="display:block; width:100%; aspect-ratio:16/9; border:0;"
+        allow="encrypted-media; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<p>Die Forschung zeigt, dass Entrepreneure nicht einfach „geboren werden“. Zwar können bestimmte Persönlichkeitsmerkmale unternehmerisches Handeln begünstigen, aber nicht alles erklären. Entrepreneure werden auch stark durch Lernen, Erfahrung und das Umfeld geprägt. Sie entwickeln bestimmte Einstellungen und Kompetenzen, die ihr Denken und Handeln im Sinne des Entrepreneurship prägen. Vor diesem Hintergrund lohnt sich ein genauer Blick darauf, welche dieser Merkmale besonders erfolgsförderlich sind.</p>
+
+<div class="fom-task-block">
+  <div class="fom-task-header">
+    <span class="fom-task-icon">&#9998;</span>
+    <span class="fom-task-title">Aufgabe "Merkmale erfolgreicher Entrepreneure"</span>
+  </div>
+
+  <div class="fom-task-body task-orange-content">
+    <p>Denk an Personen, die du aus den Medien oder deinem Umfeld kennst und die mit ihren Geschäftsideen erfolgreich im Markt sind. Überlege:</p>
+    <ul class="task-dash-list">
+      <li>Was kennzeichnet diese Personen deiner Einschätzung nach?</li>
+      <li>Welche Merkmale oder Kompetenzen sollten erfolgreiche Entrepreneure idealerweise mitbringen?</li>
+    </ul>
+    <p>Notiere mindestens fünf Merkmale oder Kompetenzen, die aus deiner Sicht einen erfolgreichen Entrepreneur kennzeichnen.</p>
+
+    <details class="fom-collapse">
+      <summary>
+        <span>Musterlösung</span>
+      </summary>
+      <div class="fom-collapse-content">
+        <ol class="task-solution-list">
+          <li>Er erkennt Chancen, wo andere nur Probleme sehen, und handelt schnell.</li>
+          <li>Er entwickelt neue Ideen, verbessert Bestehendes und schafft damit echten Mehrwert.</li>
+          <li>Er übernimmt Verantwortung, geht kalkulierte Risiken ein und lässt sich auch von Rückschlägen nicht entmutigen.</li>
+          <li>Er denkt immer aus der Perspektive seiner Kunden und des Marktes, kann andere von seinen Vorhaben überzeugen und baut ein starkes Netzwerk auf.</li>
+          <li>Er organisiert Ressourcen, führt Teams effektiv und trifft mutige Entscheidungen.</li>
+        </ol>
+        </div>
+    </details>
+  </div>
+</div>
+
+<p>Entrepreneurship ist geprägt von verschiedenen Fähigkeiten und Denkweisen, die unternehmerisches Handeln ermöglichen. Im Zentrum steht häufig die <strong>Kunden- und Marktorientierung</strong>: Entscheidend ist die Frage, welches Problem für welche Zielgruppe gelöst wird und welcher Nutzen daraus entsteht.</p>
+<p>Darauf aufbauend spielt die <strong>Chancenorientierung</strong> eine wichtige Rolle. Entrepreneure erkennen in Herausforderungen und Problemen gezielt Möglichkeiten und überlegen, wie sich daraus Wert schaffen lässt. Um solche Ideen weiterzuentwickeln, benötigen sie <strong>Innovationsfähigkeit und Kreativität</strong> – also die Fähigkeit, in Alternativen zu denken, Bestehendes neu zu kombinieren und Lösungsansätze pragmatisch zu erproben.</p>
+<p>Gleichzeitig handeln sie auch unter unsicheren Bedingungen. <strong>Entscheidungsfähigkeit und Risikobereitschaft unter Unsicherheit</strong> zeigen sich darin, dass sie trotz unvollständiger Informationen Entscheidungen treffen und dabei bewusst kalkulierte Risiken eingehen. Rückschläge gehören dabei zum Prozess: <strong>Durchhaltevermögen und Resilienz</strong> bedeuten, diese nicht als Scheitern zu sehen, sondern als Anlass zur Anpassung und Weiterentwicklung.</p>
+<p>Ein weiterer zentraler Aspekt ist die <strong>Verantwortungsübernahme</strong>. Entrepreneure treiben ihre Vorhaben eigenständig voran, stehen für ihre Entscheidungen ein und tragen die Konsequenzen ihres Handelns. Unterstützt wird dies durch eine ausgeprägte <strong>Ressourcen- und Netzwerkkompetenz</strong>: Sie sind in der Lage, Menschen, Wissen, Kapital und Partner zu gewinnen, selbst wenn die Ausgangssituation zunächst von begrenzten Mitteln geprägt ist.</p>
+<p class="fom-chapter-note">Ordne den Begriffen die passende Beschreibung zu, indem du die Beschreibung via Drag & Drop zum zugehörigen Begriff ziehst.</p>
+
+<div class="fom-table-wrap" id="merkmal-table-wrap" role="region" aria-label="Tabelle mit Merkmalen erfolgreicher Entrepreneure">
+  <div class="merkmal-match-layout">
+    <div class="merkmal-match-board" aria-label="Merkmale">
+      <article class="merkmal-match-item" data-match-id="chancen">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Chancenorientierung</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="chancen" aria-label="Passendes Puzzle-Teil für Chancenorientierung hier ablegen"></div>
+      </article>
+      <article class="merkmal-match-item" data-match-id="innovation">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Innovationsfähigkeit und Kreativität</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="innovation" aria-label="Passendes Puzzle-Teil für Innovationsfähigkeit und Kreativität hier ablegen"></div>
+      </article>
+      <article class="merkmal-match-item" data-match-id="risiko">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Entscheidungsfähigkeit und Risikobereitschaft unter Unsicherheit</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="risiko" aria-label="Passendes Puzzle-Teil für Entscheidungsfähigkeit und Risikobereitschaft unter Unsicherheit hier ablegen"></div>
+      </article>
+      <article class="merkmal-match-item" data-match-id="resilienz">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Durchhaltevermögen und Resilienz</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="resilienz" aria-label="Passendes Puzzle-Teil für Durchhaltevermögen und Resilienz hier ablegen"></div>
+      </article>
+      <article class="merkmal-match-item" data-match-id="verantwortung">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Verantwortungsübernahme</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="verantwortung" aria-label="Passendes Puzzle-Teil für Verantwortungsübernahme hier ablegen"></div>
+      </article>
+      <article class="merkmal-match-item" data-match-id="kundenmarkt">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Kunden- und Marktorientierung</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="kundenmarkt" aria-label="Passendes Puzzle-Teil für Kunden- und Marktorientierung hier ablegen"></div>
+      </article>
+      <article class="merkmal-match-item" data-match-id="netzwerk">
+        <div class="merkmal-piece merkmal-piece-term">
+          <span class="merkmal-piece-main">Ressourcen- und Netzwerkkompetenz</span>
+        </div>
+        <div class="merkmal-piece-slot" data-match-id="netzwerk" aria-label="Passendes Puzzle-Teil für Ressourcen- und Netzwerkkompetenz hier ablegen"></div>
+      </article>
+    </div>
+    <div class="merkmal-match-right">
+      <div class="merkmal-card-bank" aria-label="Beschreibungen">
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="innovation">
+          <span class="merkmal-piece-main">Sie denken in Alternativen, kombinieren Bekanntes neu und testen Ideen pragmatisch.</span>
+        </button>
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="kundenmarkt">
+          <span class="merkmal-piece-main">Sie beginnen beim Nutzen und fragen, welches Problem für wen gelöst wird.</span>
+        </button>
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="risiko">
+          <span class="merkmal-piece-main">Sie handeln, obwohl nicht alle Informationen vorliegen. Dabei geht es um kalkuliertes Risiko.</span>
+        </button>
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="chancen">
+          <span class="merkmal-piece-main">Entrepreneure sehen in Problemen potenzielle Möglichkeiten und fragen, wie sich daraus Wert schaffen lässt.</span>
+        </button>
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="resilienz">
+          <span class="merkmal-piece-main">Rückschläge führen zur Anpassung, nicht zum Abbruch.</span>
+        </button>
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="verantwortung">
+          <span class="merkmal-piece-main">Sie treiben ihre Vorhaben eigenständig voran, stehen für Entscheidungen ein und übernehmen Verantwortung für die Folgen ihres Handelns.</span>
+        </button>
+        <button type="button" class="merkmal-piece merkmal-piece-answer" draggable="true" data-answer-id="netzwerk">
+          <span class="merkmal-piece-main">Sie können Menschen, Kapital, Wissen und Partner gewinnen, auch wenn sie anfangs wenig besitzen.</span>
+        </button>
+      </div>
+      <div class="merkmal-match-actions">
+        <button type="button" class="fom-quiz-submit" id="merkmalMatchCheckBtn">Zuordnung prüfen</button>
+        <button type="button" class="fom-quiz-reset" id="merkmalMatchResetBtn">Neu mischen</button>
+      </div>
+      <p class="merkmal-match-feedback" id="merkmalMatchFeedback" aria-live="polite"></p>
+    </div>
+  </div>
+</div>
+<p class="fom-figure-caption fom-figure-caption-left">Zuordnungsaufgabe: Merkmale erfolgreicher Entrepreneure</p>
+
+<p>Entscheidend ist dabei, dass Entrepreneure nicht bei Ideen stehen bleiben, sondern diese aktiv und beharrlich in den Markt bringen, neue Geschäftsmöglichkeiten gestalten, kalkulierte Risiken eingehen und auf ein rentables Geschäftsmodell hinarbeiten (darauf werden wir später in dieser Lerneinheit noch näher eingehen). Neben Gewinnzielen spielen häufig auch persönliche Motive wie Unabhängigkeit, Selbstverwirklichung und der Wunsch, Mehrwert für Kunden und Gesellschaft zu schaffen, eine Rolle; als typische weitere Merkmale nennt die Forschung unter anderem Leistungs- und Realisierungswillen, Unabhängigkeitsdrang und Machtstreben. </p>
+
+<div class="fom-quiz-block">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Selbsttest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;">
+      <fieldset class="fom-quiz-question question-multi quiz-question-deeper" data-feedback-correct="Erfolgreiche Entrepreneure zeichnen sich h&auml;ufig dadurch aus, dass sie Chancen erkennen und aktiv nutzen, innovative L&ouml;sungen entwickeln und auch bei R&uuml;ckschl&auml;gen durchhaltef&auml;hig (resilient) bleiben. Unternehmertum ist immer mit Unsicherheit verbunden. Daher geh&ouml;rt Risikovermeidung in der Regel nicht zu den typischen Merkmalen von Entrepreneuren." data-feedback-wrong="Erfolgreiche Entrepreneure zeichnen sich h&auml;ufig dadurch aus, dass sie Chancen erkennen und aktiv nutzen, innovative L&ouml;sungen entwickeln und auch bei R&uuml;ckschl&auml;gen durchhaltef&auml;hig (resilient) bleiben. Unternehmertum ist immer mit Unsicherheit verbunden. Daher geh&ouml;rt Risikovermeidung in der Regel nicht zu den typischen Merkmalen von Entrepreneuren.">
+        <legend>Quizfrage 1: Welche Merkmale zählen zu den typischen Kennzeichen erfolgreicher Entrepreneure? (Multiple Choice)</legend>
+        <label><input type="checkbox" data-correct="true"> a) Chancenorientierung</label>
+        <label><input type="checkbox" data-correct="false"> b) Risikovermeidung</label>
+        <label><input type="checkbox" data-correct="true"> c) Resilienz</label>
+        <label><input type="checkbox" data-correct="true"> d) Innovationsfähigkeit</label>
+      </fieldset>
+
+      <button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+    <div class="fom-quiz-notebooklm">
+      <span class="fom-quiz-notebooklm-copy">Weitere Quizfragen kannst du dir in NotebookLM von Google generieren:</span>
+      <a class="notebooklm-cta fom-quiz-notebooklm-btn" href="https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1" target="_blank" rel="noopener noreferrer">zu Google NotebookLM</a>
+    </div>
+  </div>
+</div>
+
+<h3 id="sec-12">1.2 Unternehmerische Rollen verstehen: Entrepreneur, Unternehmer, Gründer und Intrapreneur</h3>
+
+<p>Der Begriff „Entrepreneur“ wird im deutschen Sprachgebrauch oft einfach mit „Unternehmer“ gleichgesetzt. Doch diese Gleichsetzung greift zu kurz. Einem Entrepreneur geht nicht nur darum, eine Firma zu führen oder im Handelsregister anzumelden. Vielmehr geht es ihm darum, Chancen zu erkennen und Ressourcen neu zu kombinieren, um Werte zu schaffen. </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Achtung: Verwechsle den Begriff „Entrepreneur“ nicht mit den Begriffen „Unternehmer“, „Existenzgründer“ oder „Intrapreneur“, die in der Praxis auch häufig genannt werden. </p>
+  </div>
+
+</div>
+
+<p>Um die unterschiedlichen Begriffe besser voneinander abzugrenzen, werfen wir nun einen kurzen Blick auf ihre Definitionen.</p>
+
+<p class="fom-chapter-note">Klicke auf die Karten, um die Definitionen für die Begriffe zu sehen.</p>
+
+<div class="card-grid card-grid--chapter-22 card-grid--roles">
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="12" cy="8" r="3.2"></circle>
+          <path d="M5 20v-2.3a4.8 4.8 0 0 1 4.8-4.8h4.4a4.8 4.8 0 0 1 4.8 4.8V20"></path>
+          <path d="M8.2 4.8h7.6"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Unternehmer</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Unternehmer</span>
+      <span>Unternehmer ist der allgemeinere Begriff für eine Person, die ein Unternehmen führt und Verantwortung für dessen Erfolg trägt. Ein Unternehmer kann Entrepreneur sein, muss es aber nicht: Wer nur ein bestehendes Geschäft verwaltet, handelt nicht zwingend wie ein Entrepreneur.</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M4 20l6.2-6.2"></path>
+          <path d="M12.5 5.5h6v6"></path>
+          <path d="M18.5 5.5l-8.8 8.8"></path>
+          <circle cx="7" cy="17" r="2.3"></circle>
+        </svg>
+      </span>
+      <span class="flip-card-label">Entrepreneur</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Entrepreneur</span>
+      <span>Ein Entrepreneur hingegen ist auf Innovation und Veränderung ausgerichtet. Er oder sie bringt etwas Neues in den Markt, gestaltet Geschäftschancen aktiv und entwickelt daraus ein tragfähiges, zukunftsorientiertes Geschäftsmodell.</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M3.5 11.2L12 4l8.5 7.2"></path>
+          <path d="M6.2 10.5V20h11.6v-9.5"></path>
+          <path d="M10 20v-5h4v5"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Existenz-<br>gr&uuml;nder</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Existenzgr&uuml;nder</span>
+      <span>Ein Existenzgründer macht sich selbstständig. Das kann auch die Eröffnung eines Franchise-Restaurants oder eines klassischen Handwerkbetriebs sein. Hier steht oft die Imitation bestehender Modelle im Vordergrund, nicht aber unbedingt innovative Ideen.</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <rect x="4" y="4" width="16" height="16" rx="2.5"></rect>
+          <path d="M8 12h8"></path>
+          <path d="M12 8v8"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Intrapreneur</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Intrapreneur</span>
+      <span>Dies ist ein „Unternehmer im Unternehmen“. Intrapreneure sind Angestellte, die wie Unternehmer denken und Innovationen vorantreiben, aber nicht Eigentümer der Firma sind.</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="fom-example-block">
+
+  <div class="fom-example-header">
+    <span class="fom-example-title">Praxisbeispiel</span>
+    <span class="fom-example-icon">&#9881;</span>
+  </div>
+
+  <div class="fom-example-body">
+    <h4>Unternehmerische Rollen im &Uuml;berblick</h4>
+    
+    <div class="fom-video-embed" style="margin:10px 0 16px 0; border:1px solid rgba(0,40,37,0.18); border-radius:10px; overflow:hidden; background:#e9ecef;">
+      <iframe
+        src="https://app.heygen.com/embeds/06460dda397e478dbd3f9b1411bd421d"
+        title="Management Basics"
+        style="display:block; width:100%; aspect-ratio:16/9; border:0;"
+        allow="encrypted-media; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</div>
+
+<div class="fom-warning-block">
+
+  <div class="fom-warning-header">
+    <span class="fom-warning-title">Wichtig</span>
+    <span class="fom-warning-icon">&#9888;</span>
+  </div>
+
+  <div class="fom-warning-body">
+    <p>Ein Entrepreneur ist nicht einfach nur „Selbstständiger“. Er oder sie handelt chancen- und innovationsorientiert, setzt Neues durch und trägt dafür Risiko und Verantwortung.</p>
+  </div>
+
+</div>
+
+<div class="fom-quiz-block">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Selbsttest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;"><fieldset class="fom-quiz-question question-single quiz-question-deeper" data-feedback-correct="Der zentrale Unterschied liegt in der Innovationsorientierung. Ein Entrepreneur entwickelt neue Ideen, Produkte oder Geschäftsmodelle und bringt Innovationen in den Markt. Ein Existenzgründer macht sich zwar selbstständig, übernimmt aber häufig bereits bestehende Geschäftsmodelle, zum Beispiel durch ein Franchise oder einen klassischen Handwerksbetrieb." data-feedback-wrong="Der zentrale Unterschied liegt in der Innovationsorientierung. Ein Entrepreneur entwickelt neue Ideen, Produkte oder Geschäftsmodelle und bringt Innovationen in den Markt. Ein Existenzgründer macht sich zwar selbstständig, übernimmt aber häufig bereits bestehende Geschäftsmodelle, zum Beispiel durch ein Franchise oder einen klassischen Handwerksbetrieb.">
+        <legend>Quizfrage 2: Wodurch unterscheidet sich ein Entrepreneur von einem Existenzgründer? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q4" data-correct="false"> a) Durch die Eintragung im Handelsregister.</label>
+        <label><input type="radio" name="quiz-q4" data-correct="true"> b) Durch Innovations- und Veränderungsorientierung.</label>
+        <label><input type="radio" name="quiz-q4" data-correct="false"> c) Durch die Größe des Unternehmens.</label>
+        <label><input type="radio" name="quiz-q4" data-correct="false"> d) Durch die Anzahl der Mitarbeitenden.</label>
+      </fieldset>
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Ein Entrepreneur ist innovations- und veränderungsorientiert, entwickelt neue Ideen oder Geschäftsmodelle. Ein Unternehmer kann ein bestehendes Unternehmen führen, ohne notwendigerweise Innovationen zu schaffen." data-feedback-wrong="Ein Entrepreneur ist innovations- und veränderungsorientiert, entwickelt neue Ideen oder Geschäftsmodelle. Ein Unternehmer kann ein bestehendes Unternehmen führen, ohne notwendigerweise Innovationen zu schaffen.">
+        <legend>Quizfrage 3: Wodurch unterscheidet sich ein Unternehmer von einem Entrepreneur? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q-new1" data-correct="false"> a) Durch die Eintragung ins Handelsregister</label>
+        <label><input type="radio" name="quiz-q-new1" data-correct="false"> b) Durch Verantwortung für den Erfolg des Unternehmens</label>
+        <label><input type="radio" name="quiz-q-new1" data-correct="true"> c) Durch Innovations- und Veränderungsorientierung</label>
+        <label><input type="radio" name="quiz-q-new1" data-correct="false"> d) Durch die Größe des Unternehmens</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Intrapreneure handeln unternehmerisch innerhalb eines bestehenden Unternehmens, während Entrepreneure eigenständig neue Geschäftsmodelle oder Produkte entwickeln." data-feedback-wrong="Intrapreneure handeln unternehmerisch innerhalb eines bestehenden Unternehmens, während Entrepreneure eigenständig neue Geschäftsmodelle oder Produkte entwickeln.">
+        <legend>Quizfrage 4: Wodurch unterscheidet sich ein Intrapreneur von einem Entrepreneur? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q-new2" data-correct="true"> a) Ein Intrapreneur arbeitet innerhalb eines bestehenden Unternehmens</label>
+        <label><input type="radio" name="quiz-q-new2" data-correct="false"> b) Ein Intrapreneur muss ein eigenes Unternehmen gründen</label>
+        <label><input type="radio" name="quiz-q-new2" data-correct="false"> c) Ein Intrapreneur ist automatisch Eigentümer des Unternehmens</label>
+        <label><input type="radio" name="quiz-q-new2" data-correct="false"> d) Ein Intrapreneur entwickelt keine neuen Ideen</label>
+      </fieldset>
+
+      <button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+    <div class="fom-quiz-notebooklm">
+      <span class="fom-quiz-notebooklm-copy">Weitere Quizfragen kannst du dir in NotebookLM von Google generieren:</span>
+      <a class="notebooklm-cta fom-quiz-notebooklm-btn" href="https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1" target="_blank" rel="noopener noreferrer">zu Google NotebookLM</a>
+    </div>
+  </div>
+</div>
+
+<div class="fom-chapter-complete-wrap">
+  <div class="fom-chapter-complete" aria-label="Kapitel 1 abgeschlossen">
+    <div class="fom-chapter-complete-card">
+      <div class="fom-chapter-complete-copy">
+        <span class="fom-chapter-complete-eyebrow">Fortschritt</span>
+        <span class="fom-chapter-complete-text">Kapitel 1 abgeschlossen</span>
+      </div>
+      <label class="fom-chapter-complete-label" aria-label="Kapitel 1 abgeschlossen">
+        <input type="checkbox" class="fom-chapter-complete-checkbox" data-progress-unit="01" data-progress-id="kap1" />
+        <span class="fom-chapter-complete-ui" aria-hidden="true"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="fom-chapter-heading">
+<h2 id="sec-kap2">2 Erfolgreiche Unternehmensgründung: Von der Idee zum Markterfolg</h2>
+<div class="fom-reading-pill" aria-label="Lesezeit Kapitel 2: 30 Minuten">
+<span class="fom-reading-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" focusable="false">
+<circle cx="12" cy="12" r="7.25"></circle>
+<path d="M12 8.3v4.1l2.8 1.7"></path>
+</svg>
+</span>
+<span>Lesezeit: 30 Minuten</span>
+</div>
+</div>
+<p>Vielleicht hast du schon einmal gedacht: „Ich hätte da eine Idee – daraus könnte man doch ein Geschäft machen.“ Eine „gute Idee“ allein ist aber noch nicht der Schlüssel zum Erfolg. Entscheidend ist nämlich nicht nur die Idee, sondern der Weg von der Idee zur tragfähigen Umsetzung am Markt. Genau an diesem Punkt setzt Entrepreneurship an. <strong>Entrepreneurship (Unternehmertum)</strong> beschreibt den Prozess, in dem Menschen Geschäftsmöglichkeiten erkennen, Ideen entwickeln und diese unter Unsicherheit in neue Unternehmen oder neue Geschäftsmodelle überführen.  </p>
+<p>Erfolgreiche Gründungen bauen daher auf drei aufeinander aufbauenden Bausteinen auf: </p>
+<p class="fom-chapter-note">Verwende die Pfeile auf der rechten und linken Seite, um zwischen den Karten zu wechseln und mehr zu erfahren.</p>
+<!-- ANLEITUNG: Karten-Karussell (Copy & Paste) -->
+
+<!-- 1) HTML: Karussell einfügen -->
+<section class="fom-process-carousel" aria-label="Drei Bausteine" data-carousel-index="0">
+  <button class="fom-process-carousel-btn" type="button" data-direction="prev" aria-label="Vorherige Karte">
+    <span aria-hidden="true">&#8249;</span>
+  </button>
+
+  <div class="fom-process-carousel-stage">
+    <article class="fom-process-slide is-active" aria-hidden="false">
+      <h3 class="fom-process-slide-title">1. Geschäftsidee</h3>
+      <p class="fom-process-slide-text">
+        Eine Geschäftsidee ist eine erste Vorstellung, wie du ein Problem lösen oder ein Bedürfnis bedienen kannst.
+      </p>
+    </article>
+
+    <article class="fom-process-slide" aria-hidden="true">
+      <h3 class="fom-process-slide-title">2. Geschäftsmöglichkeit (Opportunity)</h3>
+      <p class="fom-process-slide-text">
+        Eine Idee wird zur Geschäftsmöglichkeit, wenn sie auf einen realen Markt trifft.
+      </p>
+    </article>
+
+    <article class="fom-process-slide" aria-hidden="true">
+      <h3 class="fom-process-slide-title">3. Geschäftsmodell</h3>
+      <p class="fom-process-slide-text">
+        Ein Geschäftsmodell beschreibt, wie dein Unternehmen langfristig Wert schafft, diesen Wert an Kunden liefert und dabei Erträge erzielt.
+      </p>
+    </article>
+  </div>
+
+  <button class="fom-process-carousel-btn" type="button" data-direction="next" aria-label="Nächste Karte">
+    <span aria-hidden="true">&#8250;</span>
+  </button>
+</section>
+
+<div class="fom-example-block">
+
+  <div class="fom-example-header">
+    <span class="fom-example-title">Praxisbeispiel</span>
+    <span class="fom-example-icon">&#9881;</span>
+  </div>
+
+  <div class="fom-example-body">
+    <p>Stellen wir uns vor, du möchtest einen Lieferdienst für regionale Bio-Lebensmittel gründen. Die Idee ist „Bio bequem nach Hause“. Die Geschäftsmöglichkeit entsteht erst, wenn du in einer Stadt nachweist, dass genug Haushalte wöchentlich bestellen würden. Dein Geschäftsmodell könnte ein Abo-System mit festen Lieferfenstern sein, kombiniert mit Partnern auf Bauernhöfen.</p>
+  </div>
+
+</div>
+
+<div class="fom-warning-block">
+
+  <div class="fom-warning-header">
+    <span class="fom-warning-title">Wichtig</span>
+    <span class="fom-warning-icon">&#9888;</span>
+  </div>
+
+  <div class="fom-warning-body">
+    <p>Entrepreneurship ist mehr als „einfach nur gründen“. Es geht um unternehmerisches Handeln unter Unsicherheit – vom ersten Erkennen einer Chance über deren Bewertung bis zur erfolgreichen Umsetzung am Markt.</p>
+  </div>
+
+</div>
+
+<p>Der Weg von einer Geschäftsidee hin zu einem erfolgreichen Produkt und Unternehmen wird als <strong>Entrepreneurship-Prozess</strong> bezeichnet. </p>
+
+<div class="fom-quiz-block">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Selbsttest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;"><fieldset class="fom-quiz-question question-single" data-feedback-correct="Eine Geschäftsidee ist die erste Vorstellung, wie ein konkretes Problem für eine bestimmte Zielgruppe gelöst werden könnte. Sie umfasst noch keinen detaillierten Finanzplan, kein geprüftes Geschäftsmodell und keine rechtliche Unternehmensform, das kommt erst in den späteren Schritten der Gründung dazu." data-feedback-wrong="Eine Geschäftsidee ist die erste Vorstellung, wie ein konkretes Problem für eine bestimmte Zielgruppe gelöst werden könnte. Sie umfasst noch keinen detaillierten Finanzplan, kein geprüftes Geschäftsmodell und keine rechtliche Unternehmensform, das kommt erst in den späteren Schritten der Gründung dazu.">
+        <legend>Quizfrage 5: Was beschreibt eine Geschäftsidee? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q6" data-correct="false"> a) Einen detaillierten Finanzplan</label>
+        <label><input type="radio" name="quiz-q6" data-correct="true"> b) Eine erste Vorstellung zur Lösung eines Kundenproblems</label>
+        <label><input type="radio" name="quiz-q6" data-correct="false"> c) Ein geprüftes Geschäftsmodell</label>
+        <label><input type="radio" name="quiz-q6" data-correct="false"> d) Eine rechtliche Unternehmensform</label>
+      </fieldset>
+
+      <button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+    <div class="fom-quiz-notebooklm">
+      <span class="fom-quiz-notebooklm-copy">Weitere Quizfragen kannst du dir in NotebookLM von Google generieren:</span>
+      <a class="notebooklm-cta fom-quiz-notebooklm-btn" href="https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1" target="_blank" rel="noopener noreferrer">zu Google NotebookLM</a>
+    </div>
+  </div>
+</div>
+
+<p>Werfen wir nachfolgend einen näheren Blick auf die drei genannten zentralen Schritte des Entrepreneurship-Prozesses.</p>
+
+<h3 id="sec-41">2.1 Geschäftsidee: Starten mit einer guten Idee</h3>
+<p>Eine <strong>Geschäftsidee</strong> ist zunächst eine erste Vorstellung davon, was du anbietest und welches Problem du damit lösen möchtest. Ideen hierfür können aus Alltagsproblemen, Berufserfahrung, Beobachtung von Trends und Technologien oder gesellschaftlichen Veränderungen entstehen. </p>
+<p>Eine Idee ist gut, wenn du sie in einem Satz erklären kannst: „Ich löse Problem X für Zielgruppe Y mit Lösung Z.“ </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Viele Ideen scheitern nicht, weil sie „schlecht“ sind, sondern weil das Problem unklar ist. Wenn du das Problem nicht sauber beschreiben kannst, ist es noch keine belastbare Idee.</p>
+  </div>
+
+</div>
+
+<div class="fom-task-block">
+
+  <div class="fom-task-header">
+    <span class="fom-task-icon">&#9998;</span>
+    <span class="fom-task-title">Aufgabe "Eigene Geschäftsidee entwickeln":</span>
+  </div>
+
+  <div class="fom-task-body task-orange-content">
+    <p>Überlege dir ein Produkt oder eine Dienstleistung, die du anbieten könntest. Deine Idee kann aus folgenden Quellen entstehen:</p>
+
+    <ul class="task-dash-list">
+      <li>Alltagsprobleme, die du selbst oder andere erleben</li>
+      <li>Erfahrungen aus deinem Beruf</li>
+      <li>Beobachtung aktueller Trends oder Technologien</li>
+      <li>Gesellschaftliche Veränderungen oder Bedürfnisse</li>
+    </ul>
+
+    <p>Schreibe anschließend in zwei Sätzen auf, welches Problem du damit löst und für welche Zielgruppe.</p>
+
+    <details class="fom-collapse">
+      <summary>
+        <span>Musterlösung</span>
+</summary>
+      <div class="fom-collapse-content">
+        <p><strong>Idee:</strong> Eine App, die lokale Nachbarschaften vernetzt, um ungenutzte Dinge wie Werkzeuge, Küchengeräte oder Sportgeräte zu teilen.</p>
+        <p><strong>Problem &amp; Zielgruppe:</strong> Viele Menschen besitzen Gegenstände, die sie selten nutzen, während andere genau diese Dinge dringend benötigen. Die Plattform richtet sich an Nachbarn und Gemeinschaften, reduziert Verschwendung und spart Kosten.</p>
+      </div>
+    </details>
+  </div>
+
+</div>
+
+<p>Auch Unternehmen sind ständig auf der Suche nach neuen Geschäftsideen. Märkte verändern sich, Kundenbedürfnisse entwickeln sich weiter und neue Technologien eröffnen Chancen – aber auch Risiken. Wer zu lange bei alten Produkten oder Dienstleistungen bleibt, verliert schnell den Anschluss. Deshalb reicht es nicht, auf „Geistesblitze“ zu warten. Unternehmen brauchen Wege, um Ideen systematisch zu erzeugen. </p>
+<p>Hierfür werden gerne Kreativitätstechniken eingesetzt. Kreativitätstechniken sind strukturierte Methoden, mit denen gezielt neue Lösungsansätze entwickelt werden. Sie schaffen einen Rahmen, der das Denken öffnet und gleichzeitig genug Ordnung bietet, damit aus vielen Einfällen verwertbare Geschäftsideen werden. Besonders wichtig ist das, weil der Arbeitsalltag oft von Routinen geprägt ist. Routinen sind zwar nützlich, aber sie führen dazu, dass wir Probleme immer auf die gleiche Weise betrachten. Kreativitätstechniken helfen, „eingespielte Denkweisen“ zu verlassen und den Zugang zu vielfältigen Ideen zu eröffnen.  </p>
+<p>Eine solche Methode ist zum Beispiel die Mindmap: Sie fördert kreatives, vernetztes Denken und hilft, Ideen sichtbar zu machen, Zusammenhänge zu erkennen und neue Lösungsansätze zu entwickeln.  </p>
+
+<div class="fom-task-block">
+
+  <div class="fom-task-header">
+    <span class="fom-task-icon">&#9998;</span>
+    <span class="fom-task-title">Aufgabe "Entwicklung kreativer Lösungen":</span>
+  </div>
+
+  <div class="fom-task-body task-orange-content">
+    <p>1. Schau dir das Lernvideo „Wie erstelle ich eine Mindmap?“ an, um diese Kreativitätstechnik besser zu verstehen.</p>
+    <p>2. Erstelle anschließend eine Mindmap, um kreative Lösungen für folgendes Problem zu finden: „Viele Menschen möchten gesünder essen, schaffen es im Alltag aber nicht.“</p>
+    <div class="fom-video-embed" style="margin:10px 0 16px 0; border:1px solid rgba(0,40,37,0.18); border-radius:10px; overflow:hidden; background:#e9ecef;">
+      <iframe
+        src="https://fom.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=716a7ab4-320f-42d4-945e-b3d1007f4c6d&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=false&amp;showbrand=false"
+        title="Lernvideo"
+        style="display:block; width:100%; aspect-ratio:16/9; border:0;"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <details class="fom-collapse">
+      <summary>
+        <span>Beispiellösung</span>
+</summary>
+      <div class="fom-collapse-content">
+        <img src="../../assets/Mindmap_Gesund%20essen%20im%20Alltag.png" alt="Mindmap: Gesund essen im Alltag" class="fom-mindmap-image" />
+      </div>
+    </details>
+  </div>
+
+</div>
+
+  <div class="fom-warning-block">
+
+  <div class="fom-warning-header">
+    <span class="fom-warning-title">Wichtig</span>
+    <span class="fom-warning-icon">&#9888;</span>
+  </div>
+
+  <div class="fom-warning-body">
+    <p><strong>Merke dir</strong>: Gute Geschäftsideen entstehen selten zufällig – sie können durch klar formulierte Probleme und systematische Ideenfindung gezielt entwickelt werden. Kreativitätstechniken helfen, auf neuartige Ideen zu kommen. </p>
+  </div>
+
+</div>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Tipp</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Wichtig ist, dass zuerst eine Ideensammlung ohne Bewertung erfolgt. Erst im Anschluss werden die besten Ansätze systematisch weiter geprüft. Diese Trennung schützt den kreativen Teil des Prozesses und verhindert, dass gute Ideen zu früh verworfen werden. </p>
+  </div>
+
+</div>
+
+<div class="fom-quiz-block">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Selbsttest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;"><fieldset class="fom-quiz-question question-single" data-feedback-correct="Kreativitätstechniken strukturieren gezielt den Prozess, neue Ideen und Lösungsansätze zu entwickeln. Sie ersetzen keine Marktanalysen, sind nicht nur für große Unternehmen geeignet und können Unsicherheiten nicht vollständig ausschließen, sondern helfen vielmehr, diese durch systematisches Denken zu erkennen und zu bearbeiten." data-feedback-wrong="Kreativitätstechniken strukturieren gezielt den Prozess, neue Ideen und Lösungsansätze zu entwickeln. Sie ersetzen keine Marktanalysen, sind nicht nur für große Unternehmen geeignet und können Unsicherheiten nicht vollständig ausschließen, sondern helfen vielmehr, diese durch systematisches Denken zu erkennen und zu bearbeiten.">
+        <legend>Quizfrage 6: Welche Aussage zu Kreativitätstechniken ist korrekt? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q7" data-correct="false"> a) Sie ersetzen Marktanalysen.</label>
+        <label><input type="radio" name="quiz-q7" data-correct="true"> b) Sie strukturieren gezielt die Entwicklung neuer Lösungsansätze.</label>
+        <label><input type="radio" name="quiz-q7" data-correct="false"> c) Sie sind nur für große Unternehmen geeignet.</label>
+        <label><input type="radio" name="quiz-q7" data-correct="false"> d) Sie vermeiden jede Form von Unsicherheit.</label>
+      </fieldset>
+
+      <button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+    <div class="fom-quiz-notebooklm">
+      <span class="fom-quiz-notebooklm-copy">Weitere Quizfragen kannst du dir in NotebookLM von Google generieren:</span>
+      <a class="notebooklm-cta fom-quiz-notebooklm-btn" href="https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1" target="_blank" rel="noopener noreferrer">zu Google NotebookLM</a>
+    </div>
+  </div>
+</div>
+
+
+<h3 id="sec-42">2.2 Geschäftsmöglichkeit (Opportunity): Chancen erkennen und bewerten</h3>
+<p>Hat man verschiedene Ideen identifiziert, folgt als nächster Schritt die <strong>Bewertung der Geschäftsideen</strong>. Nicht jede Idee ist auch eine <strong>Geschäftsmöglichkeit (Opportunity)</strong>. Vielmehr ist zu prüfen, ob es einen ausreichenden Markt für das Produkt oder die Dienstleistung gibt. In der Praxis testen Gründer das oft durch Gespräche mit potenziellen Kunden, durch erste Prototypen oder kleine Verkaufsexperimente – maßgeblich ist dabei die Rückmeldung der tatsächlichen Zielgruppe. </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>„Meine Freunde finden die Idee super“ reicht für die Markteinschätzung nicht aus. Entscheidend ist das Feedback echter Zielkunden.</p>
+  </div>
+
+</div>
+
+<div class="fom-example-block">
+
+  <div class="fom-example-header">
+    <span class="fom-example-title">Praxisbeispiel</span>
+    <span class="fom-example-icon">&#9881;</span>
+  </div>
+
+  <div class="fom-example-body">
+      <p>Nehmen wir an, du hast folgende Idee: „Ich stricke Socken, die im Dunkeln leuchten.“</p>
+      <p>Um herauszufinden, ob diese Idee tatsächlich eine Geschäftsmöglichkeit (Opportunity) darstellt, solltest du … </p>
+
+      <ul class="task-dash-list">
+      <li>prüfen, ob es Menschen gibt, die diese Socken tatsächlich benötigen. Mögliche Zielgruppen könnten Jogger oder Spaziergänger sein, die abends unterwegs sind und ihre Sichtbarkeit verbessern möchten. </li>
+      <li>untersuchen, wie viel diese Personen bereit wären, für die Socken zu zahlen. </li>
+      <li>überprüfen, ob es Alternativen wie reflektierende Kleidung, Stirnlampen oder LED-Armbänder gibt. </li>
+    </ul>
+
+    <p>Wenn sich zeigt, dass es einen <strong>realen Bedarf</strong>, eine klare <strong>Zielgruppe</strong> und ausreichende <strong>Zahlungsbereitschaft</strong> gibt und die Idee sich von bestehenden Lösungen abhebt, dann kann aus deiner ursprünglichen Idee eine <strong>echte Opportunity</strong> werden. </p>
+
+    </p>
+  </div>
+
+</div>
+
+<div class="fom-warning-block">
+
+  <div class="fom-warning-header">
+    <span class="fom-warning-title">Wichtig</span>
+    <span class="fom-warning-icon">&#9888;</span>
+  </div>
+
+  <div class="fom-warning-body">
+    <p>Erst wenn eine Idee ein echtes Kundenproblem löst und es einen Markt gibt, der bereit ist, dafür zu zahlen, sprechen wir von einer <strong>Geschäftsmöglichkeit</strong> (Opportunity).</p>
+  </div>
+
+</div>
+
+<p>Ein bewährtes Mittel zur übersichtlichen Darstellung einer Geschäftsmöglichkeit ist es, für jede ernsthaft in Betracht gezogene Idee einen kompakten Steckbrief oder einen One-Pager zu erstellen. Darin halten Sie die Kernpunkte des Geschäftskonzepts fest: z. B. Zielgruppe, Kundenproblem, Lösungsansatz, besondere Voraussetzungen und später auch das Geschäftsmodell (Einnahmequelle). Anschließend werden Bewertungskriterien festgelegt, um die Ideen gegeneinander abzuwägen. Es empfiehlt sich, einen Kriterienkatalog zu erstellen und die Kriterien nach Wichtigkeit zu gewichten. Im Folgenden sehen Sie Beispiele für typische Kriterien bzw. Aspekte, die in die Bewertung einfließen. </p>
+
+<p class="fom-chapter-note">Klicke auf die Karten, um Fragen zur Bewertung einer Geschäftsidee zu sehen.</p>
+
+<div class="card-grid card-grid--chapter-22">
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M16 16l4 4"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Markt und Wettbewerb</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Markt und Wettbewerb</span>
+      <span>Wie groß ist das Marktvolumen? Wächst der Markt und wie stark ist die Wettbewerbssituation?</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="9" cy="9" r="2.5"></circle>
+          <circle cx="16.5" cy="8" r="2"></circle>
+          <path d="M4.8 19v-1.2a3.8 3.8 0 0 1 3.8-3.8h1.2a3.8 3.8 0 0 1 3.8 3.8V19"></path>
+          <path d="M14.8 19v-1a3.1 3.1 0 0 1 3.1-3.1h.2a3.1 3.1 0 0 1 3.1 3.1V19"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Kunden und Bedarf</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Kunden und Bedarf</span>
+      <span>Wie dringend ist das Kundenproblem? Gibt es bereits Alternativlösungen? Wie hoch ist die Zahlungsbereitschaft?</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <rect x="3.5" y="6" width="17" height="11.5" rx="2"></rect>
+          <path d="M8.5 20h7"></path>
+          <path d="M12 9.2v5.6"></path>
+          <path d="M9.2 12h5.6"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Produkt/<br />Technologie</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Produkt/Technologie</span>
+      <span>Ist die technische Machbarkeit gegeben? Verfügt das Team über das nötige Know-how? Wie innovativ ist die Lösung?</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M4 18l5.5-5.5 3.5 3.5L20 9"></path>
+          <path d="M14 9h6v6"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Strategischer Fit</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Strategischer Fit</span>
+      <span>Passt die Idee zur Vision des Gründerteams? Ermöglicht sie langfristig weitere Geschäftschancen oder Synergien?</span>
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <span class="flip-card-visual" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M5 19h14"></path>
+          <path d="M7.5 15.5V10"></path>
+          <path d="M12 15.5V7"></path>
+          <path d="M16.5 15.5V12"></path>
+        </svg>
+      </span>
+      <span class="flip-card-label">Wirtschaft-<br>lichkeit</span>
+    </div>
+    <div class="flip-card-back">
+      <span class="flip-card-back-title">Wirtschaftlichkeit</span>
+      <span>Welche Umsätze sind potenziell erzielbar? Wie hoch wären die Kosten (Entwicklung, Herstellung, Vertrieb)? Erzeugt die Idee ausreichenden Gewinn?</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<p>Eine bewährte Methode, um die <strong>Wirtschaftlichkeit</strong> systematisch zu prüfen, ist die <strong>Break-even-Analyse</strong>. Dabei wird berechnet, ab welchem Umsatz die Einnahmen die Kosten decken – also der Punkt erreicht ist, an dem die Idee beginnt, profitabel zu werden. Die Break-even-Analyse liefert so eine konkrete Orientierung, ob die Geschäftsidee finanziell tragfähig ist und wie realistisch die Gewinnerwartungen ausfallen. </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Tipp</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Du kennst die Break-even-Analyse noch nicht oder fühlst dich bei der Anwendung unsicher? Dann schau dir das Lernvideo „Break-even-Analyse“ an. Dort werden die zentralen Begriffe (Fixkosten, variable Kosten, Deckungsbeitrag) sowie die Berechnung des Break-even-Punkts Schritt für Schritt erklärt. </p>
+    <div class="fom-video-embed" style="margin:10px 0 16px 0; border:1px solid rgba(0,40,37,0.18); border-radius:10px; overflow:hidden; background:#e9ecef;">
+      <iframe
+        src="https://fom.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=e7fe2064-11d8-4af4-88ea-b35300789a86&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=false&amp;showbrand=false"
+        title="Lernvideo Break-even-Analyse"
+        style="display:block; width:100%; aspect-ratio:16/9; border:0;"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p>Ein solides Verständnis dieser Methode hilft dir, die Wirtschaftlichkeit deiner Geschäftsidee realistisch einzuschätzen und fundierte Entscheidungen zu treffen. </p>
+  </div>
+
+</div>
+
+<p>Natürlich sind solche Analysen in der frühen Phase mit großer Unsicherheit behaftet. Annahmen über Absatz, Preise oder Kosten sind vorläufig und dienen eher dazu, eine erste Einschätzung vorzunehmen. Dennoch verhindert eine systematische Ideenbewertung, dass man sich in eine wenig aussichtsreiche Idee verrennt. Du verbesserst damit die Chancen, dass die schließlich ausgewählte Geschäftsidee sowohl aus Kunden- als auch aus Geschäftssicht erfolgversprechend ist.  </p>
+<p>Sobald eine vielversprechende Idee identifiziert ist, kann in einem nächsten Schritt geklärt werden, <strong>wie</strong> das Ganze umgesetzt werden kann. </p>
+
+<div class="fom-quiz-block">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Selbsttest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;"><fieldset class="fom-quiz-question question-single" data-feedback-correct="Eine Idee wird erst dann zur Geschäftsmöglichkeit (Opportunity), wenn es einen realen Markt gibt, der bereit ist, dafür zu bezahlen. Das reine Gefallen von Freunden, eine innovative Idee oder technische Komplexität allein reichen nicht aus, entscheidend ist die tatsächliche Nachfrage und Zahlungsbereitschaft der Zielgruppe." data-feedback-wrong="Eine Idee wird erst dann zur Geschäftsmöglichkeit (Opportunity), wenn es einen realen Markt gibt, der bereit ist, dafür zu bezahlen. Das reine Gefallen von Freunden, eine innovative Idee oder technische Komplexität allein reichen nicht aus, entscheidend ist die tatsächliche Nachfrage und Zahlungsbereitschaft der Zielgruppe.">
+        <legend>Quizfrage 7: Wann wird eine Idee zur Geschäftsmöglichkeit (Opportunity)? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q8" data-correct="false"> a) Wenn Freunde sie gut finden.</label>
+        <label><input type="radio" name="quiz-q8" data-correct="false"> b) Wenn sie innovativ klingt.</label>
+        <label><input type="radio" name="quiz-q8" data-correct="true"> c) Wenn ein realer Markt mit Zahlungsbereitschaft vorhanden ist.</label>
+        <label><input type="radio" name="quiz-q8" data-correct="false"> d) Wenn sie technisch komplex ist.</label>
+      </fieldset>
+
+      <button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+    <div class="fom-quiz-notebooklm">
+      <span class="fom-quiz-notebooklm-copy">Weitere Quizfragen kannst du dir in NotebookLM von Google generieren:</span>
+      <a class="notebooklm-cta fom-quiz-notebooklm-btn" href="https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1" target="_blank" rel="noopener noreferrer">zu Google NotebookLM</a>
+    </div>
+  </div>
+</div>
+
+<h3 id="sec-43">2.3 Geschäftsmodell: Von der Idee zum tragfähigen Plan</h3>
+<p>Nachdem du eine Geschäftsidee geprüft und als Geschäftsmöglichkeit (Opportunity) bestätigt hast, folgt der nächste Schritt: Du musst festlegen, <strong>wie</strong> aus dieser Chance ein dauerhaft tragfähiges Unternehmen wird. Dies zeigt das <strong>Geschäftsmodell</strong>.  </p>
+<p>Ein Geschäftsmodell beschreibt den grundlegenden Plan, wie ein Unternehmen ein Angebot für Kunden gestaltet und damit Einnahmen erzielt. Es ist also der „Bauplan“ deines Vorhabens. Damit dein Geschäftsmodell klar wird, kannst du es mit vier Leitfragen strukturieren: </p>
+<p class="fom-chapter-note">Verwende die Pfeile auf der rechten und linken Seite, um zwischen den Karten zu wechseln und mehr zu erfahren.</p>
+<!-- 1) HTML: Karussell einfügen -->
+<section class="fom-process-carousel" aria-label="Vier Leitfragen" data-carousel-index="0">
+  <button class="fom-process-carousel-btn" type="button" data-direction="prev" aria-label="Vorherige Karte">
+    <span aria-hidden="true">&#8249;</span>
+  </button>
+
+  <div class="fom-process-carousel-stage">
+    <article class="fom-process-slide is-active" aria-hidden="false">
+      <h3 class="fom-process-slide-title">1. Leitfrage zu Zielkunden:</h3>
+      <p class="fom-process-slide-text">
+        <strong>Wer genau soll dein Angebot nutzen oder kaufen?</strong> Eine Zielgruppe ist eine klar abgegrenzte Gruppe von Personen oder Unternehmen mit ähnlichen Bedürfnissen.
+      </p>
+    </article>
+
+    <article class="fom-process-slide" aria-hidden="true">
+      <h3 class="fom-process-slide-title">2. Leitfrage zu Nutzenversprechen:</h3>
+      <p class="fom-process-slide-text">
+        <strong>Welchen konkreten Nutzen bietest du diesen Zielkunden?</strong> Das Nutzenversprechen ist der zentrale Vorteil, den Kunden durch dein Angebot erhalten.
+      </p>
+    </article>
+
+    <article class="fom-process-slide" aria-hidden="true">
+      <h3 class="fom-process-slide-title">3. Leitfrage zum Erreichen der Kunden:</h3>
+      <p class="fom-process-slide-text">
+        <strong>Über welche Kanäle kommst du mit deinen Zielkunden in Kontakt und lieferst deine Leistung?</strong> Beispiele dafür sind Online-Shops, Beratung und Plattformen. 
+      </p>
+    </article>
+
+    <article class="fom-process-slide" aria-hidden="true">
+      <h3 class="fom-process-slide-title">4. Leitfrage zu Erträgen und Kosten:</h3>
+      <p class="fom-process-slide-text">
+        <strong>Wodurch verdienst du Geld, und welche wesentlichen Kosten entstehen dabei?</strong> Relevant sind mögliche Einnahmequellen und notwendige Ausgaben.
+      </p>
+    </article>
+  </div>
+
+  <button class="fom-process-carousel-btn" type="button" data-direction="next" aria-label="Nächste Karte">
+    <span aria-hidden="true">&#8250;</span>
+  </button>
+</section>
+
+<p>Wenn du diese vier Leitfragen beantwortet hast, liegt der Kern deines Geschäftsmodells strukturiert vor. Du siehst dann auf einen Blick, für wen du Wert schaffst, welchen Wert du bietest, wie du ihn zum Kunden bringst und wodurch dein Unternehmen wirtschaftlich trägt. Genau diese Klarheit brauchst du, bevor du in die detaillierte Planung einsteigst. </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Viele Gründungsideen scheitern nicht an der Lösung, sondern daran, dass unklar bleibt, wie die Geschäftsidee bzw. Geschäftsmöglichkeit zielführend umgesetzt werden kann.</p>
+  </div>
+
+</div>
+
+<p>Ein ausführliches Planungs- und Entscheidungsdokument, in dem das Geschäftsmodell systematisch erklärt, begründet und mit Zahlen untermauert wird, ist der sog. Businessplan. Er zeigt, ob dein Geschäftsmodell am Markt funktioniert und wirtschaftlich tragfähig ist. </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Was genau ein Businessplan ist und welche wesentlichen Elemente er enthält, wirst du in den Studienbriefen 03 bis 08 ausführlich kennenlernen.</p>
+  </div>
+
+</div>
+
+<p>Wenn das Geschäftsmodell steht, kann die Geschäftsidee im Markt eingeführt werden. Im Verlauf der Entwicklung des Produktes im Markt muss das Geschäftsmodell dann ggf. nachjustiert und an sich ändernden Marktbedingungen angepasst werden. </p>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Hinweis</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>Wie sich ein Produkt im Laufe der Zeit am Markt entwickelt und welche Maßnahmen Unternehmen in den jeweiligen Phasen ergreifen können, erfährst du ausführlich in den Studienbriefen 02 bis 10 zum Produktlebenszyklus.</p>
+  </div>
+
+</div>
+
+<p>Schauen wir uns den Entrepreneurship-Prozess noch einmal anhand eines konkreten Beispiels an. Dabei nutzen wir auch Künstliche Intelligenz (KI), denn ein moderner Entrepreneur kann technologische Möglichkeiten nicht nur als Produkt, sondern auch im Entstehungsprozess nutzen. Generative KI (wie ChatGPT o.ä.) kann helfen, Zusammenhänge zu verstehen und neue Perspektiven einzunehmen. </p>
+
+<div class="fom-task-block">
+
+  <div class="fom-task-header">
+    <span class="fom-task-icon">&#9998;</span>
+    <span class="fom-task-title">Aufgabe (KI-gestützt): Künstliche Intelligenz als Werkzeug für den Entrepreneur</span>
+  </div>
+
+  <div class="fom-task-body task-orange-content">
+    <p>Stell dir vor, du möchtest einen <strong>klassischen Hausmeisterservice</strong> gründen (Szenario „Existenzgründer“). Nutze eine KI (z. B. ChatGPT, Microsoft Copilot oder ähnlich), um dieses Geschäftsmodell in ein <strong>skalierbares</strong> Start-up (Szenario „Entrepreneur“) zu verwandeln – also in ein Geschäftsmodell, das bei wachsender Nachfrage auf viele Kundinnen und Kunden ausgeweitet werden kann, ohne dass Aufwand und Kosten im gleichen Verhältnis steigen. </p>
+    <p>Gehe dabei in drei Schritten vor: </p>
+    <strong>1. Der Prompt (Eingabe): </strong>
+    <p>Kopiere folgenden Befehl in die KI oder formuliere ihn ähnlich: <em>„Du bist ein erfahrener Innovations-Berater und Experte für digitale Geschäftsmodelle. Ich plane einen klassischen Hausmeisterservice (Rasenmähen, Reinigung, kleine Reparaturen), möchte jedoch innovative Ideen einbringen. Entwickle 3 innovative Ideen, wie ich dieses traditionelle Modell durch Digitalisierung oder Plattform-Ökonomie völlig neu denken kann. Ich suche nicht nach kleinen Verbesserungen, sondern nach wirklichen Veränderungen, um ein zukünftiges Wachstum zu ermöglichen.“</em>  Passe den Prompt bei Bedarf an.  </p>
+    <strong>2. Die Analyse:</strong>
+    <p>Lies die Vorschläge der KI. Wähle den besten Vorschlag aus. </p>
+    <strong>3. Die Kritik (Human-in-the-Loop):</strong>
+    <p>Überprüfe den Vorschlag kritisch anhand deines Menschenverstands:</p>
+
+    <ul class="task-dash-list">
+      <li>Ist die Idee technisch heute schon machbar? </li>
+      <li>Würden Kunden dafür wirklich bezahlen oder ist es nur eine technische Spielerei? </li>
+      <li>Welche neuen Risiken entstehen dadurch? </li>
+    </ul>
+
+    <p>Notiere den gewählten Vorschlag und deine Kritik dazu in wenigen Stichpunkten. </p>
+
+    <details class="fom-collapse">
+      <summary>
+        <span>Beispiellösung (Beispielhaftes verkürztes Ergebnis einer KI-Interaktion):</span>
+</summary>
+      <div class="fom-collapse-content">
+        <ul class="task-square-list">
+          <li><strong>KI-Vorschlag:</strong> „Uber für Facility Management“ – Eine App, bei der Hausbesitzer Fotos von Problemen (z. B. kaputter Zaun) hochladen. Ein Algorithmus erkennt das Problem, kalkuliert den Preis und vermittelt den Auftrag automatisch an freiberufliche Handwerker in der Nähe. Das Unternehmen besitzt keine eigenen Geräte, sondern betreibt nur die Plattform.</li>
+        </ul>
+        <p><strong>Kritische Reflexion:</strong></p>
+        <ul class="task-square-list">
+          <li><strong>Vorteil:</strong> Extrem skalierbar, geringe Start-Kosten (Entrepreneurship-Ansatz)</li>
+          <li><strong>Nachteil/Risiko:</strong> Qualitätssicherung der Handwerker ist schwer, rechtliche Bedenken; Vertrauen der Kunden in fremde Handwerker ggf. nicht gegeben.</li>
+        </ul>
+        <p><strong>Fazit:</strong> Die KI liefert eine gute Basis für ein Business-Modell, aber die Einschätzung der Machbarkeit und Umsetzung erfordern menschliche Expertise.</p>
+      </div>
+    </details>
+
+
+  </div>
+
+</div>
+
+<div class="fom-info-block">
+
+  <div class="fom-info-header">
+    <span class="fom-info-title">Tipps zur KI-Nutzung</span>
+    <span class="fom-info-icon">&#8505;</span>
+  </div>
+
+  <div class="fom-info-body">
+    <p>1. Betrachte die KI nicht als Orakel, das dir „die richtige Antwort“ gibt, sondern als unermüdlichen Brainstorming-Partner. Die Qualität der Antwort hängt maßgeblich von der Qualität deiner Eingabe (dem sogenannten „Prompt“) ab. </p>
+    <p>2. Gib der KI immer eine <strong>Rolle</strong>, einen <strong>Kontext</strong> und eine klare <strong>Aufgabe</strong>. </p>
+    <p>3. Beachte, dass Künstliche Intelligenz das kritische Denken nicht ersetzen kann. Überprüfe die KI-Ergebnisse mit realen Daten, Interviews oder Marktanalysen. </p>
+  </div>
+
+</div>
+
+<p>Fassen wir die wichtigsten Punkte der letzten Abschnitte noch einmal kompakt zusammen (vgl. Abbildung 1): In der Regel gibt es im Markt viele Ideen – ein breiter Ideenpool. Nicht alle Ideen erweisen sich jedoch als echte Geschäftsmöglichkeiten (Opportunities). Und nicht jede Geschäftsmöglichkeit führt zum Erfolg, denn nur ein stimmiges, tragfähiges Geschäftsmodell kann sich am Markt durchsetzen. In der Abbildung werden die Felder daher von der Geschäftsidee zum Erfolg hin kleiner.  </p>
+
+
+<section class="fom-pyramid-figure" aria-label="Zusammenhang von Geschäftsidee, Geschäftsmöglichkeit, Geschäftsmodell und Erfolg">
+  <div class="fom-pyramid-panel">
+    <div class="fom-pyramid">
+      <div class="fom-pyramid-stage stage-top">Erfolg</div>
+      <div class="fom-pyramid-stage stage-mid-1">Geschäftsmodell</div>
+      <div class="fom-pyramid-stage stage-mid-2">Geschäftsmöglichkeit</div>
+      <div class="fom-pyramid-stage stage-bottom">Geschäftsidee</div>
+    </div>
+    <div class="fom-growth-arrow" aria-hidden="true"></div>
+  </div>
+  <p class="fom-figure-caption">Abbildung 1: Geschäftsidee, Geschäftsmöglichkeit, Geschäftsmodell und Erfolg</p>
+</section>
+
+<div class="fom-quiz-block">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Selbsttest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;"><fieldset class="fom-quiz-question question-single" data-feedback-correct="Ein Geschäftsmodell beschreibt den grundlegenden Plan, wie ein Unternehmen Wert für Kunden schafft und gleichzeitig Einnahmen erzielt. Es geht nicht um Marketingpläne, Rechtsformen oder die Organisationsstruktur, sondern darum, wie Angebot, Nutzenversprechen, Kundenzugang und Ertragsquellen zusammenwirken, um das Unternehmen tragfähig zu machen." data-feedback-wrong="Ein Geschäftsmodell beschreibt den grundlegenden Plan, wie ein Unternehmen Wert für Kunden schafft und gleichzeitig Einnahmen erzielt. Es geht nicht um Marketingpläne, Rechtsformen oder die Organisationsstruktur, sondern darum, wie Angebot, Nutzenversprechen, Kundenzugang und Ertragsquellen zusammenwirken, um das Unternehmen tragfähig zu machen.">
+        <legend>Quizfrage 8: Was beschreibt ein Geschäftsmodell? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-q9" data-correct="false"> a) Den Marketingplan eines Unternehmens.</label>
+        <label><input type="radio" name="quiz-q9" data-correct="true"> b) Den grundlegenden Plan, wie Wert geschaffen und Einnahmen erzielt werden.</label>
+        <label><input type="radio" name="quiz-q9" data-correct="false"> c) Die Rechtsform eines Unternehmens.</label>
+        <label><input type="radio" name="quiz-q9" data-correct="false"> d) Die Organisationsstruktur eines Konzerns.</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-multi" data-feedback-correct="Die Leitfragen eines Geschäftsmodells fokussieren auf Kunden, Nutzen, Vertrieb und Erträge: Wer sind die Zielkunden, welchen Nutzen bieten wir, wie erreichen wir die Kunden und wie erzielen wir Einnahmen? Das Design von Logos gehört nicht zu den zentralen Geschäftsmodell-Fragen." data-feedback-wrong="Die Leitfragen eines Geschäftsmodells fokussieren auf Kunden, Nutzen, Vertrieb und Erträge: Wer sind die Zielkunden, welchen Nutzen bieten wir, wie erreichen wir die Kunden und wie erzielen wir Einnahmen? Das Design von Logos gehört nicht zu den zentralen Geschäftsmodell-Fragen.">
+        <legend>Quizfrage 9: Welche Fragen gehören zu den Leitfragen eines Geschäftsmodells? (Multiple Choice)</legend>
+        <label><input type="checkbox" data-correct="true"> a) Wer sind die Zielkunden?</label>
+        <label><input type="checkbox" data-correct="true"> b) Welchen Nutzen bieten wir?</label>
+        <label><input type="checkbox" data-correct="true"> c) Wie erreichen wir die Kunden?</label>
+        <label><input type="checkbox" data-correct="true"> d) Wodurch erzielen wir Erträge?</label>
+        <label><input type="checkbox" data-correct="false"> e) Wie sieht das Unternehmenslogo aus?</label>
+      </fieldset>
+
+      <button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+    <div class="fom-quiz-notebooklm">
+      <span class="fom-quiz-notebooklm-copy">Weitere Quizfragen kannst du dir in NotebookLM von Google generieren:</span>
+      <a class="notebooklm-cta fom-quiz-notebooklm-btn" href="https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1" target="_blank" rel="noopener noreferrer">zu Google NotebookLM</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="fom-chapter-complete-wrap">
+  <div class="fom-chapter-complete" aria-label="Kapitel 2 abgeschlossen">
+    <div class="fom-chapter-complete-card">
+      <div class="fom-chapter-complete-copy">
+        <span class="fom-chapter-complete-eyebrow">Fortschritt</span>
+        <span class="fom-chapter-complete-text">Kapitel 2 abgeschlossen</span>
+      </div>
+      <label class="fom-chapter-complete-label" aria-label="Kapitel 2 abgeschlossen">
+        <input type="checkbox" class="fom-chapter-complete-checkbox" data-progress-unit="01" data-progress-id="kap2" />
+        <span class="fom-chapter-complete-ui" aria-hidden="true"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<h2 id="sec-abschluss" style="margin-top: 10px;">Zusammenfassung</h2>
+
+
+<p>Diese Lerneinheit vermittelt die Grundlagen des Entrepreneurship: Entrepreneure erkennen Chancen, entwickeln innovative Lösungen und setzen diese unter Unsicherheit und Eigenverantwortung um. Erfolgreiche Entrepreneure zeichnen sich durch Merkmale wie Chancenorientierung, Innovationsfähigkeit, Risikobereitschaft, Resilienz und Kundenfokus aus. Dabei unterscheiden sie sich von klassischen Unternehmern, Existenzgründern oder Intrapreneuren durch ihre Innovations- und Veränderungsorientierung. </p>
+<p>Der Weg von der Idee zum Markterfolg umfasst drei zentrale Schritte: die Geschäftsidee, die Prüfung zur Geschäftsmöglichkeit (Opportunity) und das daraus abgeleitete Geschäftsmodell. Kreativitätstechniken wie Mindmaps unterstützen die Ideenfindung, während Tools wie die Break-even-Analyse helfen, Wirtschaftlichkeit und Tragfähigkeit zu prüfen. Ergänzend kann Künstliche Intelligenz als Werkzeug eingesetzt werden, ersetzt aber nicht die kritische Bewertung durch den Menschen. Die Lerneinheit zeigt so, wie aus einer Idee systematisch eine realistische, marktfähige Geschäftschance wird.  </p>
+<h2 id="sec-abschlusstest">Abschlusstest</h2>
+<div class="fom-quiz-block" data-quiz-type="final">
+  <div class="fom-quiz-header">
+    <span class="fom-quiz-title">Abschlusstest</span>
+    <span class="fom-quiz-icon">?</span>
+  </div>
+
+  <div class="fom-quiz-body">
+    <form class="fom-quiz-form" onsubmit="return false;">      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Ein Entrepreneur handelt nicht einfach, indem er ein Unternehmen anmeldet oder als Angestellter arbeitet, und er imitiert auch keine bestehenden Geschäftsmodelle. Entscheidend ist, dass er Chancen erkennt, Neues in den Markt bringt und dafür Verantwortung sowie Risiko übernimmt." data-feedback-wrong="Ein Entrepreneur handelt nicht einfach, indem er ein Unternehmen anmeldet oder als Angestellter arbeitet, und er imitiert auch keine bestehenden Geschäftsmodelle. Entscheidend ist, dass er Chancen erkennt, Neues in den Markt bringt und dafür Verantwortung sowie Risiko übernimmt.">
+        <legend>1. Was versteht man unter einem Entrepreneur? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q1" data-correct="false"> a) Eine Person, die ein Unternehmen im Handelsregister anmeldet.</label>
+        <label><input type="radio" name="quiz-final-q1" data-correct="true"> b) Eine Person, die Chancen erkennt, Neues in den Markt bringt und dafür Risiko sowie Verantwortung übernimmt.</label>
+        <label><input type="radio" name="quiz-final-q1" data-correct="false"> c) Eine angestellte Führungskraft in einem Großunternehmen.</label>
+        <label><input type="radio" name="quiz-final-q1" data-correct="false"> d) Eine Person, die ausschließlich bestehende Geschäftsmodelle imitiert.</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-multi" data-feedback-correct="Erfolgreiche Entrepreneure zeichnen sich dadurch aus, dass sie Chancen erkennen und nutzen (Chancenorientierung), auch bei Rückschlägen dranbleiben (Resilienz) und innovative Lösungen entwickeln (Innovationsfähigkeit). Risikovermeidung gehört dagegen nicht zu ihren typischen Merkmalen, da Entrepreneure kalkulierte Risiken eingehen, um neue Geschäftsmöglichkeiten zu realisieren." data-feedback-wrong="Erfolgreiche Entrepreneure zeichnen sich dadurch aus, dass sie Chancen erkennen und nutzen (Chancenorientierung), auch bei Rückschlägen dranbleiben (Resilienz) und innovative Lösungen entwickeln (Innovationsfähigkeit). Risikovermeidung gehört dagegen nicht zu ihren typischen Merkmalen, da Entrepreneure kalkulierte Risiken eingehen, um neue Geschäftsmöglichkeiten zu realisieren.">
+        <legend>2. Welche Merkmale zählen typischerweise zu erfolgreichen Entrepreneuren? (Multiple Choice)</legend>
+        <label><input type="checkbox" data-correct="true"> a) Chancenorientierung</label>
+        <label><input type="checkbox" data-correct="false"> b) Risikovermeidung</label>
+        <label><input type="checkbox" data-correct="true"> c) Resilienz</label>
+        <label><input type="checkbox" data-correct="true"> d) Innovationsfähigkeit</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Ein „Unternehmer im Unternehmen“ ist ein Intrapreneur. Anders als ein Entrepreneur oder Existenzgründer handelt ein Intrapreneur innerhalb eines bestehenden Unternehmens, treibt Innovationen voran und übernimmt unternehmerisches Denken, ohne Eigentümer zu sein." data-feedback-wrong="Ein „Unternehmer im Unternehmen“ ist ein Intrapreneur. Anders als ein Entrepreneur oder Existenzgründer handelt ein Intrapreneur innerhalb eines bestehenden Unternehmens, treibt Innovationen voran und übernimmt unternehmerisches Denken, ohne Eigentümer zu sein.">
+        <legend>3. Welcher Begriff beschreibt einen „Unternehmer im Unternehmen“? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q3" data-correct="false"> a) Entrepreneur</label>
+        <label><input type="radio" name="quiz-final-q3" data-correct="false"> b) Existenzgründer</label>
+        <label><input type="radio" name="quiz-final-q3" data-correct="true"> c) Intrapreneur</label>
+        <label><input type="radio" name="quiz-final-q3" data-correct="false"> d) Selbstständiger</label>
+      </fieldset>
+<fieldset class="fom-quiz-question question-single" data-feedback-correct="Aus einer Geschäftsidee wird erst dann eine Geschäftsmöglichkeit (Opportunity), wenn ein realer Markt existiert, eine klare Zielgruppe vorhanden ist und diese auch bereit ist, für die Lösung zu bezahlen. Eine gute Diskussion im Team, Kreativität oder eine Patentanmeldung allein reichen dafür nicht aus. Entscheidend ist, dass tatsächliche Nachfrage und Zahlungsbereitschaft am Markt bestehen." data-feedback-wrong="Aus einer Geschäftsidee wird erst dann eine Geschäftsmöglichkeit (Opportunity), wenn ein realer Markt existiert, eine klare Zielgruppe vorhanden ist und diese auch bereit ist, für die Lösung zu bezahlen. Eine gute Diskussion im Team, Kreativität oder eine Patentanmeldung allein reichen dafür nicht aus. Entscheidend ist, dass tatsächliche Nachfrage und Zahlungsbereitschaft am Markt bestehen.">
+        <legend>4. Wann wird aus einer Geschäftsidee eine Geschäftsmöglichkeit (Opportunity)? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q4" data-correct="false"> a) Wenn die Idee im Team gut diskutiert wurde</label>
+        <label><input type="radio" name="quiz-final-q4" data-correct="true"> b) Wenn es einen realen Markt, eine Zielgruppe und ausreichende Zahlungsbereitschaft gibt</label>
+        <label><input type="radio" name="quiz-final-q4" data-correct="false"> c) Wenn die Idee kreativ ist</label>
+        <label><input type="radio" name="quiz-final-q4" data-correct="false"> d) Sobald sie als Patent angemeldet wird</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-multi quiz-question-deeper" data-feedback-correct="Zu den typischen Bewertungskriterien von Geschäftsideen gehören Marktvolumen und Wettbewerb, technische Machbarkeit und Know-how sowie Wirtschaftlichkeit und strategischer Fit. Persönliche Vorlieben wie die Lieblingsfarbe des Gründers spielen bei der professionellen Bewertung keine Rolle." data-feedback-wrong="Zu den typischen Bewertungskriterien von Geschäftsideen gehören Marktvolumen und Wettbewerb, technische Machbarkeit und Know-how sowie Wirtschaftlichkeit und strategischer Fit. Persönliche Vorlieben wie die Lieblingsfarbe des Gründers spielen bei der professionellen Bewertung keine Rolle.">
+        <legend>5. Welche der folgenden Aspekte gehören typischerweise zu den Bewertungskriterien von Geschäftsideen? (Multiple Choice)</legend>
+        <label><input type="checkbox" data-correct="true"> a) Marktvolumen und Wettbewerb</label>
+        <label><input type="checkbox" data-correct="false"> b) Persönliche Lieblingsfarbe des Gründers</label>
+        <label><input type="checkbox" data-correct="true"> c) Technische Machbarkeit und Know-how</label>
+        <label><input type="checkbox" data-correct="true"> d) Wirtschaftlichkeit und strategischer Fit</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Die Break-even-Analyse zeigt, ab welchem Umsatz die Einnahmen die Kosten decken. Sie hilft damit einzuschätzen, ab wann eine Geschäftsidee wirtschaftlich tragfähig wird. Sie dient weder der Auswahl von Marketingkanälen noch der Prüfung rechtlicher Anforderungen oder der Entwicklung eines Produktdesigns." data-feedback-wrong="Die Break-even-Analyse zeigt, ab welchem Umsatz die Einnahmen die Kosten decken. Sie hilft damit einzuschätzen, ab wann eine Geschäftsidee wirtschaftlich tragfähig wird. Sie dient weder der Auswahl von Marketingkanälen noch der Prüfung rechtlicher Anforderungen oder der Entwicklung eines Produktdesigns.">
+        <legend>6. Wozu dient die Break-even-Analyse? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q6" data-correct="false"> a) Um den optimalen Marketingkanal zu bestimmen</label>
+        <label><input type="radio" name="quiz-final-q6" data-correct="true"> b) Um zu berechnen, ab welchem Umsatz die Einnahmen die Kosten decken</label>
+        <label><input type="radio" name="quiz-final-q6" data-correct="false"> c) Um die rechtlichen Anforderungen für die Gründung zu prüfen</label>
+        <label><input type="radio" name="quiz-final-q6" data-correct="false"> d) Um ein Produktdesign zu entwickeln</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Eine Mindmap strukturiert und visualisiert kreative Ideen und hilft, Zusammenhänge zu erkennen. Sie prüft jedoch nicht die Zahlungsbereitschaft, ersetzt nicht den Businessplan und ermittelt keine Break-even-Punkte." data-feedback-wrong="Eine Mindmap strukturiert und visualisiert kreative Ideen und hilft, Zusammenhänge zu erkennen. Sie prüft jedoch nicht die Zahlungsbereitschaft, ersetzt nicht den Businessplan und ermittelt keine Break-even-Punkte.">
+        <legend>7. Welche Aufgabe erfüllt eine Mindmap bei der Ideenfindung? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q7" data-correct="false"> a) Sie prüft die Zahlungsbereitschaft der Zielgruppe</label>
+        <label><input type="radio" name="quiz-final-q7" data-correct="true"> b) Sie strukturiert und visualisiert kreative Ideen und zeigt Zusammenhänge auf</label>
+        <label><input type="radio" name="quiz-final-q7" data-correct="false"> c) Sie ersetzt den Businessplan</label>
+        <label><input type="radio" name="quiz-final-q7" data-correct="false"> d) Sie ermittelt die Break-even-Punkte</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Das zentrale Ziel eines Geschäftsmodells ist es, zu zeigen, wie ein Unternehmen Wert schafft, diesen an Kunden liefert und dabei Erträge erzielt. Es geht nicht um die Eintragung ins Handelsregister, nicht nur um Mitarbeiterführung und nicht ausschließlich um die Dokumentation von Kosten." data-feedback-wrong="Das zentrale Ziel eines Geschäftsmodells ist es, zu zeigen, wie ein Unternehmen Wert schafft, diesen an Kunden liefert und dabei Erträge erzielt. Es geht nicht um die Eintragung ins Handelsregister, nicht nur um Mitarbeiterführung und nicht ausschließlich um die Dokumentation von Kosten.">
+        <legend>8. Was ist das zentrale Ziel eines Geschäftsmodells? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q8" data-correct="false"> a) Das Unternehmen im Handelsregister einzutragen</label>
+        <label><input type="radio" name="quiz-final-q8" data-correct="true"> b) Zu zeigen, wie ein Unternehmen Wert schafft, diesen an Kunden liefert und Erträge erzielt</label>
+        <label><input type="radio" name="quiz-final-q8" data-correct="false"> c) Mitarbeiter zu motivieren</label>
+        <label><input type="radio" name="quiz-final-q8" data-correct="false"> d) Nur die Kosten für Produktion und Vertrieb zu dokumentieren</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single quiz-question-deeper" data-feedback-correct="Ein Entrepreneur ist auf Innovation und Marktveränderung ausgerichtet, während ein Existenzgründer oft bestehende Geschäftsmodelle übernimmt oder imitiert. Die anderen Aussagen sind falsch: Ein Existenzgründer ist nicht automatisch innovativ, ein Entrepreneur verwaltet nicht nur bestehende Modelle, und die Begriffe sind nicht identisch." data-feedback-wrong="Ein Entrepreneur ist auf Innovation und Marktveränderung ausgerichtet, während ein Existenzgründer oft bestehende Geschäftsmodelle übernimmt oder imitiert. Die anderen Aussagen sind falsch: Ein Existenzgründer ist nicht automatisch innovativ, ein Entrepreneur verwaltet nicht nur bestehende Modelle, und die Begriffe sind nicht identisch.">
+        <legend>9. Welche Aussage zum Unterschied zwischen Entrepreneur und Existenzgründer ist korrekt? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q9" data-correct="false"> a) Ein Existenzgründer ist immer auf Innovation ausgerichtet.</label>
+        <label><input type="radio" name="quiz-final-q9" data-correct="false"> b) Ein Entrepreneur verwaltet nur bestehende Geschäftsmodelle.</label>
+        <label><input type="radio" name="quiz-final-q9" data-correct="true"> c) Ein Entrepreneur ist auf Innovation und Marktveränderung ausgerichtet, während ein Existenzgründer häufig bestehende Modelle übernimmt.</label>
+        <label><input type="radio" name="quiz-final-q9" data-correct="false"> d) Beide Begriffe sind identisch.</label>
+      </fieldset>
+
+      <fieldset class="fom-quiz-question question-single" data-feedback-correct="Es ist sinnvoll, zuerst eine Ideensammlung ohne Bewertung vorzunehmen, damit kreative Einfälle nicht zu früh verworfen werden und die Denkfreiheit erhalten bleibt. Die übrigen Antworten sind falsch, weil es dabei weder um Zeitersparnis noch um die sofortige Prüfung durch die Zielgruppe oder die Break-even-Analyse geht." data-feedback-wrong="Es ist sinnvoll, zuerst eine Ideensammlung ohne Bewertung vorzunehmen, damit kreative Einfälle nicht zu früh verworfen werden und die Denkfreiheit erhalten bleibt. Die übrigen Antworten sind falsch, weil es dabei weder um Zeitersparnis noch um die sofortige Prüfung durch die Zielgruppe oder die Break-even-Analyse geht.">
+        <legend>10. Warum ist es sinnvoll, zuerst eine Ideensammlung ohne Bewertung vorzunehmen? (Single Choice)</legend>
+        <label><input type="radio" name="quiz-final-q10" data-correct="false"> a) Um Zeit zu sparen</label>
+        <label><input type="radio" name="quiz-final-q10" data-correct="true"> b) Um kreative Einfälle nicht zu früh zu verwerfen und die Denkfreiheit zu erhalten</label>
+        <label><input type="radio" name="quiz-final-q10" data-correct="false"> c) Um die Break-even-Analyse schneller durchführen zu können</label>
+        <label><input type="radio" name="quiz-final-q10" data-correct="false"> d) Damit die Zielgruppe die Ideen prüfen kann</label>
+      </fieldset>
+<button class="fom-quiz-submit" type="button">Ergebnis anzeigen</button>
+      <div class="fom-quiz-result" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<div class="fom-chapter-complete-wrap">
+  <div class="fom-chapter-complete" aria-label="Abschlusstest abgeschlossen">
+    <div class="fom-chapter-complete-card">
+      <div class="fom-chapter-complete-copy">
+        <span class="fom-chapter-complete-eyebrow">Fortschritt</span>
+        <span class="fom-chapter-complete-text">Abschlusstest abgeschlossen</span>
+      </div>
+      <label class="fom-chapter-complete-label" aria-label="Abschlusstest abgeschlossen">
+        <input type="checkbox" class="fom-chapter-complete-checkbox" data-progress-unit="01" data-progress-id="abschlusstest" />
+        <span class="fom-chapter-complete-ui" aria-hidden="true"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+  <section class="fom-literature-block fom-inline-toc fom-inline-toc-collapsible" aria-label="Quellenverzeichnis" data-toggle-label="Quellenverzeichnis">
+    <div class="fom-inline-toc-head">
+      <h2 id="sec-literatur" class="fom-inline-toc-title">Quellenverzeichnis</h2>
+      <button
+        type="button"
+        class="fom-inline-toc-toggle"
+        aria-label="Quellenverzeichnis einklappen"
+        aria-expanded="true"
+      >
+        <span class="fom-inline-toc-toggle-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M6 14l6-6 6 6"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div class="fom-inline-toc-content">
+      <p>Folgende Quellen wurden genutzt, um den Inhalt dieser Lerneinheit zu erstellen.</p>
+      <ul class="fom-literature-list fom-inline-toc-list">
+        <li>Blank, Steve; Dorf, Bob (2023): <em>The Startup Owner’s Manual</em>, New Jersey: Wiley 2023</li>
+        <li>Freiling, Jörg; Harima, Jan (2024): Entrepreneurship: Gründung und Skalierung von Startups, 2. Aufl., Wiesbaden: Springer Gabler, 2024, https://link.springer.com/book/10.1007/978-3-658-44080-0</li>
+        <li>Fueglistaller, Urs; Fust, Alexander; Müller, Christoph; Müller, Susan; Zellweger, Thomas (2020): Entrepreneurship: Modelle – Umsetzung – Perspektiven, 5. Aufl., Wiesbaden: Springer Gabler 2020, https://link.springer.com/book/10.1007/978-3-658-26800-8</li>
+        <li>Gassmann, Oliver; Frankenberger, Karolin; Choudury, Michaela (2020): Geschäftsmodelle entwickeln, 3. Auflage, München: Hanser, 2020</li>
+        <li>Jäger, Clemens; Heupel, Thomas (2020): Management Basics: Grundlagen der Betriebswirtschaftslehre - dargestellt im Unternehmenslebenszyklus, Wiesbaden: Springer Gabler, 2020</li>
+        <li>Klandt, Heinz (2005): Gründungsmanagement: Der Integrierte Unternehmensplan, 2. Auflage, München: De Gruyter Oldenbourg, 2005</li>
+        <li>Kollmann, Tobias (2022): <em>Digital Entrepreneurship</em>: Grundlagen der Unternehmensgründung in der Digitalen Wirtschaft, 8. überarb. u. erw. Aufl., Wiesbaden: Springer Gabler 2022</li>
+        <li>Osterwalder, Alex; Pigneur, Yves; Etiemble, Fred; Smith, Alan (2020): <em>The Invincible Company</em>, New Jersey: Wiley John + Sons, 2020</li>
+        <li>Schumpeter, Joseph A. (1997): Theorie der wirtschaftlichen Entwicklung. Eine Untersuchung über Unternehmergewinn, Kapital, Kredit, Zins und den Konjunkturzyklus, 9. Aufl. (unveränd. Nachdruck der 1934 ersch. 4. Aufl.), Berlin: Duncker &amp; Humblot, 1997</li>
+        <li>Schumpeter, J. (1934): <em>The theory of economic development</em>. Cambridge: Harvard University Press, 1934</li>
+        <li>Wöhe, Günter / Döring, Ulrich / Brösel, Gerrit (2024): Einführung in die Allgemeine Betriebswirtschaftslehre, 28. Auflage, München: Vahlen, 2024</li>
+      </ul>
+    </div>
+  </section>
+  <section aria-label="Nächster Schritt" style="margin-top: 32px; border-radius: 24px; padding: 40px 38px; background: linear-gradient(135deg, #8e44ec 0%, #7a2cff 100%); box-shadow: 0 16px 34px rgba(74, 31, 143, 0.32);">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+      <p style="margin: 0; flex: 1; color: #ffffff; font-size: clamp(1.395rem, 3.51vw, 2.34rem); font-weight: 700; line-height: 1.03; letter-spacing: -0.02em;">
+        Fertig? Dann geht's weiter!<br>
+              <span style="font-size: clamp(0.9rem, 1.98vw, 1.35rem); font-weight: 400; opacity: 0.9;">Die nächste Lerneinheit "Produkt- und Unternehmenslebenszyklen verstehen" wartet auf dich - weiterhin viel Erfolg!</span>
+      </p>
+      <a href="le02.html" aria-label="Weiter zu Lerneinheit 2" style="flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: #ffffff; color: #7a2cff; border-radius: 50%; text-decoration: none; box-shadow: none; transition: transform 0.18s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round;">
+          <path d="M9 6l6 6-6 6"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+        </div>
+      </section>
+      <aside class='notebooklm-panel' aria-label='NotebookLM'>
+        <a class='notebooklm-cta' href='https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1' target='_blank' rel='noopener noreferrer' aria-label='NotebookLM öffnen'>
+          <span class='notebooklm-row'>
+            <span class='notebooklm-icon' aria-hidden='true'>N+</span>
+            <span class='notebooklm-title'>NotebookLM</span>
+            <span class='notebooklm-ext' aria-hidden='true'>&#8599;</span>
+          </span>
+        </a>
+      </aside>
+    </main>
+  </div>
+  <div id='audioPlayerPanel' class='audio-player-panel' hidden aria-label='Audiospur'>
+    <div class='audio-panel-header'>
+      <div class='audio-panel-title-row'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M3 18v-6a9 9 0 0 1 18 0v6'></path>
+          <path d='M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z'></path>
+          <path d='M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'></path>
+        </svg>
+        <span class='audio-panel-title'>Audio-Lerneinheit 01</span>
+      </div>
+      <div class='audio-mini-row'>
+        <button type='button' class='audio-play-btn audio-mini-play' id='audioMiniPlayBtn' aria-label='Abspielen'>
+          <svg class='audio-mini-play-icon' viewBox='0 0 24 24' focusable='false' aria-hidden='true'><polygon points='6,4 20,12 6,20'></polygon></svg>
+          <svg class='audio-mini-pause-icon' viewBox='0 0 24 24' focusable='false' aria-hidden='true' style='display:none'><rect x='6' y='4' width='4' height='16' rx='1'></rect><rect x='14' y='4' width='4' height='16' rx='1'></rect></svg>
+        </button>
+        <span class='audio-time audio-mini-time' id='audioMiniTime'>0:00</span>
+      </div>
+      <button type='button' class='audio-panel-close' id='audioPanelClose' aria-label='Player schließen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M18 6 6 18M6 6l12 12'></path>
+        </svg>
+      </button>
+    </div>
+    <div class='audio-panel-body'>
+      <audio id='audioPlayerEl'>
+        <source src='../../assets/ElevenLabs_SB_Management_Basics_LE1_vertont%201.mp3' type='audio/mpeg'>
+      </audio>
+      <div class='audio-ctrl-row'>
+        <button type='button' class='audio-play-btn' id='audioPlayBtn' aria-label='Abspielen'>
+          <svg id='audioPlayIcon' viewBox='0 0 24 24' focusable='false' aria-hidden='true'><polygon points='6,4 20,12 6,20'></polygon></svg>
+          <svg id='audioPauseIcon' viewBox='0 0 24 24' focusable='false' aria-hidden='true' style='display:none'><rect x='6' y='4' width='4' height='16' rx='1'></rect><rect x='14' y='4' width='4' height='16' rx='1'></rect></svg>
+        </button>
+        <span class='audio-time' id='audioTime'>0:00 / 0:00</span>
+        <button type='button' class='audio-mute-btn' id='audioMuteBtn' aria-label='Ton an/aus'>
+          <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'><polygon points='11,5 6,9 2,9 2,15 6,15 11,19'></polygon><path d='M15.54 8.46a5 5 0 0 1 0 7.07'></path></svg>
+        </button>
+        <input type='range' class='audio-volume' id='audioVolume' min='0' max='1' value='1' step='0.05' aria-label='Lautstärke'>
+      </div>
+      <div class='audio-seek-row'>
+        <input type='range' class='audio-seek' id='audioSeek' min='0' max='100' value='0' step='0.1' aria-label='Position'>
+      </div>
+    </div>
+  </div>
+
+  <div id='pdfExportPanel' class='pdf-export-panel' hidden aria-label='PDF Export'>
+    <div class='pdf-export-panel-header'>
+      <div class='pdf-export-panel-title-row'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M6 4.8h9l3 3v11.4a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z'></path>
+          <path d='M15 4.8v3h3'></path>
+          <path d='M8.5 13h7'></path>
+          <path d='M8.5 16h4.6'></path>
+        </svg>
+        <span class='pdf-export-panel-title'>PDF Export</span>
+      </div>
+      <button type='button' class='pdf-export-panel-close' id='pdfExportPanelClose' aria-label='PDF-Dialog schließen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M18 6 6 18M6 6l12 12'></path>
+        </svg>
+      </button>
+    </div>
+    <div class='pdf-export-panel-body'>
+      <p class='pdf-export-panel-copy'>Du kannst die Inhalte dieses Moduls <strong>als PDF herunterladen</strong> und speichern – bei Bedarf auch <strong>ausdrucken</strong>.</p>
+      <button type='button' class='fom-notes-clear pdf-export-panel-action' id='pdfExportActionBtn'>PDF Export</button>
+    </div>
+  </div>
+
+  <div id='notebookLmPanel' class='pdf-export-panel notebooklm-tool-panel' hidden aria-label='NotebookLM'>
+    <div class='pdf-export-panel-header'>
+      <div class='pdf-export-panel-title-row'>
+        <img src='../../assets/google-notebooklm-logo-icon.png.svg' alt='' class='notebooklm-tool-panel-icon' aria-hidden='true' />
+        <span class='pdf-export-panel-title'>Google NotebookLM</span>
+      </div>
+      <button type='button' class='pdf-export-panel-close' id='notebookLmPanelClose' aria-label='NotebookLM-Dialog schließen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M18 6 6 18M6 6l12 12'></path>
+        </svg>
+      </button>
+    </div>
+    <div class='pdf-export-panel-body'>
+      <p class='pdf-export-panel-copy'>Im Rahmen einer <strong>Kooperation</strong> der FOM Hochschule <strong>mit Google</strong> kannst du <strong>NotebookLM</strong> nutzen, um <strong>individuelle Lernmaterialien</strong> zu erstellen – zum Beispiel <strong>Podcasts</strong>, <strong>Lernfragen</strong> oder kurze <strong>Podcasts</strong> zu den Inhalten des Moduls. So kannst du den Lernstoff <strong>strukturieren</strong> und dein Verständnis gezielt <strong>vertiefen</strong>.</p>
+      <a class='fom-notes-clear pdf-export-panel-action notebooklm-tool-action' id='notebookLmActionBtn' href='https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1' target='_blank' rel='noopener noreferrer'>zu Google NotebookLM</a>
+    </div>
+  </div>
+
+  <div id='aiAssistantPanel' class='pdf-export-panel notebooklm-tool-panel' hidden aria-label='KI-Funktion'>
+    <div class='pdf-export-panel-header'>
+      <div class='pdf-export-panel-title-row'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M4.8 19.2l7.2-7.2'></path>
+          <path d='M8.2 7.4l1.7 1.7'></path>
+          <path d='M5.4 10.2l1.7 1.7'></path>
+          <path d='M11.7 4.5l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5z'></path>
+          <path d='M16.5 10.7l.4 1.2 1.2.4-1.2.4-.4 1.2-.4-1.2-1.2-.4 1.2-.4z'></path>
+          <path d='M18.8 4.2l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6z'></path>
+        </svg>
+        <span class='pdf-export-panel-title'>KI-Funktion</span>
+      </div>
+      <button type='button' class='pdf-export-panel-close' id='aiAssistantPanelClose' aria-label='KI-Funktion-Dialog schließen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M18 6 6 18M6 6l12 12'></path>
+        </svg>
+      </button>
+    </div>
+    <div class='pdf-export-panel-body'>
+      <p class='pdf-export-panel-copy'>Mit diesem Zauberstab kannst du <strong>Texte</strong> in deiner Lerneinheit <strong>markieren</strong>. Dann kannst du dir den markierten Text <strong>einfach erklären lassen</strong>, <strong>Kernbegriffe</strong> anzeigen oder ein passendes <strong>Praxisbeispiel</strong> bekommen.</p>
+      <p class='pdf-export-panel-copy'>Du kannst die Funktion <strong>jederzeit nutzen</strong>, indem du Text markierst.</p>
+      <button type='button' class='fom-notes-clear pdf-export-panel-action' id='aiAssistantActionBtn'>KI-Funktion nutzen</button>
+    </div>
+  </div>
+
+  <script src='../../assets/app.js?v=20260324-finalquiz2'></script>
+  <script>
+    document.addEventListener('click', function (event) {
+      var inlineTocToggle = event.target.closest('.fom-inline-toc-toggle');
+      if (inlineTocToggle) {
+        var tocEl = inlineTocToggle.closest('.fom-inline-toc-collapsible');
+        if (tocEl) {
+          tocEl.classList.toggle('is-collapsed');
+          var toggle = tocEl.querySelector('.fom-inline-toc-toggle');
+          var icon = tocEl.querySelector('.fom-inline-toc-toggle-icon');
+          var collapsed = tocEl.classList.contains('is-collapsed');
+          if (toggle) {
+            var labelBase = tocEl.getAttribute('data-toggle-label') || 'Inhaltsverzeichnis';
+            toggle.setAttribute('aria-expanded', String(!collapsed));
+            toggle.setAttribute('aria-label', collapsed ? labelBase + ' ausklappen' : labelBase + ' einklappen');
+          }
+          if (icon) icon.classList.toggle('is-collapsed', collapsed);
+        }
+        return;
+      }
+
+      var flipCard = event.target.closest('.flip-card');
+      if (flipCard) {
+        flipCard.classList.toggle('flipped');
+        return;
+      }
+
+    });
+
+    (function initLe01NotesFallback() {
+      if (window.__fomTextNotesInitialized) return;
+      var root = document.querySelector('.unit-body');
+      if (!root) return;
+
+      var storageKey = 'fom.management-basics.notes.fallback::' + window.location.pathname;
+      var notes = [];
+
+      function readNotes() {
+        try {
+          var raw = localStorage.getItem(storageKey);
+          notes = raw ? JSON.parse(raw) : [];
+          if (!Array.isArray(notes)) notes = [];
+        } catch (error) {
+          notes = [];
+        }
+      }
+
+      function saveNotes() {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(notes));
+        } catch (error) {}
+      }
+
+      function pointFromOffset(offset) {
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+        var remaining = offset;
+        while (walker.nextNode()) {
+          var node = walker.currentNode;
+          var len = node.textContent.length;
+          if (remaining <= len) return { node: node, offset: remaining };
+          remaining -= len;
+        }
+        return null;
+      }
+
+      function unhighlightAll() {
+        root.querySelectorAll('.fom-note-highlight[data-fallback-note]').forEach(function (el) {
+          var parent = el.parentNode;
+          while (el.firstChild) parent.insertBefore(el.firstChild, el);
+          parent.removeChild(el);
+        });
+      }
+
+      function applyHighlights() {
+        unhighlightAll();
+        notes.slice().sort(function (a, b) { return b.start - a.start; }).forEach(function (note) {
+          var start = pointFromOffset(note.start);
+          var end = pointFromOffset(note.end);
+          if (!start || !end || note.end <= note.start) return;
+          var range = document.createRange();
+          range.setStart(start.node, start.offset);
+          range.setEnd(end.node, end.offset);
+          var mark = document.createElement('span');
+          mark.className = 'fom-note-highlight';
+          mark.setAttribute('data-fallback-note', note.id);
+          mark.setAttribute('title', note.text || 'Notiz');
+          try {
+            range.surroundContents(mark);
+          } catch (error) {
+            var frag = range.extractContents();
+            mark.appendChild(frag);
+            range.insertNode(mark);
+          }
+        });
+      }
+
+      function rangeOffsets(range) {
+        var startRange = range.cloneRange();
+        startRange.selectNodeContents(root);
+        startRange.setEnd(range.startContainer, range.startOffset);
+        var start = startRange.toString().length;
+
+        var endRange = range.cloneRange();
+        endRange.selectNodeContents(root);
+        endRange.setEnd(range.endContainer, range.endOffset);
+        var end = endRange.toString().length;
+        return { start: start, end: end };
+      }
+
+      document.addEventListener('mouseup', function () {
+        window.setTimeout(function () {
+          if (window.__fomTextNotesInitialized) return;
+          var sel = window.getSelection();
+          if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
+          var range = sel.getRangeAt(0);
+          if (!root.contains(range.commonAncestorContainer)) return;
+          var quote = range.toString().replace(/\s+/g, ' ').trim();
+          if (!quote) return;
+          var text = window.prompt('Notiz zu markiertem Text:', '');
+          if (text === null) return;
+          text = text.trim();
+          if (!text) return;
+          var offsets = rangeOffsets(range);
+          notes.push({
+            id: 'fb-' + Date.now() + '-' + Math.floor(Math.random() * 100000),
+            text: text,
+            start: offsets.start,
+            end: offsets.end
+          });
+          saveNotes();
+          applyHighlights();
+          sel.removeAllRanges();
+        }, 0);
+      });
+
+      readNotes();
+      applyHighlights();
+    })();
+
+    // Audio Player Toggle + Custom Controls + Mini-Player
+    (function () {
+      var audioBtn = document.getElementById('audioToolBtn');
+      var audioPanel = document.getElementById('audioPlayerPanel');
+      var audioClose = document.getElementById('audioPanelClose');
+      var unitAudioBtn = document.getElementById('unitAudioBtn');
+
+      if (unitAudioBtn && audioBtn) {
+        unitAudioBtn.addEventListener('click', function () {
+          audioBtn.click();
+        });
+      }
+      var audio = document.getElementById('audioPlayerEl');
+      var playBtn = document.getElementById('audioPlayBtn');
+      var playIcon = document.getElementById('audioPlayIcon');
+      var pauseIcon = document.getElementById('audioPauseIcon');
+      var timeEl = document.getElementById('audioTime');
+      var seek = document.getElementById('audioSeek');
+      var muteBtn = document.getElementById('audioMuteBtn');
+      var volumeSlider = document.getElementById('audioVolume');
+      var miniPlayBtn = document.getElementById('audioMiniPlayBtn');
+      var miniTimeEl = document.getElementById('audioMiniTime');
+      var notesPanel = document.querySelector('.fom-notes-panel');
+      var pdfPanel = document.getElementById('pdfExportPanel');
+      var pdfClose = document.getElementById('pdfExportPanelClose');
+      var pdfAction = document.getElementById('pdfExportActionBtn');
+      var notebookLmPanel = document.getElementById('notebookLmPanel');
+      var notebookLmClose = document.getElementById('notebookLmPanelClose');
+      var aiAssistantPanel = document.getElementById('aiAssistantPanel');
+      var aiAssistantClose = document.getElementById('aiAssistantPanelClose');
+      var audioHideTimer = 0;
+      var audioOpenRaf1 = 0;
+      var audioOpenRaf2 = 0;
+      var pdfHideTimer = 0;
+      var pdfOpenRaf1 = 0;
+      var pdfOpenRaf2 = 0;
+      var notebookLmHideTimer = 0;
+      var notebookLmOpenRaf1 = 0;
+      var notebookLmOpenRaf2 = 0;
+      var aiAssistantHideTimer = 0;
+      var aiAssistantOpenRaf1 = 0;
+      var aiAssistantOpenRaf2 = 0;
+
+      if (!audioBtn || !audioPanel) return;
+
+      if (audioPanel.hasAttribute('hidden')) {
+        audioPanel.classList.add('is-collapsed');
+        audioPanel.setAttribute('aria-hidden', 'true');
+      }
+      function getPdfToolBtn() {
+        return document.querySelector('.right-tool-btn[data-tool-id="pdf-export"]');
+      }
+      function getNotebookLmToolBtn() {
+        return document.querySelector('.right-tool-btn[data-tool-id="notebooklm"]');
+      }
+      function getAiAssistantToolBtn() {
+        return document.querySelector('.right-tool-btn[data-tool-id="ai-assistant"]');
+      }
+      var pdfBtn = getPdfToolBtn();
+      if (pdfBtn) pdfBtn.setAttribute('aria-pressed', 'false');
+      if (pdfPanel && pdfPanel.hasAttribute('hidden')) {
+        pdfPanel.classList.add('is-collapsed');
+        pdfPanel.setAttribute('aria-hidden', 'true');
+      }
+      var notebookLmBtn = getNotebookLmToolBtn();
+      if (notebookLmBtn) notebookLmBtn.setAttribute('aria-pressed', 'false');
+      if (notebookLmPanel && notebookLmPanel.hasAttribute('hidden')) {
+        notebookLmPanel.classList.add('is-collapsed');
+        notebookLmPanel.setAttribute('aria-hidden', 'true');
+      }
+      var aiAssistantBtn = getAiAssistantToolBtn();
+      if (aiAssistantBtn) aiAssistantBtn.setAttribute('aria-pressed', 'false');
+      if (aiAssistantPanel && aiAssistantPanel.hasAttribute('hidden')) {
+        aiAssistantPanel.classList.add('is-collapsed');
+        aiAssistantPanel.setAttribute('aria-hidden', 'true');
+      }
+
+      function closeAudioPanel(shouldPause, instant) {
+        if (audioPanel.hasAttribute('hidden') && audioPanel.classList.contains('is-collapsed')) return;
+        window.clearTimeout(audioHideTimer);
+        if (audioOpenRaf1) window.cancelAnimationFrame(audioOpenRaf1);
+        if (audioOpenRaf2) window.cancelAnimationFrame(audioOpenRaf2);
+        if (instant) audioPanel.classList.add('is-instant-close');
+        audioPanel.classList.add('is-collapsed');
+        audioPanel.setAttribute('aria-hidden', 'true');
+        audioBtn.classList.remove('is-active');
+        audioBtn.setAttribute('aria-pressed', 'false');
+        if (shouldPause !== false && audio) audio.pause();
+
+        var finish = function () {
+          audioPanel.setAttribute('hidden', '');
+          if (instant) audioPanel.classList.remove('is-instant-close');
+        };
+        if (instant) {
+          finish();
+          return;
+        }
+        audioHideTimer = window.setTimeout(finish, 190);
+      }
+
+      function openAudioPanel() {
+        window.clearTimeout(audioHideTimer);
+        if (audioOpenRaf1) window.cancelAnimationFrame(audioOpenRaf1);
+        if (audioOpenRaf2) window.cancelAnimationFrame(audioOpenRaf2);
+
+        audioPanel.classList.remove('is-instant-close');
+        audioPanel.classList.add('is-collapsed');
+        audioPanel.removeAttribute('hidden');
+        audioPanel.setAttribute('aria-hidden', 'true');
+
+        // Two RAFs ensure the initial collapsed state is painted before expanding.
+        audioOpenRaf1 = window.requestAnimationFrame(function () {
+          audioOpenRaf2 = window.requestAnimationFrame(function () {
+            audioPanel.classList.remove('is-collapsed');
+            audioPanel.setAttribute('aria-hidden', 'false');
+            audioOpenRaf1 = 0;
+            audioOpenRaf2 = 0;
+          });
+        });
+      }
+
+      function closeNotesPanel(instant) {
+        var panel = document.querySelector('.fom-notes-panel');
+        if (!panel || panel.classList.contains('is-collapsed')) return;
+
+        if (instant) panel.classList.add('is-instant-close');
+
+        panel.classList.add('is-collapsed');
+        panel.setAttribute('aria-hidden', 'true');
+
+        var listWrap = document.querySelector('.fom-notes-list-wrap');
+        if (listWrap) listWrap.classList.add('is-collapsed');
+
+        var notesBtn = document.querySelector('.right-tool-btn[data-tool-id="notes"]');
+        if (notesBtn) {
+          notesBtn.classList.remove('is-active');
+          notesBtn.setAttribute('aria-pressed', 'false');
+          notesBtn.setAttribute('aria-label', 'Notizen einblenden');
+        }
+
+        document.dispatchEvent(new CustomEvent('notes:panel-state', { detail: { open: false } }));
+
+        if (instant) {
+          window.setTimeout(function () {
+            panel.classList.remove('is-instant-close');
+          }, 0);
+        }
+      }
+
+      function closePdfPanel(instant) {
+        var pdfBtn = getPdfToolBtn();
+        if (!pdfPanel || (pdfPanel.hasAttribute('hidden') && pdfPanel.classList.contains('is-collapsed'))) return;
+        window.clearTimeout(pdfHideTimer);
+        if (pdfOpenRaf1) window.cancelAnimationFrame(pdfOpenRaf1);
+        if (pdfOpenRaf2) window.cancelAnimationFrame(pdfOpenRaf2);
+        if (instant) pdfPanel.classList.add('is-instant-close');
+        pdfPanel.classList.add('is-collapsed');
+        pdfPanel.setAttribute('aria-hidden', 'true');
+        if (pdfBtn) {
+          pdfBtn.classList.remove('is-active');
+          pdfBtn.setAttribute('aria-pressed', 'false');
+        }
+
+        var finish = function () {
+          pdfPanel.setAttribute('hidden', '');
+          if (instant) pdfPanel.classList.remove('is-instant-close');
+        };
+        if (instant) {
+          finish();
+          return;
+        }
+        pdfHideTimer = window.setTimeout(finish, 190);
+      }
+
+      function openPdfPanel() {
+        var pdfBtn = getPdfToolBtn();
+        if (!pdfPanel) return;
+        window.clearTimeout(pdfHideTimer);
+        if (pdfOpenRaf1) window.cancelAnimationFrame(pdfOpenRaf1);
+        if (pdfOpenRaf2) window.cancelAnimationFrame(pdfOpenRaf2);
+
+        pdfPanel.classList.remove('is-instant-close');
+        pdfPanel.classList.add('is-collapsed');
+        pdfPanel.removeAttribute('hidden');
+        pdfPanel.setAttribute('aria-hidden', 'true');
+        if (pdfBtn) {
+          pdfBtn.classList.add('is-active');
+          pdfBtn.setAttribute('aria-pressed', 'true');
+        }
+
+        pdfOpenRaf1 = window.requestAnimationFrame(function () {
+          pdfOpenRaf2 = window.requestAnimationFrame(function () {
+            pdfPanel.classList.remove('is-collapsed');
+            pdfPanel.setAttribute('aria-hidden', 'false');
+            pdfOpenRaf1 = 0;
+            pdfOpenRaf2 = 0;
+          });
+        });
+      }
+
+      function closeNotebookLmPanel(instant) {
+        var notebookLmBtn = getNotebookLmToolBtn();
+        if (!notebookLmPanel || (notebookLmPanel.hasAttribute('hidden') && notebookLmPanel.classList.contains('is-collapsed'))) return;
+        window.clearTimeout(notebookLmHideTimer);
+        if (notebookLmOpenRaf1) window.cancelAnimationFrame(notebookLmOpenRaf1);
+        if (notebookLmOpenRaf2) window.cancelAnimationFrame(notebookLmOpenRaf2);
+        if (instant) notebookLmPanel.classList.add('is-instant-close');
+        notebookLmPanel.classList.add('is-collapsed');
+        notebookLmPanel.setAttribute('aria-hidden', 'true');
+        if (notebookLmBtn) {
+          notebookLmBtn.classList.remove('is-active');
+          notebookLmBtn.setAttribute('aria-pressed', 'false');
+        }
+
+        var finish = function () {
+          notebookLmPanel.setAttribute('hidden', '');
+          if (instant) notebookLmPanel.classList.remove('is-instant-close');
+        };
+        if (instant) {
+          finish();
+          return;
+        }
+        notebookLmHideTimer = window.setTimeout(finish, 190);
+      }
+
+      function openNotebookLmPanel() {
+        var notebookLmBtn = getNotebookLmToolBtn();
+        if (!notebookLmPanel) return;
+        window.clearTimeout(notebookLmHideTimer);
+        if (notebookLmOpenRaf1) window.cancelAnimationFrame(notebookLmOpenRaf1);
+        if (notebookLmOpenRaf2) window.cancelAnimationFrame(notebookLmOpenRaf2);
+
+        notebookLmPanel.classList.remove('is-instant-close');
+        notebookLmPanel.classList.add('is-collapsed');
+        notebookLmPanel.removeAttribute('hidden');
+        notebookLmPanel.setAttribute('aria-hidden', 'true');
+        if (notebookLmBtn) {
+          notebookLmBtn.classList.add('is-active');
+          notebookLmBtn.setAttribute('aria-pressed', 'true');
+        }
+
+        notebookLmOpenRaf1 = window.requestAnimationFrame(function () {
+          notebookLmOpenRaf2 = window.requestAnimationFrame(function () {
+            notebookLmPanel.classList.remove('is-collapsed');
+            notebookLmPanel.setAttribute('aria-hidden', 'false');
+            notebookLmOpenRaf1 = 0;
+            notebookLmOpenRaf2 = 0;
+          });
+        });
+      }
+
+      function closeAiAssistantPanel(instant) {
+        var aiAssistantBtn = getAiAssistantToolBtn();
+        if (!aiAssistantPanel || (aiAssistantPanel.hasAttribute('hidden') && aiAssistantPanel.classList.contains('is-collapsed'))) return;
+        window.clearTimeout(aiAssistantHideTimer);
+        if (aiAssistantOpenRaf1) window.cancelAnimationFrame(aiAssistantOpenRaf1);
+        if (aiAssistantOpenRaf2) window.cancelAnimationFrame(aiAssistantOpenRaf2);
+        if (instant) aiAssistantPanel.classList.add('is-instant-close');
+        aiAssistantPanel.classList.add('is-collapsed');
+        aiAssistantPanel.setAttribute('aria-hidden', 'true');
+        if (aiAssistantBtn) {
+          aiAssistantBtn.classList.remove('is-active');
+          aiAssistantBtn.setAttribute('aria-pressed', 'false');
+        }
+
+        var finish = function () {
+          aiAssistantPanel.setAttribute('hidden', '');
+          if (instant) aiAssistantPanel.classList.remove('is-instant-close');
+        };
+        if (instant) {
+          finish();
+          return;
+        }
+        aiAssistantHideTimer = window.setTimeout(finish, 190);
+      }
+
+      function openAiAssistantPanel() {
+        var aiAssistantBtn = getAiAssistantToolBtn();
+        if (!aiAssistantPanel) return;
+        window.clearTimeout(aiAssistantHideTimer);
+        if (aiAssistantOpenRaf1) window.cancelAnimationFrame(aiAssistantOpenRaf1);
+        if (aiAssistantOpenRaf2) window.cancelAnimationFrame(aiAssistantOpenRaf2);
+
+        aiAssistantPanel.classList.remove('is-instant-close');
+        aiAssistantPanel.classList.add('is-collapsed');
+        aiAssistantPanel.removeAttribute('hidden');
+        aiAssistantPanel.setAttribute('aria-hidden', 'true');
+        if (aiAssistantBtn) {
+          aiAssistantBtn.classList.add('is-active');
+          aiAssistantBtn.setAttribute('aria-pressed', 'true');
+        }
+
+        aiAssistantOpenRaf1 = window.requestAnimationFrame(function () {
+          aiAssistantOpenRaf2 = window.requestAnimationFrame(function () {
+            aiAssistantPanel.classList.remove('is-collapsed');
+            aiAssistantPanel.setAttribute('aria-hidden', 'false');
+            aiAssistantOpenRaf1 = 0;
+            aiAssistantOpenRaf2 = 0;
+          });
+        });
+      }
+
+      // Mini-Player: check if notes panel is open
+      function syncMiniMode() {
+        var notesOpen = notesPanel && !notesPanel.classList.contains('is-collapsed');
+        var isVisible = !audioPanel.hasAttribute('hidden');
+        if (notesOpen && isVisible) {
+          audioPanel.classList.add('is-mini');
+        } else {
+          audioPanel.classList.remove('is-mini');
+        }
+      }
+
+      // Watch notes panel class changes for collapse/expand
+      if (notesPanel) {
+        var observer = new MutationObserver(function () { syncMiniMode(); });
+        observer.observe(notesPanel, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      // Panel toggle
+      audioBtn.addEventListener('click', function () {
+        var isHidden = audioPanel.hasAttribute('hidden');
+        if (isHidden) {
+          closeNotesPanel(true);
+          closePdfPanel(true);
+          closeNotebookLmPanel(true);
+          closeAiAssistantPanel(true);
+          openAudioPanel();
+          audioBtn.classList.add('is-active');
+          audioBtn.setAttribute('aria-pressed', 'true');
+        } else {
+          closeAudioPanel(true);
+        }
+        syncMiniMode();
+      });
+
+      if (audioClose) {
+        audioClose.addEventListener('click', function () {
+          closeAudioPanel(true);
+        });
+      }
+
+      if (pdfClose) {
+        pdfClose.addEventListener('click', function () {
+          closePdfPanel(true);
+        });
+      }
+
+      if (notebookLmClose) {
+        notebookLmClose.addEventListener('click', function () {
+          closeNotebookLmPanel(true);
+        });
+      }
+
+      if (aiAssistantClose) {
+        aiAssistantClose.addEventListener('click', function () {
+          closeAiAssistantPanel(true);
+        });
+      }
+
+      if (pdfAction) {
+        pdfAction.addEventListener('click', function () {
+          window.print();
+        });
+      }
+
+      document.addEventListener('right-tool:select', function (event) {
+        var detail = event && event.detail ? event.detail : {};
+        if (detail.toolId === 'notes' && detail.notesOpen) {
+          closeAudioPanel(true);
+          closePdfPanel(true);
+          closeNotebookLmPanel(true);
+          closeAiAssistantPanel(true);
+          return;
+        }
+        if (detail.toolId === 'pdf-export') {
+          closeNotesPanel(true);
+          closeAudioPanel(true);
+          closeNotebookLmPanel(true);
+          closeAiAssistantPanel(true);
+          if (pdfPanel && pdfPanel.hasAttribute('hidden')) {
+            openPdfPanel();
+          } else {
+            closePdfPanel(false);
+          }
+          return;
+        }
+        if (detail.toolId === 'notebooklm') {
+          closeNotesPanel(true);
+          closeAudioPanel(true);
+          closePdfPanel(true);
+          closeAiAssistantPanel(true);
+          if (notebookLmPanel && notebookLmPanel.hasAttribute('hidden')) {
+            openNotebookLmPanel();
+          } else {
+            closeNotebookLmPanel(false);
+          }
+          return;
+        }
+        if (detail.toolId === 'ai-assistant') {
+          closeNotesPanel(true);
+          closeAudioPanel(true);
+          closePdfPanel(true);
+          closeNotebookLmPanel(true);
+          if (aiAssistantPanel && aiAssistantPanel.hasAttribute('hidden')) {
+            openAiAssistantPanel();
+          } else {
+            closeAiAssistantPanel(false);
+          }
+          return;
+        }
+        if (detail.toolId === 'audio') {
+          closePdfPanel(true);
+          closeNotebookLmPanel(true);
+          closeAiAssistantPanel(true);
+          return;
+        }
+        if (detail.toolId && detail.toolId !== 'pdf-export' && detail.toolId !== 'notebooklm' && detail.toolId !== 'ai-assistant') {
+          closePdfPanel(true);
+          closeNotebookLmPanel(true);
+          closeAiAssistantPanel(true);
+        }
+      });
+
+      if (!audio || !playBtn) return;
+
+      function fmt(s) {
+        var m = Math.floor(s / 60);
+        var sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      function updateTime() {
+        if (timeEl) timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration || 0);
+        if (miniTimeEl) miniTimeEl.textContent = fmt(audio.currentTime);
+        if (seek) seek.value = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      }
+
+      function syncPlayIcons() {
+        var playing = !audio.paused;
+        playIcon.style.display = playing ? 'none' : '';
+        pauseIcon.style.display = playing ? '' : 'none';
+        if (miniPlayBtn) {
+          miniPlayBtn.querySelector('.audio-mini-play-icon').style.display = playing ? 'none' : '';
+          miniPlayBtn.querySelector('.audio-mini-pause-icon').style.display = playing ? '' : 'none';
+        }
+      }
+
+      playBtn.addEventListener('click', function () {
+        if (audio.paused) { audio.play(); } else { audio.pause(); }
+      });
+
+      if (miniPlayBtn) {
+        miniPlayBtn.addEventListener('click', function () {
+          if (audio.paused) { audio.play(); } else { audio.pause(); }
+        });
+      }
+
+      audio.addEventListener('play', syncPlayIcons);
+      audio.addEventListener('pause', syncPlayIcons);
+      audio.addEventListener('timeupdate', updateTime);
+      audio.addEventListener('loadedmetadata', updateTime);
+
+      if (seek) {
+        seek.addEventListener('input', function () {
+          if (audio.duration) audio.currentTime = (seek.value / 100) * audio.duration;
+        });
+      }
+
+      if (muteBtn) {
+        muteBtn.addEventListener('click', function () {
+          audio.muted = !audio.muted;
+          muteBtn.style.opacity = audio.muted ? '0.4' : '1';
+          if (volumeSlider) volumeSlider.value = audio.muted ? 0 : audio.volume;
+        });
+      }
+
+      if (volumeSlider) {
+        volumeSlider.addEventListener('input', function () {
+          audio.volume = volumeSlider.value;
+          audio.muted = (volumeSlider.value == 0);
+          if (muteBtn) muteBtn.style.opacity = audio.muted ? '0.4' : '1';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

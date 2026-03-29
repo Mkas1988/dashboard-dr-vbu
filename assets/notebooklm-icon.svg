@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="NotebookLM">
+  <rect x="1.5" y="1.5" width="21" height="21" rx="5" fill="#1c222b"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.9">
+    <path d="M6 15.5a6 6 0 0 1 12 0" opacity="0.92"/>
+    <path d="M7.9 15.5a4.1 4.1 0 0 1 8.2 0" opacity="0.92"/>
+    <path d="M9.8 15.5a2.2 2.2 0 0 1 4.4 0" opacity="0.92"/>
+  </g>
+</svg>

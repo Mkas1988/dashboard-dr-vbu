@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang='de'>
+<head>
+  <script>
+    if (sessionStorage.getItem('dashboard_auth') !== 'de9980e86ba07bfff68dcf82032d565cb5cedce738e1f2aa47657b910844d3f4') {
+      window.location.href = '../../index.html';
+    }
+  </script>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Management Basics</title>
+  <link rel='stylesheet' href='../../assets/style.css' />
+</head>
+<body class='with-campus-bar layout-bba'>
+
+        <header id='main-header' class='campus-topbar' aria-label='Online-Campus Leiste'>
+    <div class='main-header-inner'>
+      <div id='header-left' class='header-left'>
+        <button id='homeLogoBtn' type='button' class='home-logo-btn' aria-label='Zur Startseite'>
+          <img src='../../assets/FOM_Logo.png' alt='FOM Hochschule Logo' class='home-logo-img' />
+          <span class='home-logo-text'>Online-Campus</span>
+        </button>
+      </div>
+
+      <div id='header-right' class='header-right'>
+        <div id='primaryPageNav'>
+          <a href='../../dashboard-eu-local/index.html' aria-label='Dashboard' title='Dashboard' class='page-nav-btn page-nav-active'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M3 10.5 12 3l9 7.5'></path>
+              <path d='M5.25 9.75V21h13.5V9.75'></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class='header-menu-wrap'>
+          <button id='burgerMenuBtn' type='button' aria-label='Men&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M4 7h16M4 12h16M4 17h16'></path>
+            </svg>
+          </button>
+          <div id='burgerMenu' class='header-popover hidden'>
+            <button id='burgerInfoBtn' type='button' class='header-popover-item'>Informationen</button>
+            <button id='burgerSocialBtn' type='button' class='header-popover-item'>Sozialer Bereich</button>
+            <button id='burgerModulesBtn' type='button' class='header-popover-item'>Modulwahl &amp; Studienverlauf</button>
+            <button id='burgerExamsBtn' type='button' class='header-popover-item'>Pr&uuml;fungen &amp; Noten</button>
+            <button id='burgerEventsOfferBtn' type='button' class='header-popover-item'>Veranstaltungsangebot</button>
+            <button id='burgerHelpBtn' type='button' class='header-popover-item'>Hilfe &amp; Kontakt</button>
+          </div>
+        </div>
+
+        <button id='messagesNavBtn' type='button' aria-label='Pers&ouml;nliche Nachrichten' class='page-nav-btn'>
+          <span id='messagesUnreadBadge' class='messages-unread-badge'>1</span>
+          <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+            <path d='M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75z'></path>
+            <path d='M5.25 8.25 11.14 12.4a1.5 1.5 0 0 0 1.72 0l5.89-4.15'></path>
+          </svg>
+        </button>
+
+        <div class='header-menu-wrap'>
+          <button id='profileBtn' type='button' aria-label='Profilmen&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z'></path>
+              <path d='M4.5 19.5a7.5 7.5 0 0 1 15 0'></path>
+            </svg>
+          </button>
+
+          <div id='profileMenu' class='header-popover hidden'>
+            <div id='profileMenuMain'>
+              <a href='#' class='header-popover-link'>Mein Profil</a>
+              <a href='#' class='header-popover-link'>Einstellungen</a>
+              <button id='openA11yMenuBtn' type='button' class='header-popover-item header-popover-item-split'>
+                <span>Barrierefreiheitsoptionen</span>
+                <span class='header-popover-arrow' aria-hidden='true'>&rsaquo;</span>
+              </button>
+              <a href='#' class='header-popover-link'>Bescheinigungen</a>
+              <a href='#' class='header-popover-link'>Antr&auml;ge</a>
+            </div>
+
+            <div id='profileMenuA11y' class='hidden'>
+              <button id='closeA11yMenuBtn' type='button' class='header-popover-item header-popover-back'>
+                <span aria-hidden='true'>&larr;</span>
+                <span>Barrierefreiheitsoptionen</span>
+              </button>
+              <div class='header-popover-divider'>
+                <button id='a11yContrastToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Hoher Kontrast</span>
+                  <span id='a11yContrastCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+                <button id='a11yMonochromeToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Monochrom</span>
+                  <span id='a11yMonochromeCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+                <button id='a11yLargeTextToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Gro&szlig;e Schrift</span>
+                  <span id='a11yLargeTextCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class='right-tools-rail' aria-label='Schnellfunktionen'>
+    <div class='right-tools-rail-inner'>
+      <button type='button' class='right-tool-btn is-active' data-tool-id='assistant' aria-label='Assistent'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='4.5' y='4.5' width='15' height='15' rx='4'></rect>
+          <circle cx='9.2' cy='10.3' r='1'></circle>
+          <circle cx='14.8' cy='10.3' r='1'></circle>
+          <path d='M8.4 14.2c.9.9 2 1.3 3.6 1.3s2.7-.4 3.6-1.3'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='bookmark' aria-label='Lesezeichen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M8 4.8h8a1 1 0 0 1 1 1v13.4l-5-2.8-5 2.8V5.8a1 1 0 0 1 1-1z'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='copy' aria-label='Kopieren'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='8' y='8' width='10' height='12' rx='1.6'></rect>
+          <path d='M6 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1'></path>
+        </svg>
+      </button>
+    </div>
+  </aside>
+<div class='course-layout'>
+    <aside class='toc' aria-label='Inhaltsverzeichnis'>
+      <div class='toc-header'>
+        <div class='toc-title'>Meine Lerneinheiten</div>
+      </div>
+      <nav class='toc-list' id='tocList'>
+        <a class='toc-item' href='special-01-modulinfo.html'><span class='toc-nr'></span><span class='toc-text'>Informationen zum Modul<br>Management Basics</span></a>
+    <a class='toc-item' href='le01.html'><span class='toc-nr'>01</span><span class='toc-text'>Unternehmerisch denken und handeln</span></a>
+    <a class='toc-item' href='le02.html'><span class='toc-nr'>02</span><span class='toc-text'>Produkt- und Unternehmenslebenszyklen verstehen</span></a>
+    <a class='toc-item' href='le03.html'><span class='toc-nr'>03</span><span class='toc-text'>Businessplan entwickeln und Gründung planen</span></a>
+    <a class='toc-item' href='le04.html'><span class='toc-nr'>04</span><span class='toc-text'>Geschäftsideen schärfen und Mehrwert schaffen</span></a>
+    <a class='toc-item is-active' href='le05.html'><span class='toc-nr'>05</span><span class='toc-text'>Märkte und Wettbewerb analysieren</span></a>
+    <a class='toc-item' href='le06.html'><span class='toc-nr'>06</span><span class='toc-text'>Strategien entwickeln und Marketing steuern</span></a>
+    <a class='toc-item' href='le07.html'><span class='toc-nr'>07</span><span class='toc-text'>Marketinginstrumente gezielt einsetzen</span></a>
+    <a class='toc-item' href='le08.html'><span class='toc-nr'>08</span><span class='toc-text'>Finanzielle Grundlagen unternehmerischer Entscheidungen</span></a>
+    <a class='toc-item' href='le09.html'><span class='toc-nr'>09</span><span class='toc-text'>Wachstum finanzieren und Gewinnschwelle erreichen</span></a>
+    <a class='toc-item' href='le10.html'><span class='toc-nr'>10</span><span class='toc-text'>Krisen bewältigen und Unternehmen stabilisieren</span></a>
+      </nav>
+    </aside>
+
+    <main class='course-main'>
+      <section class='course-hero'>
+        <h1 class='course-hero-title'>Modul Management Basics</h1>
+      </section>
+
+      <section class='course-card' aria-label='Kursinhalt'>
+        <div class='unit-kicker' id='unitKicker'>Lerneinheit 05</div>
+        <h2 class='unit-title' id='unitTitle'>Märkte und Wettbewerb analysieren</h2>
+
+        <div class='unit-body' id='unitBody'>
+<p>[Platzhalter]</p>
+        </div>
+        <div class='unit-nav' aria-label='Navigation zwischen Lerneinheiten'>
+          <a class='unit-nav-btn unit-nav-btn-prev' href='le04.html' aria-label='Zurück zur vorherigen Lerneinheit'><span class='unit-nav-icon' aria-hidden='true'>&#8249;</span></a>
+          <a class='unit-nav-btn unit-nav-btn-next' href='le06.html' aria-label='Weiter zur nächsten Lerneinheit'><span class='unit-nav-icon' aria-hidden='true'>&#8250;</span></a>
+        </div>
+      </section>
+      <aside class='notebooklm-panel' aria-label='NotebookLM'>
+        <a class='notebooklm-cta' href='https://notebooklm.google.com/notebook/90411338-f826-427c-aadc-fd0f6cbd35f1' target='_blank' rel='noopener noreferrer' aria-label='NotebookLM öffnen'>
+          <span class='notebooklm-row'>
+            <span class='notebooklm-icon' aria-hidden='true'>N+</span>
+            <span class='notebooklm-title'>NotebookLM</span>
+            <span class='notebooklm-ext' aria-hidden='true'>&#8599;</span>
+          </span>
+        </a>
+      </aside>
+    </main>
+  </div>
+  <script src='../../assets/app.js?v=20260324-finalquiz2'></script>
+  <script>
+    document.addEventListener('click', function (event) {
+      var inlineTocToggle = event.target.closest('.fom-inline-toc-toggle');
+      if (inlineTocToggle) {
+        var tocEl = inlineTocToggle.closest('.fom-inline-toc-collapsible');
+        if (tocEl) {
+          tocEl.classList.toggle('is-collapsed');
+          var toggle = tocEl.querySelector('.fom-inline-toc-toggle');
+          var icon = tocEl.querySelector('.fom-inline-toc-toggle-icon');
+          var collapsed = tocEl.classList.contains('is-collapsed');
+          if (toggle) {
+            toggle.setAttribute('aria-expanded', String(!collapsed));
+            toggle.setAttribute('aria-label', collapsed ? 'Inhaltsverzeichnis ausklappen' : 'Inhaltsverzeichnis einklappen');
+          }
+          if (icon) icon.classList.toggle('is-collapsed', collapsed);
+        }
+        return;
+      }
+
+      var flipCard = event.target.closest('.flip-card');
+      if (flipCard) {
+        flipCard.classList.toggle('flipped');
+        return;
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

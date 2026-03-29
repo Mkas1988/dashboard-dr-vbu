@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang='de'>
+<head>
+  <script>
+    if (sessionStorage.getItem('dashboard_auth') !== 'de9980e86ba07bfff68dcf82032d565cb5cedce738e1f2aa47657b910844d3f4') {
+      window.location.href = '../../index.html';
+    }
+  </script>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Management Basics - Modulforum</title>
+  <link rel='stylesheet' href='../../assets/style.css' />
+  <style>
+    .forum-wrap {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 0 16px 24px 16px;
+    }
+
+    .forum-head {
+      margin-bottom: 18px;
+    }
+
+    .forum-back {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .forum-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .forum-card {
+      background: #f1faf7;
+      border: 1px solid #d6e8e4;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .forum-card h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .forum-field {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #c8d7d3;
+      border-radius: 8px;
+      font: inherit;
+      box-sizing: border-box;
+      background: #ffffff;
+    }
+
+    .forum-submit {
+      background: #43ad9d;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .forum-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .forum-item {
+      background: #ffffff;
+      border: 1px solid #d6e8e4;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .forum-item-title {
+      margin: 0 0 6px 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .forum-item-meta {
+      margin: 0 0 8px 0;
+      color: #4a5c69;
+      font-size: 0.92rem;
+    }
+
+    .forum-empty {
+      margin: 0;
+      color: #4a5c69;
+    }
+  </style>
+</head>
+<body class='with-campus-bar layout-bba'>
+      <header id='main-header' class='campus-topbar' aria-label='Online-Campus Leiste'>
+    <div class='main-header-inner'>
+      <div id='header-left' class='header-left'>
+        <button id='homeLogoBtn' type='button' class='home-logo-btn' aria-label='Zur Startseite'>
+          <img src='../../assets/FOM_Logo.png' alt='FOM Hochschule Logo' class='home-logo-img' />
+          <span class='home-logo-text'>Online-Campus</span>
+        </button>
+      </div>
+
+      <div id='header-right' class='header-right'>
+        <div id='primaryPageNav'>
+          <a href='../../dashboard-eu-local/index.html' aria-label='Dashboard' title='Dashboard' class='page-nav-btn page-nav-active'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M3 10.5 12 3l9 7.5'></path>
+              <path d='M5.25 9.75V21h13.5V9.75'></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class='header-menu-wrap'>
+          <button id='burgerMenuBtn' type='button' aria-label='Men&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M4 7h16M4 12h16M4 17h16'></path>
+            </svg>
+          </button>
+          <div id='burgerMenu' class='header-popover hidden'>
+            <button id='burgerInfoBtn' type='button' class='header-popover-item'>Informationen</button>
+            <button id='burgerSocialBtn' type='button' class='header-popover-item'>Sozialer Bereich</button>
+            <button id='burgerModulesBtn' type='button' class='header-popover-item'>Modulwahl &amp; Studienverlauf</button>
+            <button id='burgerExamsBtn' type='button' class='header-popover-item'>Pr&uuml;fungen &amp; Noten</button>
+            <button id='burgerEventsOfferBtn' type='button' class='header-popover-item'>Veranstaltungsangebot</button>
+            <button id='burgerHelpBtn' type='button' class='header-popover-item'>Hilfe &amp; Kontakt</button>
+          </div>
+        </div>
+
+        <button id='messagesNavBtn' type='button' aria-label='Pers&ouml;nliche Nachrichten' class='page-nav-btn'>
+          <span id='messagesUnreadBadge' class='messages-unread-badge'>1</span>
+          <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+            <path d='M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75z'></path>
+            <path d='M5.25 8.25 11.14 12.4a1.5 1.5 0 0 0 1.72 0l5.89-4.15'></path>
+          </svg>
+        </button>
+
+        <div class='header-menu-wrap'>
+          <button id='profileBtn' type='button' aria-label='Profilmen&uuml; &ouml;ffnen' class='page-nav-btn'>
+            <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+              <path d='M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z'></path>
+              <path d='M4.5 19.5a7.5 7.5 0 0 1 15 0'></path>
+            </svg>
+          </button>
+
+          <div id='profileMenu' class='header-popover hidden'>
+            <div id='profileMenuMain'>
+              <a href='#' class='header-popover-link'>Mein Profil</a>
+              <a href='#' class='header-popover-link'>Einstellungen</a>
+              <button id='openA11yMenuBtn' type='button' class='header-popover-item header-popover-item-split'>
+                <span>Barrierefreiheitsoptionen</span>
+                <span class='header-popover-arrow' aria-hidden='true'>&rsaquo;</span>
+              </button>
+              <a href='#' class='header-popover-link'>Bescheinigungen</a>
+              <a href='#' class='header-popover-link'>Antr&auml;ge</a>
+            </div>
+
+            <div id='profileMenuA11y' class='hidden'>
+              <button id='closeA11yMenuBtn' type='button' class='header-popover-item header-popover-back'>
+                <span aria-hidden='true'>&larr;</span>
+                <span>Barrierefreiheitsoptionen</span>
+              </button>
+              <div class='header-popover-divider'>
+                <button id='a11yContrastToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Hoher Kontrast</span>
+                  <span id='a11yContrastCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+                <button id='a11yMonochromeToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Monochrom</span>
+                  <span id='a11yMonochromeCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+                <button id='a11yLargeTextToggle' type='button' class='header-popover-item header-popover-item-split'>
+                  <span>Gro&szlig;e Schrift</span>
+                  <span id='a11yLargeTextCheck' class='hidden header-popover-check' aria-hidden='true'>&check;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class='right-tools-rail' aria-label='Schnellfunktionen'>
+    <div class='right-tools-rail-inner'>
+      <button type='button' class='right-tool-btn is-active' data-tool-id='assistant' aria-label='Assistent'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='4.5' y='4.5' width='15' height='15' rx='4'></rect>
+          <circle cx='9.2' cy='10.3' r='1'></circle>
+          <circle cx='14.8' cy='10.3' r='1'></circle>
+          <path d='M8.4 14.2c.9.9 2 1.3 3.6 1.3s2.7-.4 3.6-1.3'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='bookmark' aria-label='Lesezeichen'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <path d='M8 4.8h8a1 1 0 0 1 1 1v13.4l-5-2.8-5 2.8V5.8a1 1 0 0 1 1-1z'></path>
+        </svg>
+      </button>
+      <button type='button' class='right-tool-btn' data-tool-id='copy' aria-label='Kopieren'>
+        <svg viewBox='0 0 24 24' focusable='false' aria-hidden='true'>
+          <rect x='8' y='8' width='10' height='12' rx='1.6'></rect>
+          <path d='M6 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1'></path>
+        </svg>
+      </button>
+    </div>
+  </aside>
+<main class='forum-wrap'>
+    <section class='forum-head'>
+      <h1>Modulforum - Management Basics</h1>
+      <p>Stelle Fragen zu Inhalten und tausche dich mit anderen Studierenden aus.</p>
+      <a class='forum-back' href='special-01-modulinfo.html'>&larr; Zurück zur Modulinformation</a>
+    </section>
+
+    <section class='forum-grid'>
+      <article class='forum-card' aria-label='Neuen Beitrag erstellen'>
+        <h2>Neuen Beitrag erstellen</h2>
+        <form id='forumForm'>
+          <input class='forum-field' id='author' type='text' placeholder='Dein Name' required />
+          <input class='forum-field' id='title' type='text' placeholder='Titel deiner Frage' required />
+          <textarea class='forum-field' id='message' rows='4' placeholder='Deine Frage oder dein Beitrag' required></textarea>
+          <button class='forum-submit' type='submit'>Beitrag veröffentlichen</button>
+        </form>
+      </article>
+
+      <article class='forum-card' aria-label='Beiträge'>
+        <h2>Beiträge</h2>
+        <p class='forum-empty' id='forumEmpty'>Noch keine Beiträge vorhanden.</p>
+        <ul class='forum-list' id='forumList'></ul>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var storageKey = 'managementBasicsForumPosts';
+      var listEl = document.getElementById('forumList');
+      var emptyEl = document.getElementById('forumEmpty');
+      var formEl = document.getElementById('forumForm');
+
+      function getPosts() {
+        try {
+          var raw = localStorage.getItem(storageKey);
+          return raw ? JSON.parse(raw) : [];
+        } catch (err) {
+          return [];
+        }
+      }
+
+      function savePosts(posts) {
+        localStorage.setItem(storageKey, JSON.stringify(posts));
+      }
+
+      function renderPosts() {
+        var posts = getPosts();
+        listEl.innerHTML = '';
+        emptyEl.style.display = posts.length ? 'none' : 'block';
+
+        posts.forEach(function (post) {
+          var li = document.createElement('li');
+          li.className = 'forum-item';
+          li.innerHTML =
+            '<p class="forum-item-title">' + post.title + '</p>' +
+            '<p class="forum-item-meta">von ' + post.author + ' am ' + post.date + '</p>' +
+            '<p>' + post.message + '</p>';
+          listEl.appendChild(li);
+        });
+      }
+
+      formEl.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var author = document.getElementById('author').value.trim();
+        var title = document.getElementById('title').value.trim();
+        var message = document.getElementById('message').value.trim();
+        if (!author || !title || !message) return;
+
+        var posts = getPosts();
+        posts.unshift({
+          author: author,
+          title: title,
+          message: message,
+          date: new Date().toLocaleString('de-DE')
+        });
+        savePosts(posts);
+        formEl.reset();
+        renderPosts();
+      });
+
+      renderPosts();
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
