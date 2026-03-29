@@ -51,6 +51,366 @@
   --radius: 8px;
 }
 
+/* ══════════════════════════════════════════════════════
+   NEWSROOM REFRESH – Modern Light Theme Override
+   Reduces teal to accent, introduces light/airy feel
+   ══════════════════════════════════════════════════════ */
+
+/* ── Global: Light theme base ── */
+body {
+  background: var(--fom-bg) !important;
+  color: var(--fom-text) !important;
+}
+
+/* ── Course Layout: Light sidebar + white content ── */
+.course-layout {
+  background: var(--fom-white) !important;
+  grid-template-columns: 280px minmax(0, 1fr) !important;
+}
+
+/* ── Sidebar TOC: Clean light panel ── */
+.toc {
+  background: var(--fom-bg-alt) !important;
+  border-right: 1px solid var(--fom-gray-light) !important;
+  backdrop-filter: none !important;
+  padding: 28px 16px !important;
+}
+
+.toc-title {
+  color: var(--fom-text-light) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
+  font-size: 11px !important;
+  letter-spacing: 1.2px !important;
+}
+
+.toc-item {
+  background: var(--fom-white) !important;
+  color: var(--fom-text) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: var(--radius) !important;
+  padding: 12px 12px !important;
+  transition: all .25s !important;
+}
+
+.toc-item:hover {
+  border-color: var(--fom-teal) !important;
+  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
+  transform: translateY(-2px) !important;
+  background: var(--fom-white) !important;
+}
+
+.toc-item.is-active {
+  background: var(--fom-white) !important;
+  border-color: var(--fom-teal) !important;
+  box-shadow: 0 8px 32px rgba(90, 185, 167, .12) !important;
+  color: var(--fom-text) !important;
+}
+
+.toc-item.is-complete:not(.is-active),
+.toc-item.is-complete:not(.is-active):hover {
+  background: var(--fom-teal-light) !important;
+  color: var(--fom-teal-darker) !important;
+  border-color: var(--fom-teal-100) !important;
+  box-shadow: none !important;
+}
+
+.toc-nr {
+  color: var(--fom-text-light) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
+}
+
+.toc-item.is-active .toc-nr {
+  color: var(--fom-teal-dark) !important;
+}
+
+.toc-text {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+}
+
+.toc-progress-text {
+  color: var(--fom-text-light) !important;
+}
+
+.toc-progress-track {
+  background: var(--fom-gray-light) !important;
+}
+
+.toc-progress-fill {
+  background: linear-gradient(90deg, var(--fom-teal) 0%, var(--fom-teal-dark) 100%) !important;
+}
+
+.toc-item.is-active .toc-progress-text {
+  color: var(--fom-teal-dark) !important;
+}
+
+.toc-item.is-active .toc-progress-track {
+  background: var(--fom-teal-100) !important;
+}
+
+/* ── Main content area: Clean white ── */
+.course-main {
+  background: var(--fom-white) !important;
+  padding: 32px 320px 48px 32px !important;
+}
+
+/* ── Content sections: Newsroom card style ── */
+.content-section {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  padding: 28px !important;
+  transition: border-color .25s, box-shadow .25s !important;
+}
+
+.content-section:hover {
+  border-color: var(--fom-teal) !important;
+  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
+}
+
+.content-section p {
+  color: var(--fom-text) !important;
+  line-height: 1.8 !important;
+}
+
+/* ── Course card (main content container) ── */
+.course-card {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+
+/* ── Chapter headers: Clean dark text ── */
+.chapter-kicker {
+  color: var(--fom-text-light) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+}
+
+.chapter-title {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  font-size: 1.8rem !important;
+  letter-spacing: -0.3px !important;
+}
+
+.chapter-lead {
+  color: var(--fom-text-light) !important;
+  line-height: 1.7 !important;
+}
+
+/* ── Unit meta & title ── */
+.unit-meta-row {
+  color: var(--fom-text-light) !important;
+}
+
+.unit-title-block h2 {
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  color: var(--fom-text) !important;
+  letter-spacing: -0.3px !important;
+}
+
+/* ── Dashboard container: Remove dark glass effect ── */
+.dashboard-container {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .06) !important;
+  backdrop-filter: none !important;
+}
+
+/* ── Headings: Use Display Pro ── */
+h1 {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  text-shadow: none !important;
+}
+
+.widget h2, .h3 {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+}
+
+/* ── Widgets: Newsroom card pattern ── */
+.widget {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  transition: border-color .25s, box-shadow .25s, transform .25s !important;
+}
+
+.widget:hover {
+  border-color: var(--fom-teal) !important;
+  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
+  transform: translateY(-3px) !important;
+}
+
+.widget-content {
+  color: var(--fom-text) !important;
+  opacity: 1 !important;
+}
+
+/* ── Kurs-Tiles: Subtle neutral ── */
+.kurs-tile,
+.Ansprechpersonen-tile {
+  background: var(--fom-bg-alt) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: var(--radius) !important;
+}
+
+.kurs-tile:hover,
+.Ansprechpersonen-tile:hover {
+  border-color: var(--fom-teal) !important;
+  background: var(--fom-white) !important;
+  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
+}
+
+.kurs-title {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.kurs-info {
+  color: var(--fom-text-light) !important;
+}
+
+/* ── Back button: Pill outline ── */
+.back-button {
+  background: var(--fom-white) !important;
+  color: var(--fom-teal) !important;
+  border: 2px solid var(--fom-teal) !important;
+  border-radius: 24px !important;
+  font-weight: 700 !important;
+}
+
+.back-button:hover {
+  background: var(--fom-teal) !important;
+  color: var(--fom-white) !important;
+}
+
+/* ── SB blocks: Clean paper cards ── */
+.sb-block--paper {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+
+.sb-label {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+}
+
+.sb-field--title {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+}
+
+.sb-field--h2,
+.sb-field--h3 {
+  color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+}
+
+.sb-field--p,
+.sb-li {
+  color: var(--fom-text) !important;
+}
+
+/* ── Callouts: Keep colors but refine ── */
+.callout {
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--fom-gray-light) !important;
+}
+
+/* ── Calendar: Neutral theme ── */
+.calendar-nav {
+  background: var(--fom-text) !important;
+  border-radius: var(--radius) !important;
+}
+
+.calendar-nav:hover {
+  background: var(--fom-gray-dark) !important;
+}
+
+.calendar-day.today {
+  background: var(--fom-teal) !important;
+}
+
+.calendar-dayname {
+  color: var(--fom-text-light) !important;
+}
+
+.calendar-day {
+  color: var(--fom-text) !important;
+}
+
+/* ── Search inputs: Newsroom style ── */
+.course-search-input,
+.widgetsuche-input {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-gray-light) !important;
+  color: var(--fom-text) !important;
+  box-shadow: none !important;
+}
+
+.course-search-input:focus,
+.widgetsuche-input:focus {
+  border-color: var(--fom-teal) !important;
+  box-shadow: 0 0 0 3px rgba(0, 198, 178, .12) !important;
+}
+
+.course-search-input::placeholder,
+.widgetsuche-input::placeholder {
+  color: var(--fom-gray) !important;
+}
+
+/* ── Brand text: Dark on light ── */
+.brand-title {
+  color: var(--fom-text) !important;
+}
+
+.brand-subtitle {
+  color: var(--fom-text-light) !important;
+}
+
+/* ── Header topbar: Teal accent, not overwhelming ── */
+.campus-topbar {
+  background: var(--fom-white) !important;
+  border-bottom: 1px solid var(--fom-gray-light) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .04) !important;
+}
+
+.campus-topbar .campus-logo-img {
+  filter: none !important;
+}
+
+/* ── Right tools rail: Clean neutral ── */
+.right-tools-rail {
+  background: var(--fom-bg-alt) !important;
+  border-left: 1px solid var(--fom-gray-light) !important;
+}
+
+/* ── Responsive: Sidebar ── */
+@media (max-width: 900px) {
+  .course-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .course-main {
+    padding: 20px 16px 40px !important;
+  }
+}
+
 /* ── Widgetsuche oben auf dem Dashboard ──
 
 .widgetsuche-form {
