@@ -1,5 +1,5 @@
 ﻿/* ══════════════════════════════════════════════════════
-   FOM Design System – Newsroom Tokens & Overrides
+   FOYER – FOM Design System v2 (Warm Premium Theme)
    ══════════════════════════════════════════════════════ */
 
 @font-face {
@@ -25,6 +25,7 @@
 }
 
 :root {
+  /* ── Foyer Warm Palette ── */
   --fom-teal: #00C6B2;
   --fom-teal-dark: #009F8F;
   --fom-teal-darker: #00776B;
@@ -35,83 +36,95 @@
   --fom-teal-400: #33D2C2;
   --fom-blue: #0071DE;
   --fom-blue-dark: #005AB2;
-  --fom-black: #121212;
+  --fom-black: #1A1816;
   --fom-white: #FFFFFF;
-  --fom-bg: #FFFFFF;
-  --fom-bg-alt: #F2F0F0;
-  --fom-gray: #6D6D6D;
-  --fom-gray-light: #E6E6E6;
-  --fom-gray-dark: #4B4B4B;
-  --fom-gray-800: #303030;
-  --fom-text: #121212;
-  --fom-text-light: #6D6D6D;
-  --fom-error: #E81818;
-  --fom-success: #77B502;
-  --fom-warning: #F2C91B;
-  --radius: 8px;
+  --fom-bg: #FAF8F5;
+  --fom-bg-alt: #F0EDE8;
+  --fom-border: #E5E0D9;
+  --fom-gray: #8A837A;
+  --fom-gray-light: #E5E0D9;
+  --fom-gray-dark: #4A4540;
+  --fom-gray-800: #2D2A27;
+  --fom-text: #1A1816;
+  --fom-text-light: #8A837A;
+  --fom-text-secondary: #4A4540;
+  --fom-error: #D4483B;
+  --fom-success: #5A9A3C;
+  --fom-warning: #D4963B;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-sm: 8px;
 }
 
 /* ══════════════════════════════════════════════════════
-   NEWSROOM REFRESH – Modern Light Theme Override
-   Reduces teal to accent, introduces light/airy feel
+   FOYER – Warm Premium Theme Override
+   Warm neutrals, teal accent only, editorial layout
    ══════════════════════════════════════════════════════ */
 
-/* ── Global: Light theme base ── */
+/* ── Global: Warm cream base ── */
 body {
   background: var(--fom-bg) !important;
   color: var(--fom-text) !important;
+  font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
-/* ── Course Layout: Light sidebar + white content ── */
+/* ── Course Layout: Warm background ── */
 .course-layout {
-  background: var(--fom-white) !important;
-  grid-template-columns: 280px minmax(0, 1fr) !important;
+  background: var(--fom-bg) !important;
+  grid-template-columns: 260px minmax(0, 1fr) !important;
 }
 
-/* ── Sidebar TOC: Clean light panel ── */
+/* ── Sidebar TOC: Warm sand panel ── */
 .toc {
   background: var(--fom-bg-alt) !important;
-  border-right: 1px solid var(--fom-gray-light) !important;
+  border-right: 1px solid var(--fom-border) !important;
   backdrop-filter: none !important;
-  padding: 28px 16px !important;
+  padding: 28px 14px !important;
 }
 
 .toc-title {
   color: var(--fom-text-light) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
   font-size: 11px !important;
-  letter-spacing: 1.2px !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
 }
 
 .toc-item {
   background: var(--fom-white) !important;
   color: var(--fom-text) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  border: 1px solid var(--fom-border) !important;
   border-radius: var(--radius) !important;
   padding: 12px 12px !important;
-  transition: all .25s !important;
+  transition: all .25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .toc-item:hover {
-  border-color: var(--fom-teal) !important;
-  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
-  transform: translateY(-2px) !important;
+  border-color: var(--fom-text) !important;
+  box-shadow: 0 4px 16px rgba(26, 24, 22, .06) !important;
+  transform: translateY(-1px) !important;
   background: var(--fom-white) !important;
 }
 
 .toc-item.is-active {
   background: var(--fom-white) !important;
-  border-color: var(--fom-teal) !important;
-  box-shadow: 0 8px 32px rgba(90, 185, 167, .12) !important;
+  border-color: var(--fom-text) !important;
+  box-shadow: 0 4px 20px rgba(26, 24, 22, .08) !important;
   color: var(--fom-text) !important;
 }
 
 .toc-item.is-complete:not(.is-active),
 .toc-item.is-complete:not(.is-active):hover {
-  background: var(--fom-teal-light) !important;
-  color: var(--fom-teal-darker) !important;
-  border-color: var(--fom-teal-100) !important;
+  background: var(--fom-bg) !important;
+  color: var(--fom-text-secondary) !important;
+  border-color: var(--fom-border) !important;
   box-shadow: none !important;
+}
+
+/* Completed pip: teal dot */
+.toc-item.is-complete .toc-nr {
+  color: var(--fom-teal) !important;
 }
 
 .toc-nr {
@@ -120,14 +133,15 @@ body {
 }
 
 .toc-item.is-active .toc-nr {
-  color: var(--fom-teal-dark) !important;
+  color: var(--fom-text) !important;
+  font-weight: 700 !important;
 }
 
 .toc-text {
   color: var(--fom-text) !important;
   font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif !important;
   font-weight: 600 !important;
-  font-size: 0.88rem !important;
+  font-size: 0.86rem !important;
 }
 
 .toc-progress-text {
@@ -135,40 +149,40 @@ body {
 }
 
 .toc-progress-track {
-  background: var(--fom-gray-light) !important;
+  background: var(--fom-border) !important;
 }
 
 .toc-progress-fill {
-  background: linear-gradient(90deg, var(--fom-teal) 0%, var(--fom-teal-dark) 100%) !important;
+  background: var(--fom-teal) !important;
 }
 
 .toc-item.is-active .toc-progress-text {
-  color: var(--fom-teal-dark) !important;
+  color: var(--fom-text-secondary) !important;
 }
 
 .toc-item.is-active .toc-progress-track {
-  background: var(--fom-teal-100) !important;
+  background: var(--fom-border) !important;
 }
 
-/* ── Main content area: Clean white ── */
+/* ── Main content area: Warm cream ── */
 .course-main {
-  background: var(--fom-white) !important;
-  padding: 32px 320px 48px 32px !important;
+  background: var(--fom-bg) !important;
+  padding: 36px 320px 60px 40px !important;
 }
 
-/* ── Content sections: Newsroom card style ── */
+/* ── Content sections: Warm card style ── */
 .content-section {
   background: var(--fom-white) !important;
-  border: 1px solid var(--fom-gray-light) !important;
-  border-radius: var(--radius) !important;
-  box-shadow: none !important;
-  padding: 28px !important;
+  border: 1px solid var(--fom-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 2px 8px rgba(26, 24, 22, .03) !important;
+  padding: 32px !important;
   transition: border-color .25s, box-shadow .25s !important;
 }
 
 .content-section:hover {
-  border-color: var(--fom-teal) !important;
-  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
+  border-color: var(--fom-gray) !important;
+  box-shadow: 0 4px 20px rgba(26, 24, 22, .06) !important;
 }
 
 .content-section p {
@@ -176,32 +190,32 @@ body {
   line-height: 1.8 !important;
 }
 
-/* ── Course card (main content container) ── */
+/* ── Course card ── */
 .course-card {
   background: var(--fom-white) !important;
-  border: 1px solid var(--fom-gray-light) !important;
-  border-radius: var(--radius) !important;
-  box-shadow: none !important;
+  border: 1px solid var(--fom-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 2px 8px rgba(26, 24, 22, .03) !important;
 }
 
-/* ── Chapter headers: Clean dark text ── */
+/* ── Chapter headers ── */
 .chapter-kicker {
   color: var(--fom-text-light) !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.8px !important;
+  letter-spacing: 1.2px !important;
 }
 
 .chapter-title {
   color: var(--fom-text) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
   font-size: 1.8rem !important;
-  letter-spacing: -0.3px !important;
+  letter-spacing: -0.5px !important;
 }
 
 .chapter-lead {
-  color: var(--fom-text-light) !important;
+  color: var(--fom-text-secondary) !important;
   line-height: 1.7 !important;
 }
 
@@ -216,16 +230,16 @@ body {
   letter-spacing: -0.3px !important;
 }
 
-/* ── Dashboard container: Remove dark glass effect ── */
+/* ── Dashboard container ── */
 .dashboard-container {
   background: var(--fom-white) !important;
-  border: 1px solid var(--fom-gray-light) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, .06) !important;
+  border: 1px solid var(--fom-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 4px 24px rgba(26, 24, 22, .04) !important;
   backdrop-filter: none !important;
 }
 
-/* ── Headings: Use Display Pro ── */
+/* ── Headings: Display Pro ── */
 h1 {
   color: var(--fom-text) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
@@ -237,20 +251,20 @@ h1 {
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
 }
 
-/* ── Widgets: Newsroom card pattern ── */
+/* ── Widgets: Warm card ── */
 .widget {
   background: var(--fom-white) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  border: 1px solid var(--fom-border) !important;
   border-radius: var(--radius) !important;
-  box-shadow: none !important;
+  box-shadow: 0 2px 8px rgba(26, 24, 22, .02) !important;
   backdrop-filter: none !important;
   transition: border-color .25s, box-shadow .25s, transform .25s !important;
 }
 
 .widget:hover {
-  border-color: var(--fom-teal) !important;
-  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
-  transform: translateY(-3px) !important;
+  border-color: var(--fom-gray) !important;
+  box-shadow: 0 8px 24px rgba(26, 24, 22, .06) !important;
+  transform: translateY(-2px) !important;
 }
 
 .widget-content {
@@ -258,19 +272,19 @@ h1 {
   opacity: 1 !important;
 }
 
-/* ── Kurs-Tiles: Subtle neutral ── */
+/* ── Kurs-Tiles ── */
 .kurs-tile,
 .Ansprechpersonen-tile {
-  background: var(--fom-bg-alt) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-border) !important;
   border-radius: var(--radius) !important;
 }
 
 .kurs-tile:hover,
 .Ansprechpersonen-tile:hover {
-  border-color: var(--fom-teal) !important;
+  border-color: var(--fom-text) !important;
   background: var(--fom-white) !important;
-  box-shadow: 0 8px 32px rgba(90, 185, 167, .1) !important;
+  box-shadow: 0 4px 16px rgba(26, 24, 22, .06) !important;
 }
 
 .kurs-title {
@@ -283,24 +297,26 @@ h1 {
   color: var(--fom-text-light) !important;
 }
 
-/* ── Back button: Pill outline ── */
+/* ── Back button: Dark ink pill ── */
 .back-button {
-  background: var(--fom-white) !important;
-  color: var(--fom-teal) !important;
-  border: 2px solid var(--fom-teal) !important;
+  background: var(--fom-black) !important;
+  color: var(--fom-white) !important;
+  border: none !important;
   border-radius: 24px !important;
   font-weight: 700 !important;
+  transition: all .2s !important;
 }
 
 .back-button:hover {
-  background: var(--fom-teal) !important;
+  background: var(--fom-gray-800) !important;
   color: var(--fom-white) !important;
+  box-shadow: 0 4px 16px rgba(26, 24, 22, .12) !important;
 }
 
-/* ── SB blocks: Clean paper cards ── */
+/* ── SB blocks ── */
 .sb-block--paper {
   background: var(--fom-white) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  border: 1px solid var(--fom-border) !important;
   border-radius: var(--radius) !important;
   box-shadow: none !important;
 }
@@ -326,21 +342,21 @@ h1 {
   color: var(--fom-text) !important;
 }
 
-/* ── Callouts: Keep colors but refine ── */
+/* ── Callouts: Warm borders ── */
 .callout {
   border-radius: var(--radius) !important;
   box-shadow: none !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  border: 1px solid var(--fom-border) !important;
 }
 
-/* ── Calendar: Neutral theme ── */
+/* ── Calendar ── */
 .calendar-nav {
-  background: var(--fom-text) !important;
-  border-radius: var(--radius) !important;
+  background: var(--fom-black) !important;
+  border-radius: var(--radius-sm) !important;
 }
 
 .calendar-nav:hover {
-  background: var(--fom-gray-dark) !important;
+  background: var(--fom-gray-800) !important;
 }
 
 .calendar-day.today {
@@ -355,27 +371,28 @@ h1 {
   color: var(--fom-text) !important;
 }
 
-/* ── Search inputs: Newsroom style ── */
+/* ── Search inputs ── */
 .course-search-input,
 .widgetsuche-input {
   background: var(--fom-white) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  border: 1.5px solid var(--fom-border) !important;
   color: var(--fom-text) !important;
   box-shadow: none !important;
+  border-radius: var(--radius) !important;
 }
 
 .course-search-input:focus,
 .widgetsuche-input:focus {
-  border-color: var(--fom-teal) !important;
-  box-shadow: 0 0 0 3px rgba(0, 198, 178, .12) !important;
+  border-color: var(--fom-text) !important;
+  box-shadow: 0 0 0 3px rgba(26, 24, 22, .06) !important;
 }
 
 .course-search-input::placeholder,
 .widgetsuche-input::placeholder {
-  color: var(--fom-gray) !important;
+  color: var(--fom-text-light) !important;
 }
 
-/* ── Brand text: Dark on light ── */
+/* ── Brand text ── */
 .brand-title {
   color: var(--fom-text) !important;
 }
@@ -384,11 +401,13 @@ h1 {
   color: var(--fom-text-light) !important;
 }
 
-/* ── Header topbar: Clean white Newsroom-style ── */
+/* ── Top bar: Translucent warm cream ── */
 .campus-topbar {
-  background: var(--fom-white) !important;
-  border-bottom: 1px solid var(--fom-gray-light) !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .04) !important;
+  background: rgba(250, 248, 245, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.1) !important;
+  border-bottom: 1px solid var(--fom-border) !important;
+  box-shadow: 0 1px 3px rgba(26, 24, 22, .03) !important;
   height: 64px !important;
 }
 
@@ -406,24 +425,25 @@ h1 {
 .campus-title {
   color: var(--fom-text) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
-  font-size: 1.1rem !important;
+  font-size: 1.05rem !important;
 }
 
-/* Nav buttons: Neutral, not teal circles */
+/* ── Nav buttons: Dark ink style ── */
 body.layout-bba #main-header .page-nav-btn {
-  background: var(--fom-bg-alt) !important;
-  border: 1px solid var(--fom-gray-light) !important;
-  color: var(--fom-text) !important;
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-border) !important;
+  color: var(--fom-text-secondary) !important;
   border-radius: 10px !important;
   width: 38px !important;
   height: 38px !important;
+  transition: all .2s !important;
 }
 
 body.layout-bba #main-header .page-nav-btn:hover,
 body.layout-bba #main-header .page-nav-btn:focus {
-  background: var(--fom-white) !important;
-  border-color: var(--fom-teal) !important;
-  color: var(--fom-teal-dark) !important;
+  background: var(--fom-bg-alt) !important;
+  border-color: var(--fom-text) !important;
+  color: var(--fom-text) !important;
 }
 
 body.layout-bba #main-header .page-nav-btn.page-nav-active {
@@ -432,88 +452,142 @@ body.layout-bba #main-header .page-nav-btn.page-nav-active {
   color: var(--fom-white) !important;
 }
 
-/* Badge: Teal accent (only place) */
 body.layout-bba #main-header .page-nav-btn .unread-badge {
   background: var(--fom-teal) !important;
 }
 
-/* ── Module title sheet: Modern, less teal ── */
+/* ── Module title sheet: Warm sand card with teal accent ── */
 .module-title-sheet {
-  background: var(--fom-black) !important;
-  border: none !important;
-  border-radius: 16px !important;
-  box-shadow: none !important;
+  background: var(--fom-bg-alt) !important;
+  border: 1px solid var(--fom-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 2px 8px rgba(26, 24, 22, .03) !important;
   padding: 48px 44px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Decorative teal glow */
+.module-title-sheet::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -80px !important;
+  right: -60px !important;
+  width: 300px !important;
+  height: 300px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, rgba(0, 198, 178, 0.08) 0%, transparent 70%) !important;
+  pointer-events: none !important;
 }
 
 .module-title-sheet::before {
-  color: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(26, 24, 22, 0.03) !important;
   font-size: 400px !important;
 }
 
 .module-title-sheet-title {
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
   color: var(--fom-teal) !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
 }
 
 .module-title-sheet-quote {
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  color: var(--fom-text) !important;
   line-height: 1.08 !important;
   letter-spacing: -0.5px !important;
 }
 
 .module-title-sheet-person-row {
-  border-top: 1px solid rgba(255, 255, 255, .1) !important;
+  border-top: 1px solid var(--fom-border) !important;
   padding-top: 20px !important;
 }
 
 .module-title-sheet-portrait {
   border-radius: 12px !important;
-  border: 2px solid rgba(255, 255, 255, .1) !important;
+  border: 2px solid var(--fom-border) !important;
 }
 
 .module-title-sheet-personline-primary {
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
+  color: var(--fom-text) !important;
 }
 
-/* Closing card: Keep purple gradient */
+.module-title-sheet-personline-secondary {
+  color: var(--fom-text-light) !important;
+}
+
+.module-title-sheet-kicker {
+  color: var(--fom-text-secondary) !important;
+}
+
+/* Closing card: Dark ink */
 .module-title-sheet--closing {
-  background: linear-gradient(135deg, #121212 0%, #1a1a2e 100%) !important;
-}
-
-/* ── Accordions: Neutral, not teal ── */
-.unit-body .fom-collapse {
   background: var(--fom-black) !important;
-  border: none !important;
-  border-radius: 12px !important;
-  box-shadow: none !important;
+  border-color: var(--fom-black) !important;
 }
 
-.unit-body .fom-collapse summary {
+.module-title-sheet--closing .module-title-sheet-quote,
+.module-title-sheet--closing .module-title-sheet-personline-primary {
   color: var(--fom-white) !important;
 }
 
-.unit-body .fom-collapse summary::after {
-  background: rgba(255, 255, 255, .15) !important;
+.module-title-sheet--closing .module-title-sheet-personline-secondary,
+.module-title-sheet--closing .module-title-sheet-kicker {
+  color: rgba(255, 255, 255, .6) !important;
+}
+
+.module-title-sheet--closing .module-title-sheet-person-row {
+  border-top-color: rgba(255, 255, 255, .1) !important;
+}
+
+/* ── Accordions: Clean bordered style ── */
+.unit-body .fom-collapse {
+  background: var(--fom-white) !important;
+  border: 1px solid var(--fom-border) !important;
+  border-radius: var(--radius) !important;
   box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+.unit-body .fom-collapse summary {
+  color: var(--fom-text) !important;
+  font-weight: 700 !important;
+  background: var(--fom-bg-alt) !important;
+  transition: background .2s !important;
+}
+
+.unit-body .fom-collapse summary:hover {
+  background: var(--fom-border) !important;
+}
+
+.unit-body .fom-collapse summary::after {
+  background: var(--fom-white) !important;
+  box-shadow: 0 1px 3px rgba(26, 24, 22, .08) !important;
 }
 
 .unit-body .fom-collapse summary::before {
-  border-color: var(--fom-white) !important;
+  border-color: var(--fom-text-secondary) !important;
+}
+
+.unit-body .fom-collapse[open] summary {
+  background: var(--fom-bg-alt) !important;
+  border-bottom: 1px solid var(--fom-border) !important;
 }
 
 .unit-body .fom-collapse-content {
   background: var(--fom-white) !important;
-  border-top: 1px solid var(--fom-gray-light) !important;
+  border-top: none !important;
   color: var(--fom-text) !important;
+  padding: 24px !important;
 }
 
-/* ── Right tools rail: Clean neutral ── */
+/* ── Right tools rail: Warm ── */
 .right-tools-rail {
-  background: var(--fom-white) !important;
-  border-left: 1px solid var(--fom-gray-light) !important;
+  background: var(--fom-bg) !important;
+  border-left: 1px solid var(--fom-border) !important;
 }
 
 .right-tools-rail button,
@@ -521,41 +595,78 @@ body.layout-bba #main-header .page-nav-btn .unread-badge {
   border-radius: 10px !important;
 }
 
-/* ── Course hero: Clean ── */
+/* ── Course hero ── */
 .course-hero {
   margin-bottom: 24px !important;
 }
 
 .course-hero .course-hero-badge {
   background: var(--fom-bg-alt) !important;
-  color: var(--fom-text) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  color: var(--fom-text-secondary) !important;
+  border: 1px solid var(--fom-border) !important;
 }
 
-/* ── Unit card: Clean white ── */
+/* ── Unit card ── */
 .course-card {
-  border-radius: 16px !important;
+  border-radius: var(--radius-lg) !important;
   overflow: hidden !important;
 }
 
 .unit-meta-row .reading-time-pill {
   background: var(--fom-bg-alt) !important;
   color: var(--fom-text-light) !important;
-  border: 1px solid var(--fom-gray-light) !important;
+  border: 1px solid var(--fom-border) !important;
 }
 
-/* ── NotebookLM widget: Subtle ── */
+/* ── Unit body: Editorial spacing ── */
+.unit-body {
+  padding: 40px 36px !important;
+  line-height: 1.8 !important;
+}
+
+/* ── NotebookLM widget ── */
 .notebooklm-cta {
-  border-radius: 12px !important;
+  border-radius: var(--radius) !important;
 }
 
-/* ── Responsive: Sidebar ── */
+/* ── Links: Teal accent ── */
+a {
+  color: var(--fom-teal-dark) !important;
+}
+
+a:hover {
+  color: var(--fom-teal-darker) !important;
+}
+
+/* ── Scroll top button: Dark ink ── */
+.scroll-top-btn {
+  background: var(--fom-black) !important;
+  color: var(--fom-white) !important;
+  border: none !important;
+  border-radius: 50% !important;
+}
+
+.scroll-top-btn:hover {
+  background: var(--fom-gray-800) !important;
+}
+
+/* ── Literature features ── */
+.literature-feature {
+  background: var(--fom-bg-alt) !important;
+  border-radius: var(--radius) !important;
+  padding: 20px !important;
+}
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .course-layout {
     grid-template-columns: 1fr !important;
   }
   .course-main {
     padding: 20px 16px 40px !important;
+  }
+  .unit-body {
+    padding: 24px 16px !important;
   }
 }
 
