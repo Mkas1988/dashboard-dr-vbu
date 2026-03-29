@@ -216,6 +216,49 @@
         padding: 24px 20px;
       }
     }
+    @media (max-width: 400px) {
+      .header {
+        padding: 10px 14px;
+        gap: 10px;
+      }
+      .header img {
+        height: 28px;
+      }
+      .header-title {
+        font-size: 16px;
+      }
+      .login-card {
+        padding: 28px 18px;
+      }
+      .login-card h1 {
+        font-size: 22px;
+      }
+      .login-card .subtitle {
+        font-size: 14px;
+      }
+      .login-card button {
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+    }
+    /* Safe-Area für Geräte mit Notch */
+    @supports (padding: env(safe-area-inset-top)) {
+      .header {
+        padding-left: calc(20px + env(safe-area-inset-left));
+        padding-right: calc(20px + env(safe-area-inset-right));
+      }
+      .footer {
+        padding-bottom: calc(32px + env(safe-area-inset-bottom));
+      }
+    }
+    /* Touch-Geräte: Hover deaktivieren */
+    @media (hover: none) {
+      .login-card button:hover {
+        transform: none;
+        box-shadow: none;
+        background: var(--fom-teal);
+      }
+    }
   </style>
 </head>
 <body>
