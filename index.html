@@ -32,26 +32,30 @@
       --fom-teal-dark: #009F8F;
       --fom-teal-darker: #00776B;
       --fom-teal-light: #E5F9F7;
+      --fom-teal-100: #CCF3EF;
       --fom-black: #121212;
       --fom-white: #FFFFFF;
+      --fom-bg: #FFFFFF;
       --fom-bg-alt: #F2F0F0;
       --fom-gray: #6D6D6D;
       --fom-gray-light: #E6E6E6;
+      --fom-gray-dark: #4B4B4B;
+      --fom-text: #121212;
+      --fom-text-light: #6D6D6D;
       --fom-error: #E81818;
       --fom-footer-bg: #0B2623;
       --radius: 8px;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { height: 100%; }
 
     body {
       font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.6;
-      color: var(--fom-black);
-      background: var(--fom-white);
+      color: var(--fom-text);
+      background: var(--fom-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100%;
@@ -59,161 +63,321 @@
       flex-direction: column;
     }
 
-    /* Header */
+    /* ── Header ── */
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--fom-teal);
-      padding: 14px 48px;
+      height: 96px;
+      padding: 0 48px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      transition: all .3s ease;
     }
-    .header img {
-      height: 44px;
+    .header-inner {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .header-logo {
+      height: 60px;
+      width: auto;
+      transition: height .3s ease;
+    }
+    .header-text {
+      display: flex;
+      flex-direction: column;
     }
     .header-title {
       font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
-      font-size: 20px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--fom-white);
       letter-spacing: -0.3px;
       line-height: 1.1;
     }
+    .header-subtitle {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .7);
+      margin-top: 2px;
+      transition: opacity .3s ease;
+    }
 
-    /* Main */
+    /* ── Main ── */
     .main {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 48px 20px;
+      padding: 64px 32px;
       background: var(--fom-bg-alt);
     }
 
-    /* Login Card */
+    /* ── Login Card ── */
     .login-card {
       background: var(--fom-white);
       border: 1px solid var(--fom-gray-light);
       border-radius: var(--radius);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+      box-shadow: 0 8px 32px rgba(90, 185, 167, .1);
       padding: 48px 40px;
       max-width: 420px;
       width: 100%;
-      text-align: center;
+      transition: border-color .25s, box-shadow .25s;
     }
+    .login-card:hover {
+      border-color: var(--fom-teal);
+    }
+
+    .login-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--fom-teal);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 4px 20px rgba(0, 198, 178, .3);
+    }
+    .login-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--fom-white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
     .login-card h1 {
       font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--fom-black);
       line-height: 1.1;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
       margin-bottom: 8px;
+      text-align: center;
     }
     .login-card .subtitle {
       font-size: 15px;
-      color: var(--fom-gray);
+      color: var(--fom-text-light);
+      line-height: 1.6;
+      text-align: center;
       margin-bottom: 32px;
     }
 
-    /* Form */
-    .login-card label {
-      display: block;
+    /* ── Form ── */
+    .form-group {
+      margin-bottom: 20px;
       text-align: left;
+    }
+    .form-group label {
+      display: block;
       font-size: 13px;
       font-weight: 700;
       color: var(--fom-black);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
       margin-bottom: 6px;
     }
-    .login-card input[type="password"] {
+    .form-group input[type="password"] {
       width: 100%;
       padding: 14px 16px;
       border: 2px solid var(--fom-gray-light);
       border-radius: var(--radius);
       font-family: inherit;
       font-size: 15px;
-      color: var(--fom-black);
+      color: var(--fom-text);
       background: var(--fom-white);
       outline: none;
       transition: all 0.2s;
-      margin-bottom: 20px;
     }
-    .login-card input[type="password"]::placeholder {
+    .form-group input[type="password"]::placeholder {
       color: #b0b0b0;
     }
-    .login-card input[type="password"]:focus {
+    .form-group input[type="password"]:focus {
       border-color: var(--fom-teal);
       box-shadow: 0 0 0 3px rgba(0, 198, 178, .08);
     }
+    .form-group input.error {
+      border-color: var(--fom-error);
+      box-shadow: 0 0 0 3px rgba(232, 24, 24, .08);
+    }
 
-    /* Button */
-    .login-card button {
+    /* ── Button ── */
+    .btn-primary {
       width: 100%;
-      padding: 16px 36px;
+      padding: 14px 36px;
       background: var(--fom-teal);
       color: var(--fom-white);
       border: none;
-      border-radius: 60px;
+      border-radius: 10px;
       font-family: inherit;
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all .15s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .login-card button:hover {
+    .btn-primary:hover {
       background: var(--fom-teal-dark);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(0, 198, 178, .3);
     }
-    .login-card button:active {
+    .btn-primary:active {
       transform: translateY(0);
+      box-shadow: none;
+    }
+    .btn-primary::after {
+      content: ' \2192';
     }
 
-    /* Error */
+    /* ── Error Message ── */
     .error-msg {
       color: var(--fom-error);
       font-size: 14px;
       font-weight: 600;
       margin-top: 16px;
+      text-align: center;
       display: none;
     }
 
-    /* Footer */
+    /* ── Footer ── */
     .footer {
       background: var(--fom-footer-bg);
-      padding: 32px 48px;
-      text-align: center;
+      padding: 64px 32px 32px;
     }
-    .footer p {
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      height: 120px;
+      width: auto;
+      margin-left: -30px;
+      margin-bottom: 16px;
+    }
+    .footer-brand p {
       font-size: 14px;
-      color: rgba(255, 255, 255, .5);
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.8;
+      max-width: 380px;
     }
-    .footer a {
-      color: var(--fom-teal);
+    .footer-links h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .4);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 16px;
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .75);
       text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover {
+      color: var(--fom-teal);
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .4);
+    }
+    .footer-bottom a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .4);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-bottom a:hover {
+      color: var(--fom-teal);
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
     }
 
-    /* Responsive */
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       .header {
-        padding: 12px 20px;
+        height: 64px;
+        padding: 0 20px;
       }
-      .header img {
-        height: 32px;
+      .header-logo {
+        height: 44px;
       }
       .header-title {
         font-size: 18px;
+      }
+      .header-subtitle {
+        display: none;
+      }
+      .main {
+        padding: 40px 20px;
       }
       .login-card {
         padding: 36px 24px;
       }
       .login-card h1 {
-        font-size: 24px;
+        font-size: 28px;
       }
       .footer {
-        padding: 24px 20px;
+        padding: 48px 20px 24px;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-logo {
+        height: 80px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 28px 20px;
+      }
+      .header {
+        padding: 0 16px;
       }
     }
   </style>
@@ -221,25 +385,59 @@
 <body>
 
   <header class="header">
-    <img src="assets/FOM_Logo.png" alt="FOM Hochschule Logo">
-    <span class="header-title">Smart Campus</span>
+    <div class="header-inner">
+      <img class="header-logo" src="assets/fom-logo.svg" alt="FOM Hochschule Logo">
+      <div class="header-text">
+        <span class="header-title">Smart Campus</span>
+        <span class="header-subtitle">Management Basics</span>
+      </div>
+    </div>
   </header>
 
   <main class="main">
     <div class="login-card">
+      <div class="login-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
       <h1>Willkommen</h1>
-      <p class="subtitle">Bitte Passwort eingeben, um fortzufahren.</p>
+      <p class="subtitle">Bitte gib das Passwort ein, um auf das Modul zuzugreifen.</p>
       <form id="loginForm" onsubmit="return checkPassword()">
-        <label for="pwd">Passwort</label>
-        <input type="password" id="pwd" placeholder="Passwort eingeben" autofocus>
-        <button type="submit">Anmelden</button>
+        <div class="form-group">
+          <label for="pwd">Passwort</label>
+          <input type="password" id="pwd" placeholder="Passwort eingeben" autofocus>
+        </div>
+        <button type="submit" class="btn-primary">Anmelden</button>
       </form>
       <div class="error-msg" id="errMsg">Falsches Passwort. Bitte erneut versuchen.</div>
     </div>
   </main>
 
   <footer class="footer">
-    <p>&copy; FOM Hochschule</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/fom-logo-white.svg" alt="FOM Hochschule Logo">
+        <p>Die FOM ist eine staatlich anerkannte Hochschule und bietet mehr als 60 akkreditierte Studiengaenge fuer Berufstaetige an.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Smart Campus</h4>
+        <ul>
+          <li><a href="#">Management Basics</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>FOM Hochschule</h4>
+        <ul>
+          <li><a href="https://www.fom.de" target="_blank" rel="noopener noreferrer">fom.de</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FOM Hochschule</p>
+      <div class="footer-bottom-links">
+        <a href="https://www.fom.de/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
+        <a href="https://www.fom.de/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+      </div>
+    </div>
   </footer>
 
   <script>
@@ -249,14 +447,15 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
     async function checkPassword() {
-      const hash = await sha256(document.getElementById('pwd').value);
+      const pwd = document.getElementById('pwd');
+      const hash = await sha256(pwd.value);
       if (hash === H) {
         sessionStorage.setItem('dashboard_auth', H);
         window.location.href = 'modules/management-basics/special-01-modulinfo.html';
       } else {
         document.getElementById('errMsg').style.display = 'block';
-        document.getElementById('pwd').style.borderColor = 'var(--fom-error)';
-        document.getElementById('pwd').style.boxShadow = '0 0 0 3px rgba(232,24,24,.08)';
+        pwd.classList.add('error');
+        pwd.addEventListener('focus', () => pwd.classList.remove('error'), { once: true });
       }
       return false;
     }
