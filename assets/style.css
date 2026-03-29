@@ -1,4 +1,57 @@
-﻿/* Widgetsuche oben auf dem Dashboard */
+﻿/* ══════════════════════════════════════════════════════
+   FOM Design System – Newsroom Tokens & Overrides
+   ══════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Text-Pro';
+  src: url('../fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-55-Regular.woff2') format('woff2'),
+       url('../fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-55-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Text-Pro';
+  src: url('../fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-75-Bold.woff2') format('woff2'),
+       url('../fonts/Neue-Haas-Grotesk-Text-Pro/Neue-Haas-Grotesk-Text-Pro-75-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Display-Pro';
+  src: url('../fonts/Neue-Haas-Grotesk-Display-Pro/Neue-Haas-Grotesk-Display-Pro-75-Bold.woff2') format('woff2'),
+       url('../fonts/Neue-Haas-Grotesk-Display-Pro/Neue-Haas-Grotesk-Display-Pro-75-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --fom-teal: #00C6B2;
+  --fom-teal-dark: #009F8F;
+  --fom-teal-darker: #00776B;
+  --fom-teal-light: #E5F9F7;
+  --fom-teal-100: #CCF3EF;
+  --fom-teal-200: #99E8E0;
+  --fom-teal-300: #66DDD1;
+  --fom-teal-400: #33D2C2;
+  --fom-blue: #0071DE;
+  --fom-blue-dark: #005AB2;
+  --fom-black: #121212;
+  --fom-white: #FFFFFF;
+  --fom-bg: #FFFFFF;
+  --fom-bg-alt: #F2F0F0;
+  --fom-gray: #6D6D6D;
+  --fom-gray-light: #E6E6E6;
+  --fom-gray-dark: #4B4B4B;
+  --fom-gray-800: #303030;
+  --fom-text: #121212;
+  --fom-text-light: #6D6D6D;
+  --fom-error: #E81818;
+  --fom-success: #77B502;
+  --fom-warning: #F2C91B;
+  --radius: 8px;
+}
+
+/* ── Widgetsuche oben auf dem Dashboard ──
 
 .widgetsuche-form {
   width: 100%;
@@ -168,12 +221,14 @@ a.widget:active {
   letter-spacing: 0.04em;
 }
 body {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif;
   background: #0b3f3a;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .dashboard-container {
