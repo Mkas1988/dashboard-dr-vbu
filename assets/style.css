@@ -80,37 +80,58 @@ body {
   background: var(--fom-bg-alt) !important;
   border-right: 1px solid var(--fom-border) !important;
   backdrop-filter: none !important;
-  padding: 28px 14px !important;
+  padding: 24px 12px !important;
 }
 
 .toc-title {
   color: var(--fom-text-light) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
-  font-size: 11px !important;
-  letter-spacing: 1.5px !important;
+  font-size: 10px !important;
+  letter-spacing: 1.8px !important;
   text-transform: uppercase !important;
+  margin-bottom: 16px !important;
+  padding-left: 4px !important;
+}
+
+/* Better separation between TOC items */
+.toc-list {
+  gap: 6px !important;
 }
 
 .toc-item {
   background: var(--fom-white) !important;
   color: var(--fom-text) !important;
   border: 1px solid var(--fom-border) !important;
-  border-radius: var(--radius) !important;
-  padding: 12px 12px !important;
+  border-radius: 10px !important;
+  padding: 10px 10px !important;
   transition: all .25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+}
+
+/* Subtle left accent bar for active item */
+.toc-item.is-active::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 8px !important;
+  bottom: 8px !important;
+  width: 3px !important;
+  background: var(--fom-teal) !important;
+  border-radius: 0 3px 3px 0 !important;
 }
 
 .toc-item:hover {
-  border-color: var(--fom-text) !important;
-  box-shadow: 0 4px 16px rgba(26, 24, 22, .06) !important;
+  border-color: var(--fom-gray) !important;
+  box-shadow: 0 2px 8px rgba(26, 24, 22, .05) !important;
   transform: translateY(-1px) !important;
   background: var(--fom-white) !important;
 }
 
 .toc-item.is-active {
   background: var(--fom-white) !important;
-  border-color: var(--fom-text) !important;
-  box-shadow: 0 4px 20px rgba(26, 24, 22, .08) !important;
+  border-color: var(--fom-teal) !important;
+  box-shadow: 0 2px 12px rgba(0, 198, 178, .08) !important;
   color: var(--fom-text) !important;
 }
 
@@ -118,7 +139,7 @@ body {
 .toc-item.is-complete:not(.is-active):hover {
   background: var(--fom-bg) !important;
   color: var(--fom-text-secondary) !important;
-  border-color: var(--fom-border) !important;
+  border-color: transparent !important;
   box-shadow: none !important;
 }
 
@@ -130,10 +151,11 @@ body {
 .toc-nr {
   color: var(--fom-text-light) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif;
+  font-size: 0.95rem !important;
 }
 
 .toc-item.is-active .toc-nr {
-  color: var(--fom-text) !important;
+  color: var(--fom-teal) !important;
   font-weight: 700 !important;
 }
 
@@ -141,23 +163,29 @@ body {
   color: var(--fom-text) !important;
   font-family: 'Neue-Haas-Grotesk-Text-Pro', Helvetica, Arial, sans-serif !important;
   font-weight: 600 !important;
-  font-size: 0.86rem !important;
+  font-size: 0.82rem !important;
+  line-height: 1.3 !important;
 }
 
 .toc-progress-text {
   color: var(--fom-text-light) !important;
+  font-size: 0.72rem !important;
 }
 
 .toc-progress-track {
   background: var(--fom-border) !important;
+  height: 3px !important;
+  border-radius: 2px !important;
+  margin-top: 4px !important;
 }
 
 .toc-progress-fill {
   background: var(--fom-teal) !important;
+  border-radius: 2px !important;
 }
 
 .toc-item.is-active .toc-progress-text {
-  color: var(--fom-text-secondary) !important;
+  color: var(--fom-teal-dark) !important;
 }
 
 .toc-item.is-active .toc-progress-track {
@@ -401,18 +429,18 @@ h1 {
   color: var(--fom-text-light) !important;
 }
 
-/* ── Top bar: Translucent warm cream ── */
+/* ── Top bar: FOM Teal ── */
 .campus-topbar {
-  background: rgba(250, 248, 245, 0.88) !important;
-  backdrop-filter: blur(20px) saturate(1.1) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(1.1) !important;
-  border-bottom: 1px solid var(--fom-border) !important;
-  box-shadow: 0 1px 3px rgba(26, 24, 22, .03) !important;
+  background: var(--fom-teal) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 2px 12px rgba(0, 198, 178, .2) !important;
   height: 64px !important;
 }
 
 .campus-topbar .campus-logo-img {
-  filter: none !important;
+  filter: brightness(0) invert(1) !important;
 }
 
 .campus-logo {
@@ -423,16 +451,28 @@ h1 {
 }
 
 .campus-title {
-  color: var(--fom-text) !important;
+  color: var(--fom-white) !important;
   font-family: 'Neue-Haas-Grotesk-Display-Pro', Helvetica, Arial, sans-serif !important;
   font-size: 1.05rem !important;
 }
 
-/* ── Nav buttons: Dark ink style ── */
+/* All topbar text/icons white */
+.campus-topbar,
+.campus-topbar a,
+.campus-topbar span,
+.campus-topbar button {
+  color: var(--fom-white) !important;
+}
+
+.campus-topbar .material-icons {
+  color: var(--fom-white) !important;
+}
+
+/* ── Nav buttons: White on teal topbar ── */
 body.layout-bba #main-header .page-nav-btn {
-  background: var(--fom-white) !important;
-  border: 1px solid var(--fom-border) !important;
-  color: var(--fom-text-secondary) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: var(--fom-white) !important;
   border-radius: 10px !important;
   width: 38px !important;
   height: 38px !important;
@@ -441,19 +481,20 @@ body.layout-bba #main-header .page-nav-btn {
 
 body.layout-bba #main-header .page-nav-btn:hover,
 body.layout-bba #main-header .page-nav-btn:focus {
-  background: var(--fom-bg-alt) !important;
-  border-color: var(--fom-text) !important;
-  color: var(--fom-text) !important;
-}
-
-body.layout-bba #main-header .page-nav-btn.page-nav-active {
-  background: var(--fom-black) !important;
-  border-color: var(--fom-black) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
   color: var(--fom-white) !important;
 }
 
+body.layout-bba #main-header .page-nav-btn.page-nav-active {
+  background: var(--fom-white) !important;
+  border-color: var(--fom-white) !important;
+  color: var(--fom-teal) !important;
+}
+
 body.layout-bba #main-header .page-nav-btn .unread-badge {
-  background: var(--fom-teal) !important;
+  background: var(--fom-white) !important;
+  color: var(--fom-teal) !important;
 }
 
 /* ── Module title sheet: Warm sand card with teal accent ── */
